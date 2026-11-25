@@ -15,6 +15,8 @@ create table if not exists public.profiles (
 
 -- (If you created the tables earlier, this line adds the new column safely.)
 alter table public.profiles add column if not exists subjects text[] not null default '{}';
+-- Exam date for each subject, for the exam countdown, for example {"tax": "2027-03-10"}.
+alter table public.profiles add column if not exists exam_dates jsonb not null default '{}'::jsonb;
 
 create table if not exists public.progress (
   user_id     uuid not null references auth.users (id) on delete cascade,
@@ -77,9 +79,9 @@ drop policy if exists "profiles read" on public.profiles;
 create policy "profiles read" on public.profiles
   for select using (id = auth.uid() or public.is_admin());
 
--- Students may only update their own "last_seen" time and chosen subjects (not username or admin flag).
+-- Students may only update their own "last_seen" time, chosen subjects and exam dates (not username or admin flag).
 revoke update on public.profiles from authenticated, anon;
-grant update (last_seen, subjects) on public.profiles to authenticated;
+grant update (last_seen, subjects, exam_dates) on public.profiles to authenticated;
 drop policy if exists "profiles touch" on public.profiles;
 create policy "profiles touch" on public.profiles
   for update using (id = auth.uid()) with check (id = auth.uid());

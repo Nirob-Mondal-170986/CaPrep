@@ -72,6 +72,8 @@ Do not change `USERNAME_DOMAIN` after students have registered, or their logins 
 
 You can make other people admins the same way.
 
+**Already set up an older version?** Run all of `supabase/schema.sql` again (it is safe). The newest version adds one column, `exam_dates`, which saves each student's exam countdown dates to their account. Until you run it, exam dates are saved on that device only.
+
 ## Admin tasks
 
 **See students:** Admin panel → table of all students. Click a student to see their progress by paper, confidence counts, Low topics and full activity history.
@@ -93,7 +95,7 @@ Then tell the student their new password.
 ## Updating the site
 
 1. Edit files in `src/` (notes, `data.js`, `app.css`, the logo in `src/pwa/`, and so on).
-2. Optional check on your computer: run `python3 build.py`, then `python3 -m http.server --directory dist` and visit http://localhost:8000.
+2. Optional check on your computer: run `python3 build.py`, then `python3 -m http.server --directory dist` and visit http://localhost:8000. (Opening `dist/index.html` straight from the folder will not work, because chapters load on demand. Use the single-file preview below for that.)
 3. Commit and push. Vercel redeploys within a minute or two.
 
 **Advance Level papers:** each chapter is its own file, for example `src/cr/cr-04.html` for Corporate Reporting Chapter 4. The build adds every file in `src/fm`, `src/cr`, `src/sbm` and `src/cs` automatically. Chapters without a file show as "Notes coming soon".
@@ -101,6 +103,13 @@ Then tell the student their new password.
 **Single-file preview:** after `python3 build.py`, run `python3 make_preview.py` to make `preview-demo.html` (demo mode, opens straight from your computer).
 
 **Logo:** the CAPrep logo is `src/pwa/logo.svg`. The app icons in `src/pwa/` are PNG versions of it. The sidebar copy is inside `src/app.js` (`LOGO`).
+
+## What the app does
+
+- **Exam countdown:** each student sets an exam date per subject. The dashboard shows days left and how many topics to read each day, keeping the last 20% of the time for revision.
+- **Smart revision:** the Revise page opens on a plan of topics that are due. Low topics come back after 2 days, Medium after 7 and High after 21, weakest first. Students press "I have reviewed this topic" to reset the timer.
+- **Flashcards:** made automatically at build time from the notes: worked examples become practice questions, "Remember" boxes become key points, and "trap" boxes become exam traps. Cards a student gets right come back after 1, 3, 7, 14 and 30 days. Their card progress is kept in their browser.
+- **Fast loading:** the build splits the notes into one small file per chapter (`dist/ch/`), plus `search.json` and `cards/`. A chapter downloads only when opened, and the student's own subjects are quietly saved in the background for offline reading. Nothing to maintain: just edit the notes in `src/` and rebuild.
 
 ## Good to know
 
