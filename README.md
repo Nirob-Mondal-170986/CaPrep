@@ -1,4 +1,4 @@
-# H&A CA Prep website: setup guide
+# CAPrep website: setup guide
 
 This folder has your new study website. Students can sign up with just a **username and password**. Their progress and confidence marks (High / Medium / Low) are saved to their account, and you get an **admin panel** that shows every student's progress and activity.
 
@@ -166,4 +166,4 @@ Until Supabase is connected the site still works, but accounts exist only in tha
 
 ## Installing as an app
 
-The site is a Progressive Web App. In Chrome (computer or Android) open the live link and use the install icon in the address bar (or menu → **Install H&A CA Prep**). On iPhone use Safari → Share → **Add to Home Screen**. The installed app opens in its own window and the notes open even without internet; progress syncs when the connection returns.
+The site is a Progressive Web App. In Chrome (computer or Android) open the live link and use the install icon in the address bar (or menu → **Install CAPrep**). On iPhone use Safari → Share → **Add to Home Screen**. The installed app opens in its own window and the notes open even without internet; progress syncs when the connection returns.

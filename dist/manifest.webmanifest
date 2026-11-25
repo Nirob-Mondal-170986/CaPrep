@@ -1,6 +1,6 @@
 {
-  "name": "H&A CA Prep",
-  "short_name": "CA Prep",
+  "name": "CAPrep",
+  "short_name": "CAPrep",
   "description": "Plain-English ICAB exam notes with progress tracking, confidence marks and revision lists.",
   "id": "./",
   "start_url": "./",
