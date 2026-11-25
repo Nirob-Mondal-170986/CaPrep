@@ -2,7 +2,7 @@
    The build step replaces __VERSION__ so every new deploy refreshes the cache. */
 const VERSION = "__VERSION__";
 const CACHE = "haprep-" + VERSION;
-const SHELL = ["./", "app.css", "app.js", "data.js", "store.js", "config.js", "manifest.webmanifest", "icon-192.png", "icon-512.png"];
+const SHELL = ["./", "app.css", "app.js", "data.js", "store.js", "config.js", "manifest.webmanifest", "icon-192.png", "icon-512.png", "logo.svg"];
 
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));

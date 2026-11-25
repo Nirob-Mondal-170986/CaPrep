@@ -1,4 +1,4 @@
-/* H&A CA Prep — app logic (no framework). Routes live in the URL hash:
+/* CAPrep — app logic (no framework). Routes live in the URL hash:
    #/  dashboard · #/paper/<p> · #/ch/<p>/<n>[/<topic>] · #/revise · #/search · #/admin · #/admin/user/<id> */
 (function () {
   const $ = (s, r = document) => r.querySelector(s);
@@ -174,15 +174,18 @@
     applyTheme(t || (window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
   })();
 
+  const LOGO = '<img class="mark" alt="" width="42" height="42" src="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Cdefs%3E%3ClinearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%23FF9A4D%22/%3E%3Cstop offset=%221%22 stop-color=%22%23E4570C%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22url(%23g)%22/%3E%3Cpath d=%22M40.5 20.2A15.5 15.5 0 1 0 40.5 43.8%22 fill=%22none%22 stroke=%22%23fff%22 stroke-width=%227%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M27 33l6.5 6.5L48.5 24%22 fill=%22none%22 stroke=%22%23121A23%22 stroke-width=%226%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E%3C/svg%3E">';
+  const WORD = '<span class="word"><b>CA<em>Prep</em></b><small>ICAB exam notes</small></span>';
+
   /* ---------- Auth screen ---------- */
   function renderAuth(mode) {
     mode = mode || "in";
-    document.title = "Sign in · H&A CA Prep";
+    document.title = "Sign in · CAPrep";
     $("#root").innerHTML = `
     <div class="auth">
       <div class="auth-art">
         <div style="position:relative;z-index:1">
-          <a class="brand" href="#/"><span class="mark">H&amp;A</span><span><b>H&amp;A CA Prep</b><small>ICAB exam notes</small></span></a>
+          <a class="brand" href="#/">${LOGO}${WORD}</a>
           <h1 style="margin-top:44px">Study smarter for every ICAB paper.</h1>
           <p class="lead">Plain-English notes for the Professional and Advance Levels, with your progress and confidence saved to your account.</p>
         </div>
@@ -250,7 +253,7 @@
   function renderShell() {
     $("#root").innerHTML = `
     <div class="app" id="app">
-      <div class="topbar"><a class="brand" href="#/"><span class="mark">H&amp;A</span><span><b>CA Prep</b></span></a><button class="menu-btn" id="menu" aria-expanded="false" aria-controls="side">Menu</button></div>
+      <div class="topbar"><a class="brand" href="#/">${LOGO}<span class="word"><b>CA<em>Prep</em></b></span></a><button class="menu-btn" id="menu" aria-expanded="false" aria-controls="side">Menu</button></div>
       <aside class="side" id="side" aria-label="Main navigation"></aside>
       <main class="main" id="main"><div class="page" id="view"></div></main>
     </div>`;
@@ -265,7 +268,7 @@
     const a = (href, key, ico, label, meta) => `<a href="${href}" ${cur === key ? 'aria-current="page"' : ""}><span class="ico">${ico}</span><span>${label}</span>${meta || ""}</a>`;
     const low = stats(myIds()).low, mine = myPapers();
     $("#side").innerHTML = `
-      <a class="brand" href="#/"><span class="mark">H&amp;A</span><span><b>H&amp;A CA Prep</b><small>ICAB exam notes</small></span></a>
+      <a class="brand" href="#/">${LOGO}${WORD}</a>
       <nav class="nav">
         ${a("#/", "home", ICON.home, "Dashboard")}
         ${a("#/revise", "revise", ICON.rev, "Revise", low ? `<span class="meta" title="Low-confidence topics">${low} low</span>` : "")}
@@ -328,7 +331,7 @@
 
   /* ---------- Dashboard ---------- */
   function viewHome() {
-    document.title = "Dashboard · H&A CA Prep";
+    document.title = "Dashboard · CAPrep";
     if (!myPapers().length) return viewSubjects(true);
     const s = stats(myIds()), hr = new Date().getHours();
     const greet = hr < 12 ? "Good morning" : hr < 17 ? "Good afternoon" : "Good evening";
@@ -348,7 +351,7 @@
         <a class="stat lo" href="#/revise?c=low"><span class="v">${s.low}</span><span class="k">Low confidence</span></a>
       </div>
       <div class="panel overview">
-        <div class="ring" aria-label="${s.pct}% of your topics read"><svg viewBox="0 0 180 180"><circle cx="90" cy="90" r="${R}" fill="none" stroke="var(--slate-soft)" stroke-width="16"/><circle cx="90" cy="90" r="${R}" fill="none" stroke="var(--brand)" stroke-width="16" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C * (1 - s.pct / 100)}"/></svg><div class="c"><div><b>${s.pct}%</b><span>of your notes</span></div></div></div>
+        <div class="ring" aria-label="${s.pct}% of your topics read"><svg viewBox="0 0 180 180"><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFA35E"/><stop offset="1" stop-color="#E4570C"/></linearGradient></defs><circle cx="90" cy="90" r="${R}" fill="none" stroke="var(--slate-soft)" stroke-width="16"/><circle cx="90" cy="90" r="${R}" fill="none" stroke="url(#rg)" stroke-width="16" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C * (1 - s.pct / 100)}"/></svg><div class="c"><div><b>${s.pct}%</b><span>of your notes</span></div></div></div>
         <div style="display:grid;gap:14px;min-width:0">
           <h3>Your confidence in your subjects</h3>${confbar(s)}${legend(s)}
           ${lastOk ? `<div class="resume" style="border-top:1px solid var(--line);padding-top:14px"><div><b>Continue reading</b><br><span>${esc(PAPERS[last.p].short)} · Chapter ${last.n}: ${esc(CH[last.p][last.n].title)}</span></div><a class="btn ghost" href="#/ch/${last.p}/${last.n}">Open chapter →</a></div>` : ""}
@@ -361,7 +364,7 @@
     $("#qs").onsubmit = e => { e.preventDefault(); location.hash = "#/search?q=" + encodeURIComponent($("#q").value); };
   }
   function viewSubjects(first) {
-    document.title = "My subjects · H&A CA Prep";
+    document.title = "My subjects · CAPrep";
     const chosen = new Set(myPapers());
     $("#view").innerHTML = `
       <div class="page-head"><span class="eyebrow">${first ? "Welcome" : "Settings"}</span><h1>${first ? "Choose your subjects" : "My subjects"}</h1>
@@ -390,7 +393,7 @@
   /* ---------- Paper ---------- */
   function viewPaper(p) {
     const P = PAPERS[p];
-    document.title = P.short + " · H&A CA Prep";
+    document.title = P.short + " · CAPrep";
     if (!live(p)) {
       $("#view").innerHTML = `<div class="crumbs"><a href="#/">Dashboard</a><span>/</span><span>${esc(P.short)}</span></div>
         <div class="page-head"><span class="eyebrow">${esc(P.code)} · ${esc(P.level)}</span><h1>${esc(P.name)}</h1><p>${esc(P.blurb || "")}</p></div>
@@ -448,7 +451,7 @@
   }
   function viewChapter(p, n, topicId) {
     const P = PAPERS[p], c = CH[p][n];
-    document.title = "Ch " + n + ": " + c.title + " · H&A CA Prep";
+    document.title = "Ch " + n + ": " + c.title + " · CAPrep";
     setLast({ p, n });
     log("open_chapter", { p, n }, "oc-" + p + n);
     $("#view").innerHTML = `
@@ -495,7 +498,7 @@
   /* ---------- Revise ---------- */
   let shuffleSeed = 1;
   function viewRevise(params) {
-    document.title = "Revise · H&A CA Prep";
+    document.title = "Revise · CAPrep";
     const c = params.get("c") || "low", p = params.get("p") || "all", order = params.get("o") || "paper";
     const pool = TOPICS.filter(t => p === "all" || t.p === p);
     const count = k => pool.filter(t => match(t.id, k)).length;
@@ -575,7 +578,7 @@
     }).join("");
   }
   function viewSearch(q) {
-    document.title = "Search · H&A CA Prep";
+    document.title = "Search · CAPrep";
     $("#view").innerHTML = `<div class="page-head"><span class="eyebrow">Search</span><h1>Search all notes</h1><p>Search every topic in every paper. Results show your confidence for each topic.</p></div>
       <div class="search"><input id="q" type="search" placeholder="Try: deferred tax, IFRS 16, ISA 570, VAT rebate, s.85" autocomplete="off" aria-label="Search notes" value="${esc(q)}"><div class="results" id="results" aria-live="polite"></div></div>`;
     const inp = $("#q"), res = $("#results");
@@ -623,7 +626,7 @@
     return `<div class="feed">${events.map(ev => { const [i, txt] = evText(ev); return `<div class="ev"><i aria-hidden="true">${i}</i><span>${d ? `<b>${esc(userName(d, ev.user_id))}</b> · ` : ""}${txt}</span><small title="${esc(fmtDate(ev.created_at))}">${ago(ev.created_at)}</small></div>`; }).join("")}</div>`;
   }
   async function viewAdmin() {
-    document.title = "Admin panel · H&A CA Prep";
+    document.title = "Admin panel · CAPrep";
     $("#view").innerHTML = `<div class="page-head"><span class="eyebrow">Admin</span><h1>Admin panel</h1><p>Progress and activity of every registered student.</p></div><div class="panel"><p class="muted">Loading students…</p></div>`;
     let d;
     try { d = await loadAdmin(); } catch (e) { $("#view").innerHTML += `<div class="form-err">Could not load admin data: ${esc(e.message)}</div>`; return; }
@@ -687,7 +690,7 @@
     try { d = await loadAdmin(); events = await store.activity(id, 300); } catch (e) { $("#view").innerHTML = `<div class="form-err">Could not load: ${esc(e.message)}</div>`; return; }
     const x = d.byId[id];
     if (!x) { $("#view").innerHTML = `<div class="crumbs"><a href="#/admin">Admin panel</a></div><div class="panel empty"><b>Student not found</b></div>`; return; }
-    document.title = x.u.username + " · Admin · H&A CA Prep";
+    document.title = x.u.username + " · Admin · CAPrep";
     const theirs = {}; d.rows.filter(r => r.user_id === id).forEach(r => { theirs[r.topic_id] = { r: r.is_read, c: r.confidence }; });
     const st = ids => { const s = { total: ids.length, read: 0, high: 0, medium: 0, low: 0, none: 0 }; ids.forEach(t => { const r = theirs[t]; if (r && r.r) s.read++; if (r && r.c) s[r.c]++; else s.none++; }); s.pct = s.total ? Math.round(s.read / s.total * 100) : 0; return s; };
     const all = st(allIds()), livePapers = Object.keys(PAPERS).filter(live);
