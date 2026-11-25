@@ -9,6 +9,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap">
 <link rel="stylesheet" href="app.css">
+<meta name="theme-color" content="#F37021">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 <script>try{var t=localStorage.getItem("haprep-theme");document.documentElement.setAttribute("data-theme",t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
 </head>
 <body>
@@ -26540,6 +26546,3913 @@ Detection risk is the only part the auditor controls: higher RMM → lower detec
 </section>
 </template>
 
+<template id="tpl-fm-12">
+<div class="ch-head">
+  <span class="eyebrow">Chapter 12 · Financial Management · Proforma Bank</span>
+  <h1>Proforma Bank, Part A: Investment appraisal</h1>
+  <p>Ready working formats for the Financial Management exam: when to use each one, the steps, a worked example with made-up data, and the traps. Copy the layout in the exam. Figures use 3-decimal discount factors, so small rounding differences are normal.</p>
+</div>
+
+<div class="keynums" aria-label="Key numbers in this chapter"><div><b>5</b><span>working formats in this part</span></div><div><b>When · Steps · Example · Traps</b><span>The same four parts in every format</span></div></div>
+
+<div class="box remember"><span class="lbl">How to use</span><p>Each proforma has four parts: when to use it, the steps, a worked example with made-up data, and the traps. The example table is the layout to copy in the exam. Figures use 3-decimal discount factors, so small rounding differences are normal.</p></div>
+
+<section class="topic" id="fm12-p1">
+  <div class="topic-head"><span class="tn">P1</span><h2>NPV and IRR – the core working format</h2></div>
+
+<p><strong>Typical: 12–20 marks = 24–40 minutes. Tested in almost every paper.</strong></p>
+<p><strong>When to use:</strong> "Calculate the NPV / IRR of the project" or "Should the company invest?"</p>
+<ol class="steps">
+<li><span><strong>Columns</strong> t0 to tn. Write the unit (Tk '000) once.</span></li>
+<li><span><strong>Operating flows:</strong> revenue and costs in money terms (inflate each at its own rate). Relevant cash flows only.</span></li>
+<li><span><strong>Tax</strong> on the net operating flow.</span></li>
+<li><span><strong>Asset:</strong> cost, scrap, and tax saved on capital allowances (separate working).</span></li>
+<li><span><strong>Working capital:</strong> show only the change each year. Recover the total at the end.</span></li>
+<li><span><strong>Discount</strong> the net flow at the money cost of capital. Add up for NPV. State accept or reject.</span></li>
+<li><span><strong>IRR:</strong> discount again at a second rate. IRR = L + NPV(L) ÷ [NPV(L) − NPV(H)] × (H − L).</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> Machine Tk 10,000k, life 4 years, scrap Tk 2,000k. Revenue Tk 8,000k a year in today's prices, inflation 5%. Cash costs Tk 4,000k in today's prices, inflation 4%. The project cuts contribution from an old product by Tk 400k a year. Working capital = 10% of next year's revenue, in place at the start of each year. Capital allowances 18% reducing balance, balancing allowance in the year of sale. Tax 25%, paid in the same year. Money cost of capital 12%. Market research already paid Tk 300k. Head office overhead allocated Tk 500k a year.</p></div>
+<p><strong>Working 1 – tax saved on capital allowances (Tk '000)</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Year</strong></th>
+<th><strong>Written down value b/f</strong></th>
+<th><strong>Allowance</strong></th>
+<th><strong>Tax saved at 25%</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>10,000</td>
+<td>18% = 1,800</td>
+<td>450</td>
+</tr>
+<tr>
+<td>2</td>
+<td>8,200</td>
+<td>18% = 1,476</td>
+<td>369</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6,724</td>
+<td>18% = 1,210</td>
+<td>303</td>
+</tr>
+<tr>
+<td>4</td>
+<td>5,514</td>
+<td>Balancing: 5,514 − 2,000 = 3,514</td>
+<td>878</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Working 2 – working capital (Tk '000)</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th></th>
+<th><strong>t0</strong></th>
+<th><strong>t1</strong></th>
+<th><strong>t2</strong></th>
+<th><strong>t3</strong></th>
+<th><strong>t4</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Needed (10% of next year's revenue)</td>
+<td>840</td>
+<td>882</td>
+<td>926</td>
+<td>972</td>
+<td>–</td>
+</tr>
+<tr>
+<td><strong>Cash flow (change only)</strong></td>
+<td><strong>(840)</strong></td>
+<td><strong>(42)</strong></td>
+<td><strong>(44)</strong></td>
+<td><strong>(46)</strong></td>
+<td><strong>972</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>NPV (Tk '000)</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th></th>
+<th><strong>t0</strong></th>
+<th><strong>t1</strong></th>
+<th><strong>t2</strong></th>
+<th><strong>t3</strong></th>
+<th><strong>t4</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue (8,000 × 1.05ⁿ)</td>
+<td></td>
+<td>8,400</td>
+<td>8,820</td>
+<td>9,261</td>
+<td>9,724</td>
+</tr>
+<tr>
+<td>Costs (4,000 × 1.04ⁿ)</td>
+<td></td>
+<td>(4,160)</td>
+<td>(4,326)</td>
+<td>(4,499)</td>
+<td>(4,679)</td>
+</tr>
+<tr>
+<td>Lost contribution (old product)</td>
+<td></td>
+<td>(400)</td>
+<td>(400)</td>
+<td>(400)</td>
+<td>(400)</td>
+</tr>
+<tr>
+<td><strong>Net operating flow</strong></td>
+<td></td>
+<td><strong>3,840</strong></td>
+<td><strong>4,094</strong></td>
+<td><strong>4,362</strong></td>
+<td><strong>4,645</strong></td>
+</tr>
+<tr>
+<td>Tax at 25%</td>
+<td></td>
+<td>(960)</td>
+<td>(1,023)</td>
+<td>(1,090)</td>
+<td>(1,161)</td>
+</tr>
+<tr>
+<td>Machine / scrap</td>
+<td>(10,000)</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2,000</td>
+</tr>
+<tr>
+<td>Tax saved on allowances (W1)</td>
+<td></td>
+<td>450</td>
+<td>369</td>
+<td>303</td>
+<td>878</td>
+</tr>
+<tr>
+<td>Working capital (W2)</td>
+<td>(840)</td>
+<td>(42)</td>
+<td>(44)</td>
+<td>(46)</td>
+<td>972</td>
+</tr>
+<tr>
+<td><strong>Net cash flow</strong></td>
+<td><strong>(10,840)</strong></td>
+<td><strong>3,288</strong></td>
+<td><strong>3,395</strong></td>
+<td><strong>3,527</strong></td>
+<td><strong>7,334</strong></td>
+</tr>
+<tr>
+<td>Discount factor 12%</td>
+<td>1.000</td>
+<td>0.893</td>
+<td>0.797</td>
+<td>0.712</td>
+<td>0.636</td>
+</tr>
+<tr>
+<td><strong>Present value</strong></td>
+<td><strong>(10,840)</strong></td>
+<td><strong>2,936</strong></td>
+<td><strong>2,706</strong></td>
+<td><strong>2,512</strong></td>
+<td><strong>4,665</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>NPV = Tk 1,979k.</strong> Positive, so <strong>accept</strong>.</p>
+<p><em>Ignored: market research (sunk), allocated overhead (not a cash flow), depreciation (not cash), interest (already in the discount rate).</em></p>
+<p><strong>IRR</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Tk '000</strong></th>
+<th><strong>t0</strong></th>
+<th><strong>t1</strong></th>
+<th><strong>t2</strong></th>
+<th><strong>t3</strong></th>
+<th><strong>t4</strong></th>
+<th><strong>NPV</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Net cash flow</td>
+<td>(10,840)</td>
+<td>3,288</td>
+<td>3,395</td>
+<td>3,527</td>
+<td>7,334</td>
+<td></td>
+</tr>
+<tr>
+<td>Discount factor 25%</td>
+<td>1.000</td>
+<td>0.800</td>
+<td>0.640</td>
+<td>0.512</td>
+<td>0.410</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Present value at 25%</strong></td>
+<td><strong>(10,840)</strong></td>
+<td><strong>2,630</strong></td>
+<td><strong>2,173</strong></td>
+<td><strong>1,806</strong></td>
+<td><strong>3,007</strong></td>
+<td><strong>(1,224)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>IRR</strong> = 12% + [1,979 ÷ (1,979 + 1,224)] × (25% − 12%) = <strong>20.0%</strong>. Above the 12% cost of capital, so accept.</p>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Money v real:</strong> inflated flows need the money rate. (1 + money) = (1 + real) × (1 + inflation). Use the real rate only if all flows are in today's prices and inflate at one rate.</span></li>
+<li><span><strong>Tax timing:</strong> if tax is paid one year in arrears, move the tax rows one column to the right and add a column.</span></li>
+<li><span><strong>Straight-line allowances:</strong> if the question gives straight-line tax depreciation, tax saved = (cost − scrap) ÷ life × tax rate each year.</span></li>
+<li><span><strong>End of project:</strong> do not forget scrap value, working capital recovery and any grant. ICAB missed these in Nov-Dec 2024 Q5.</span></li>
+<li><span><strong>Working capital:</strong> it is never taxed and never inflated twice. Show the change only.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<section class="topic" id="fm12-p2">
+  <div class="topic-head"><span class="tn">P2</span><h2>Sensitivity analysis on NPV</h2></div>
+
+<p><strong>Typical: 4–7 marks = 8–14 minutes. Tested in most years, usually as the last part of the NPV question.</strong></p>
+<p><strong>When to use:</strong> "How sensitive is the project to…" or "By how much can X change before the project fails?"</p>
+<ol class="steps">
+<li><span><strong>Formula:</strong> sensitivity = NPV ÷ PV of the cash flows affected by the variable (after tax).</span></li>
+<li><span><strong>Discount rate:</strong> the sensitivity is the IRR. Margin = (IRR − cost of capital) ÷ cost of capital.</span></li>
+<li><span><strong>Rank</strong> the variables. The smallest % is the most critical.</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> The P1 project. NPV Tk 1,979k at 12%.</p></div>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Variable</strong></th>
+<th><strong>PV of affected flows (Tk '000)</strong></th>
+<th><strong>Sensitivity = NPV ÷ PV</strong></th>
+<th><strong>Meaning</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue (price)</td>
+<td>After tax: 20,481</td>
+<td>9.7%</td>
+<td>Price can fall by this % before NPV is nil</td>
+</tr>
+<tr>
+<td>Cash costs</td>
+<td>After tax: 10,007</td>
+<td>19.8%</td>
+<td>Costs can rise by this %</td>
+</tr>
+<tr>
+<td>Machine cost</td>
+<td>Cost less PV of tax saved: 8,212</td>
+<td>24.1%</td>
+<td>Cost can rise by this %</td>
+</tr>
+<tr>
+<td>Scrap value</td>
+<td>After tax: 954</td>
+<td>Over 100%</td>
+<td>Not critical</td>
+</tr>
+<tr>
+<td>Discount rate</td>
+<td>IRR 20.0% v 12%</td>
+<td>67% rise</td>
+<td>Rate can rise to the IRR</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>PV of after-tax revenue = Σ revenue × 75% × DF. Machine: each Tk 1 of cost gives tax savings with a PV of Tk 0.179, so net PV = 10,000 × (1 − 0.179). Scrap after tax = 2,000 × 75% × 0.636, because a higher scrap value cuts the balancing allowance.</em></p>
+<p><strong>Conclusion:</strong> the project is most sensitive to <strong>revenue</strong>. A 9.7% fall in price removes the whole NPV.</p>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>After tax:</strong> use after-tax flows when tax is in the question.</span></li>
+<li><span><strong>Discount rate ±x%:</strong> if the question says "vary the discount rate by ±4%", just recalculate the NPV at 8% and 16%. ICAB got this wrong in Nov-Dec 2024.</span></li>
+<li><span><strong>Weakness to state:</strong> only one variable changes at a time, and it gives no probability.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<section class="topic" id="fm12-p3">
+  <div class="topic-head"><span class="tn">P3</span><h2>Capital rationing – decision route</h2></div>
+
+<p><strong>Typical: 7–12 marks = 14–24 minutes. All variants were tested in Nov-Dec 2025 Q6.</strong></p>
+<p><strong>When to use:</strong> Funds are limited and there are several projects with positive NPVs.</p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Situation</strong></th>
+<th><strong>Route</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No rationing (perfect market)</td>
+<td>Accept every project with a positive NPV</td>
+</tr>
+<tr>
+<td>One period, divisible projects</td>
+<td>Rank by PI = NPV ÷ outlay in the rationed period. Take a fraction of the last one</td>
+</tr>
+<tr>
+<td>One period, indivisible projects</td>
+<td>List the combinations that fit. Pick the highest total NPV</td>
+</tr>
+<tr>
+<td>Mutually exclusive projects</td>
+<td>Do the ranking twice, once with each project. Pick the plan with the higher NPV</td>
+</tr>
+<tr>
+<td>Rationing at t1 only</td>
+<td>Rank by NPV ÷ outlay at t1. Projects that need no cash at t1 are taken first</td>
+</tr>
+<tr>
+<td>More than one period</td>
+<td>Set up a linear programme (objective and constraints)</td>
+</tr>
+</tbody>
+</table></div>
+<div class="box remember"><span class="lbl">Example data</span><p> Five projects, each can be done once. Funds at t0 are limited to Tk 500m. Figures in Tk million.</p></div>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Project</strong></th>
+<th><strong>Outlay t0</strong></th>
+<th><strong>Outlay t1</strong></th>
+<th><strong>NPV</strong></th>
+<th><strong>PI (NPV ÷ t0 outlay)</strong></th>
+<th><strong>Rank</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>200</td>
+<td>50</td>
+<td>60</td>
+<td>0.30</td>
+<td>3</td>
+</tr>
+<tr>
+<td>B</td>
+<td>150</td>
+<td>–</td>
+<td>36</td>
+<td>0.24</td>
+<td>4</td>
+</tr>
+<tr>
+<td>C</td>
+<td>250</td>
+<td>100</td>
+<td>90</td>
+<td>0.36</td>
+<td>1</td>
+</tr>
+<tr>
+<td>D</td>
+<td>100</td>
+<td>20</td>
+<td>20</td>
+<td>0.20</td>
+<td>5</td>
+</tr>
+<tr>
+<td>E</td>
+<td>120</td>
+<td>30</td>
+<td>42</td>
+<td>0.35</td>
+<td>2</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>(a) Divisible projects</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Project (in rank order)</strong></th>
+<th><strong>Funds used</strong></th>
+<th><strong>Share taken</strong></th>
+<th><strong>NPV</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C</td>
+<td>250</td>
+<td>100%</td>
+<td>90.0</td>
+</tr>
+<tr>
+<td>E</td>
+<td>120</td>
+<td>100%</td>
+<td>42.0</td>
+</tr>
+<tr>
+<td>A</td>
+<td>130</td>
+<td>65%</td>
+<td>39.0</td>
+</tr>
+<tr>
+<td>B</td>
+<td>–</td>
+<td>0%</td>
+<td>–</td>
+</tr>
+<tr>
+<td>D</td>
+<td>–</td>
+<td>0%</td>
+<td>–</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>500</strong></td>
+<td></td>
+<td><strong>171.0</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>(b) Indivisible projects</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Combination (within Tk 500m)</strong></th>
+<th><strong>Outlay</strong></th>
+<th><strong>Total NPV</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>C + D + E ← best</strong></td>
+<td><strong>470</strong></td>
+<td><strong>152</strong></td>
+</tr>
+<tr>
+<td>A + C</td>
+<td>450</td>
+<td>150</td>
+</tr>
+<tr>
+<td>B + C + D</td>
+<td>500</td>
+<td>146</td>
+</tr>
+<tr>
+<td>A + B + E</td>
+<td>470</td>
+<td>138</td>
+</tr>
+<tr>
+<td>C + E</td>
+<td>370</td>
+<td>132</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Only the best few combinations are shown. In the exam, test the combinations around the PI ranking. Unused funds earn nothing extra.</em></p>
+<p><strong>(c) A and C mutually exclusive (divisible)</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Plan</strong></th>
+<th><strong>Projects taken</strong></th>
+<th><strong>Total NPV</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>With A (no C)</td>
+<td>E 100%, A 100%, B 100%, D 30%</td>
+<td>144.0</td>
+</tr>
+<tr>
+<td><strong>With C (no A)</strong></td>
+<td><strong>C 100%, E 100%, B 87%</strong></td>
+<td><strong>163.2 ← choose</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>(d) Rationing at t1 only (limit Tk 120m at t1, no limit at t0)</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Project (ranked by NPV ÷ t1 outlay)</strong></th>
+<th><strong>t1 funds used</strong></th>
+<th><strong>Share taken</strong></th>
+<th><strong>NPV</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B</td>
+<td>–</td>
+<td>100%</td>
+<td>36.0</td>
+</tr>
+<tr>
+<td>E</td>
+<td>30</td>
+<td>100%</td>
+<td>42.0</td>
+</tr>
+<tr>
+<td>A</td>
+<td>50</td>
+<td>100%</td>
+<td>60.0</td>
+</tr>
+<tr>
+<td>D</td>
+<td>20</td>
+<td>100%</td>
+<td>20.0</td>
+</tr>
+<tr>
+<td>C</td>
+<td>20</td>
+<td>20%</td>
+<td>18.0</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>120</strong></td>
+<td></td>
+<td><strong>176.0</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>(e) Rationing in both periods – linear programme</strong></p>
+<ul>
+<li><span>Let a, b, c, d, e = the share of each project taken.</span></li>
+<li><span><strong>Maximise</strong> NPV = 60a + 36b + 90c + 20d + 42e.</span></li>
+<li><span><strong>t0:</strong> 200a + 150b + 250c + 100d + 120e ≤ 500. <strong>t1:</strong> 50a + 100c + 20d + 30e ≤ 120.</span></li>
+<li><span><strong>Limits:</strong> 0 ≤ a, b, c, d, e ≤ 1.</span></li>
+</ul>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>PI works only</strong> for one rationed period and divisible projects.</span></li>
+<li><span><strong>PI definition:</strong> some questions use PV of inflows ÷ outlay. The ranking is the same. Say which one you use.</span></li>
+<li><span><strong>A project that brings in cash at t1</strong> adds to the t1 limit. Put it on the other side of the constraint.</span></li>
+<li><span><strong>Hard v soft rationing:</strong> hard = set by the market, soft = set by management. One mark if asked.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<section class="topic" id="fm12-p4">
+  <div class="topic-head"><span class="tn">P4</span><h2>Lease v buy – net advantage of leasing</h2></div>
+
+<p><strong>Typical: 6–8 marks = 12–16 minutes. Tested in Jul-Aug 2025.</strong></p>
+<p><strong>When to use:</strong> The investment decision is already made. The question is how to finance the asset.</p>
+<ol class="steps">
+<li><span><strong>Discount rate</strong> = after-tax cost of borrowing = interest rate × (1 − tax rate).</span></li>
+<li><span><strong>Buy:</strong> cost, tax saved on allowances, scrap, and any costs only the owner pays.</span></li>
+<li><span><strong>Lease:</strong> rentals and the tax relief on them. Watch the timing (advance or arrears).</span></li>
+<li><span><strong>Compare</strong> the PV of costs. The lower PV wins. Net advantage of leasing = PV cost of buying − PV cost of leasing.</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> Asset cost Tk 5,000k, life 4 years, scrap Tk 500k. Allowances 18% reducing balance, balancing allowance in year 4. Owner pays maintenance of Tk 100k a year. Lease: Tk 1,400k a year for 4 years, paid in advance, and the lessor pays maintenance. Tax 25%, same year. Tax relief on a rental comes at the end of the year it covers. Bank loan costs 12% before tax.</p></div>
+<p><strong>Discount rate</strong> = 12% × (1 − 0.25) = <strong>9%</strong>.</p>
+<p><strong>Buy (Tk '000)</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th></th>
+<th><strong>t0</strong></th>
+<th><strong>t1</strong></th>
+<th><strong>t2</strong></th>
+<th><strong>t3</strong></th>
+<th><strong>t4</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cost / scrap</td>
+<td>(5,000)</td>
+<td></td>
+<td></td>
+<td></td>
+<td>500</td>
+</tr>
+<tr>
+<td>Tax saved on allowances</td>
+<td></td>
+<td>225</td>
+<td>185</td>
+<td>151</td>
+<td>564</td>
+</tr>
+<tr>
+<td>Maintenance after tax (100 × 75%)</td>
+<td></td>
+<td>(75)</td>
+<td>(75)</td>
+<td>(75)</td>
+<td>(75)</td>
+</tr>
+<tr>
+<td><strong>Net cash flow</strong></td>
+<td><strong>(5,000)</strong></td>
+<td><strong>150</strong></td>
+<td><strong>110</strong></td>
+<td><strong>76</strong></td>
+<td><strong>989</strong></td>
+</tr>
+<tr>
+<td>Discount factor 9%</td>
+<td>1.000</td>
+<td>0.917</td>
+<td>0.842</td>
+<td>0.772</td>
+<td>0.708</td>
+</tr>
+<tr>
+<td><strong>Present value</strong></td>
+<td><strong>(5,000)</strong></td>
+<td><strong>138</strong></td>
+<td><strong>92</strong></td>
+<td><strong>59</strong></td>
+<td><strong>700</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Allowances: 900, 738, 605, 2,257 (year 4 = written down value 2,757 − 500 scrap).</em></p>
+<p><strong>Lease (Tk '000)</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th></th>
+<th><strong>t0</strong></th>
+<th><strong>t1</strong></th>
+<th><strong>t2</strong></th>
+<th><strong>t3</strong></th>
+<th><strong>t4</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rentals (in advance)</td>
+<td>(1,400)</td>
+<td>(1,400)</td>
+<td>(1,400)</td>
+<td>(1,400)</td>
+<td></td>
+</tr>
+<tr>
+<td>Tax relief at 25%</td>
+<td></td>
+<td>350</td>
+<td>350</td>
+<td>350</td>
+<td>350</td>
+</tr>
+<tr>
+<td><strong>Net cash flow</strong></td>
+<td><strong>(1,400)</strong></td>
+<td><strong>(1,050)</strong></td>
+<td><strong>(1,050)</strong></td>
+<td><strong>(1,050)</strong></td>
+<td><strong>350</strong></td>
+</tr>
+<tr>
+<td>Discount factor 9%</td>
+<td>1.000</td>
+<td>0.917</td>
+<td>0.842</td>
+<td>0.772</td>
+<td>0.708</td>
+</tr>
+<tr>
+<td><strong>Present value</strong></td>
+<td><strong>(1,400)</strong></td>
+<td><strong>(963)</strong></td>
+<td><strong>(884)</strong></td>
+<td><strong>(811)</strong></td>
+<td><strong>248</strong></td>
+</tr>
+</tbody>
+</table></div>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount (Tk '000)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PV cost of buying</td>
+<td></td>
+<td>(4,011)</td>
+</tr>
+<tr>
+<td>PV cost of leasing</td>
+<td></td>
+<td>(3,810)</td>
+</tr>
+<tr>
+<td><strong>Net advantage of leasing</strong></td>
+<td><strong>4,011 − 3,810</strong></td>
+<td><strong>201</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Decision: lease.</strong> Leasing is cheaper by Tk 201k in present value terms.</p>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Do not include</strong> the loan and its interest in the buy option. The discount rate already covers them.</span></li>
+<li><span><strong>Leave out</strong> flows that are the same under both options (revenue, operating costs).</span></li>
+<li><span><strong>Rental timing:</strong> in advance = t0 to t3. In arrears = t1 to t4.</span></li>
+<li><span><strong>No tax:</strong> if the company pays no tax, use the pre-tax borrowing rate and ignore allowances.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<section class="topic" id="fm12-p5">
+  <div class="topic-head"><span class="tn">P5</span><h2>Parent-company (international) NPV</h2></div>
+
+<p><strong>Typical: 12 marks = 24 minutes. Tested in Jul-Aug 2025 Q5.</strong></p>
+<p><strong>When to use:</strong> A foreign parent invests in another country and asks for the NPV "from the parent's point of view".</p>
+<ol class="steps">
+<li><span><strong>Local currency first:</strong> project cash flows and local tax, in the normal NPV layout.</span></li>
+<li><span><strong>Remittance:</strong> take off withholding tax and any blocked funds.</span></li>
+<li><span><strong>Exchange rates:</strong> forecast each year. Purchasing power parity: future rate = spot × (1 + local inflation) ÷ (1 + parent inflation), year by year.</span></li>
+<li><span><strong>Convert</strong> to the parent's currency.</span></li>
+<li><span><strong>Parent-only flows:</strong> royalties or fees received (after parent tax), extra parent tax, lost exports.</span></li>
+<li><span><strong>Discount</strong> at the parent's cost of capital.</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> A US parent sets up a 3-year project in Bangladesh. Investment Tk 600m, straight-line tax depreciation, no residual value. Working capital Tk 50m, recovered at the end. Pre-tax operating cash flows Tk 340m, 400m and 440m, before a royalty of Tk 20m a year paid to the parent. Bangladesh tax 25%. Withholding tax 10% on remittances of profit (not on capital returned). US tax 30% with full credit for Bangladesh tax, so 5% extra on Bangladesh taxable profit; royalties are taxed at 30% in the US. Spot Tk 120 per USD. Inflation: Bangladesh 8%, US 2%. Parent's cost of capital 12%.</p></div>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th></th>
+<th><strong>t0</strong></th>
+<th><strong>t1</strong></th>
+<th><strong>t2</strong></th>
+<th><strong>t3</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bangladesh (Tk million)</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Operating cash flow</td>
+<td></td>
+<td>340</td>
+<td>400</td>
+<td>440</td>
+</tr>
+<tr>
+<td>Royalty to parent</td>
+<td></td>
+<td>(20)</td>
+<td>(20)</td>
+<td>(20)</td>
+</tr>
+<tr>
+<td>Tax depreciation (600 ÷ 3)</td>
+<td></td>
+<td>(200)</td>
+<td>(200)</td>
+<td>(200)</td>
+</tr>
+<tr>
+<td>Taxable profit</td>
+<td></td>
+<td>120</td>
+<td>180</td>
+<td>220</td>
+</tr>
+<tr>
+<td>Bangladesh tax at 25%</td>
+<td></td>
+<td>(30.0)</td>
+<td>(45.0)</td>
+<td>(55.0)</td>
+</tr>
+<tr>
+<td>Cash after tax (add back depreciation)</td>
+<td></td>
+<td>290.0</td>
+<td>335.0</td>
+<td>365.0</td>
+</tr>
+<tr>
+<td>Withholding tax 10%</td>
+<td></td>
+<td>(29.0)</td>
+<td>(33.5)</td>
+<td>(36.5)</td>
+</tr>
+<tr>
+<td>Investment / working capital</td>
+<td>(650)</td>
+<td></td>
+<td></td>
+<td>50</td>
+</tr>
+<tr>
+<td><strong>Remitted to parent (Tk m)</strong></td>
+<td><strong>(650.0)</strong></td>
+<td><strong>261.0</strong></td>
+<td><strong>301.5</strong></td>
+<td><strong>378.5</strong></td>
+</tr>
+<tr>
+<td>Exchange rate (Tk per USD)</td>
+<td>120.00</td>
+<td>127.06</td>
+<td>134.53</td>
+<td>142.45</td>
+</tr>
+<tr>
+<td><strong>Parent (USD million)</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Remittance in USD</td>
+<td>(5.417)</td>
+<td>2.054</td>
+<td>2.241</td>
+<td>2.657</td>
+</tr>
+<tr>
+<td>Royalty received after 30% US tax</td>
+<td></td>
+<td>0.110</td>
+<td>0.104</td>
+<td>0.098</td>
+</tr>
+<tr>
+<td>Extra US tax (5% of taxable profit)</td>
+<td></td>
+<td>(0.047)</td>
+<td>(0.067)</td>
+<td>(0.077)</td>
+</tr>
+<tr>
+<td><strong>Net cash flow (USD m)</strong></td>
+<td><strong>(5.417)</strong></td>
+<td><strong>2.117</strong></td>
+<td><strong>2.278</strong></td>
+<td><strong>2.678</strong></td>
+</tr>
+<tr>
+<td>Discount factor 12%</td>
+<td>1.000</td>
+<td>0.893</td>
+<td>0.797</td>
+<td>0.712</td>
+</tr>
+<tr>
+<td><strong>Present value (USD m)</strong></td>
+<td><strong>(5.417)</strong></td>
+<td><strong>1.891</strong></td>
+<td><strong>1.816</strong></td>
+<td><strong>1.907</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>NPV = USD 0.197 million.</strong> Positive, so the parent should <strong>accept</strong>.</p>
+<p><em>Exchange rate: 120 × (1.08 ÷ 1.02) each year. Royalty in USD = 20 × 70% ÷ rate. Extra US tax = taxable profit × (30% − 25%) ÷ rate.</em></p>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Rate direction:</strong> Tk per USD means divide Tk by the rate. The Taka weakens when Bangladesh inflation is higher.</span></li>
+<li><span><strong>Royalty:</strong> it is a cost in Bangladesh (saves local tax) but income for the parent. Show both sides.</span></li>
+<li><span><strong>Blocked funds:</strong> if profits cannot be remitted until the end, move them to the last year (with any local interest).</span></li>
+<li><span><strong>Discount rate:</strong> parent currency flows need the parent's cost of capital.</span></li>
+<li><span><strong>Non-financial points:</strong> political risk, exchange controls, tax law changes. Usually 2–3 easy marks.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+</template>
+
+<template id="tpl-fm-13">
+<div class="ch-head">
+  <span class="eyebrow">Chapter 13 · Financial Management · Proforma Bank</span>
+  <h1>Proforma Bank, Part B: Cost of capital and financing</h1>
+  <p>Ready working formats for the Financial Management exam: when to use each one, the steps, a worked example with made-up data, and the traps. Copy the layout in the exam. Figures use 3-decimal discount factors, so small rounding differences are normal.</p>
+</div>
+
+<div class="keynums" aria-label="Key numbers in this chapter"><div><b>7</b><span>working formats in this part</span></div><div><b>When · Steps · Example · Traps</b><span>The same four parts in every format</span></div></div>
+
+<section class="topic" id="fm13-p6">
+  <div class="topic-head"><span class="tn">P6</span><h2>WACC</h2></div>
+
+<p><strong>Typical: 6–8 marks = 12–16 minutes, plus 4–5 marks of theory. Tested in most years.</strong></p>
+<p><strong>When to use:</strong> "Calculate the weighted average cost of capital" from market data on each source of finance.</p>
+<ol class="steps">
+<li><span><strong>Cost of each source</strong>, after tax for debt: equity (dividend growth model or CAPM), preference shares, irredeemable debt, redeemable debt (IRR), bank loan.</span></li>
+<li><span><strong>Market value of each source</strong>, ex-dividend and ex-interest. Bank loans at book value.</span></li>
+<li><span><strong>Table:</strong> market value × cost. WACC = total of that column ÷ total market value.</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> 10m ordinary shares, price Tk 32 cum-div. A dividend of Tk 2.00 is about to be paid. Four years ago the dividend was Tk 1.645. 2m 8% preference shares of Tk 10, price Tk 8. Tk 20m 9% irredeemable debentures, price Tk 90 per Tk 100. Tk 30m 10% bonds, price Tk 95 ex-interest, redeemable at par in 5 years. Bank loan Tk 10m at 12%. Tax 25%.</p></div>
+<p><strong>Working 1 – cost of each source</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dividend growth (g)</td>
+<td>(2.00 ÷ 1.645)^(1/4) − 1</td>
+<td>5.0%</td>
+</tr>
+<tr>
+<td>Ex-div share price</td>
+<td>32 − 2</td>
+<td>Tk 30</td>
+</tr>
+<tr>
+<td><strong>Cost of equity</strong></td>
+<td><strong>2.00 × 1.05 ÷ 30 + 5%</strong></td>
+<td><strong>12.0%</strong></td>
+</tr>
+<tr>
+<td><strong>Cost of preference shares</strong></td>
+<td><strong>Dividend 0.80 ÷ price 8 (no tax relief)</strong></td>
+<td><strong>10.0%</strong></td>
+</tr>
+<tr>
+<td><strong>Cost of irredeemable debt</strong></td>
+<td><strong>9 × (1 − 0.25) ÷ 90</strong></td>
+<td><strong>7.5%</strong></td>
+</tr>
+<tr>
+<td><strong>Cost of bank loan</strong></td>
+<td><strong>12% × (1 − 0.25)</strong></td>
+<td><strong>9.0%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Working 2 – redeemable bonds (IRR of after-tax flows, per Tk 100)</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Year</strong></th>
+<th><strong>Cash flow</strong></th>
+<th><strong>DF 5%</strong></th>
+<th><strong>PV at 5%</strong></th>
+<th><strong>DF 10%</strong></th>
+<th><strong>PV at 10%</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 – market price</td>
+<td>(95.00)</td>
+<td>1.000</td>
+<td>(95.00)</td>
+<td>1.000</td>
+<td>(95.00)</td>
+</tr>
+<tr>
+<td>1 – interest 10 × 75%</td>
+<td>7.50</td>
+<td>0.952</td>
+<td>7.14</td>
+<td>0.909</td>
+<td>6.82</td>
+</tr>
+<tr>
+<td>2 – interest 10 × 75%</td>
+<td>7.50</td>
+<td>0.907</td>
+<td>6.80</td>
+<td>0.826</td>
+<td>6.19</td>
+</tr>
+<tr>
+<td>3 – interest 10 × 75%</td>
+<td>7.50</td>
+<td>0.864</td>
+<td>6.48</td>
+<td>0.751</td>
+<td>5.63</td>
+</tr>
+<tr>
+<td>4 – interest 10 × 75%</td>
+<td>7.50</td>
+<td>0.823</td>
+<td>6.17</td>
+<td>0.683</td>
+<td>5.12</td>
+</tr>
+<tr>
+<td>5 – interest + redemption</td>
+<td>107.50</td>
+<td>0.784</td>
+<td>84.28</td>
+<td>0.621</td>
+<td>66.76</td>
+</tr>
+<tr>
+<td><strong>NPV</strong></td>
+<td></td>
+<td></td>
+<td><strong>15.87</strong></td>
+<td></td>
+<td><strong>(4.47)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Cost of bonds</strong> = 5% + [15.87 ÷ (15.87 + 4.47)] × 5% = <strong>8.9%</strong>.</p>
+<p><strong>WACC</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Source</strong></th>
+<th><strong>Market value working</strong></th>
+<th><strong>Market value (Tk m)</strong></th>
+<th><strong>Cost</strong></th>
+<th><strong>MV × cost</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ordinary shares</td>
+<td>10m × Tk 30</td>
+<td>300.0</td>
+<td>12.0%</td>
+<td>36.00</td>
+</tr>
+<tr>
+<td>Preference shares</td>
+<td>2m × Tk 8</td>
+<td>16.0</td>
+<td>10.0%</td>
+<td>1.60</td>
+</tr>
+<tr>
+<td>Irredeemable debentures</td>
+<td>20m × 90%</td>
+<td>18.0</td>
+<td>7.5%</td>
+<td>1.35</td>
+</tr>
+<tr>
+<td>Redeemable bonds</td>
+<td>30m × 95%</td>
+<td>28.5</td>
+<td>8.9%</td>
+<td>2.54</td>
+</tr>
+<tr>
+<td>Bank loan</td>
+<td>Book value</td>
+<td>10.0</td>
+<td>9.0%</td>
+<td>0.90</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>372.5</strong></td>
+<td></td>
+<td><strong>42.39</strong></td>
+</tr>
+<tr>
+<td><strong>WACC</strong></td>
+<td><strong>42.39 ÷ 372.5</strong></td>
+<td></td>
+<td></td>
+<td><strong>11.4%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Cum-div / cum-interest prices:</strong> take off the dividend or interest that is about to be paid.</span></li>
+<li><span><strong>Growth:</strong> n years of growth = number of dividends minus one. Or use g = retention rate × return on equity.</span></li>
+<li><span><strong>Redeemable debt:</strong> tax relief is on the interest only, not on the redemption.</span></li>
+<li><span><strong>When WACC can be used:</strong> project has the same business risk, the same gearing, and is small relative to the company.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<section class="topic" id="fm13-p7">
+  <div class="topic-head"><span class="tn">P7</span><h2>Bond valuation and cost of redeemable / convertible debt</h2></div>
+
+<p><strong>Typical: 5–7 marks = 10–14 minutes. Tested in 2022; feeds every WACC question.</strong></p>
+<p><strong>When to use:</strong> "What is the market value of the bond?" (given the yield) or "What is the cost of debt?" (given the price).</p>
+<ol class="steps">
+<li><span><strong>Price given the yield:</strong> PV of interest (annuity) + PV of redemption, at the investor's required return. No tax for the investor's view.</span></li>
+<li><span><strong>Cost given the price:</strong> IRR of price now, after-tax interest, and redemption (as in P6).</span></li>
+<li><span><strong>Convertible:</strong> compare redemption value with conversion value (shares × expected share price). Use the higher one.</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> (a) An 8% bond, redeemable at Tk 105 in 4 years. Investors require 10%. (b) A 10% convertible bond, price Tk 104. In 5 years the holder can take Tk 100 cash or 4 shares. Share price now Tk 22, growing at 6% a year. Tax 25%.</p></div>
+<p><strong>(a) Bond value per Tk 100</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount (Tk)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interest</td>
+<td>8 × annuity factor 3.169 (4 years, 10%)</td>
+<td>25.35</td>
+</tr>
+<tr>
+<td>Redemption</td>
+<td>105 × 0.683</td>
+<td>71.72</td>
+</tr>
+<tr>
+<td><strong>Market value</strong></td>
+<td></td>
+<td><strong>Tk 97.07</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>(b) Cost of convertible debt</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount (Tk)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Share price in 5 years</td>
+<td>22 × 1.06⁵</td>
+<td>29.44</td>
+</tr>
+<tr>
+<td>Conversion value</td>
+<td>4 shares × 29.44</td>
+<td>117.76</td>
+</tr>
+<tr>
+<td>Redemption value</td>
+<td>Given</td>
+<td>100.00</td>
+</tr>
+<tr>
+<td><strong>Year 5 receipt used</strong></td>
+<td><strong>Higher of the two: investors will convert</strong></td>
+<td><strong>117.76</strong></td>
+</tr>
+</tbody>
+</table></div>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Year</strong></th>
+<th><strong>Cash flow</strong></th>
+<th><strong>DF 8%</strong></th>
+<th><strong>PV at 8%</strong></th>
+<th><strong>DF 12%</strong></th>
+<th><strong>PV at 12%</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 – market price</td>
+<td>(104.00)</td>
+<td>1.000</td>
+<td>(104.00)</td>
+<td>1.000</td>
+<td>(104.00)</td>
+</tr>
+<tr>
+<td>1–4 – interest 10 × 75%</td>
+<td>7.50 a year</td>
+<td>3.312</td>
+<td>24.85</td>
+<td>3.038</td>
+<td>22.79</td>
+</tr>
+<tr>
+<td>5 – interest + conversion</td>
+<td>125.26</td>
+<td>0.681</td>
+<td>85.30</td>
+<td>0.567</td>
+<td>71.02</td>
+</tr>
+<tr>
+<td><strong>NPV</strong></td>
+<td></td>
+<td></td>
+<td><strong>6.15</strong></td>
+<td></td>
+<td><strong>(10.19)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Cost of convertible debt</strong> = 8% + [6.15 ÷ (6.15 + 10.19)] × 4% = <strong>9.5%</strong>.</p>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Two views:</strong> the investor's yield is before tax. The company's cost of debt is after tax.</span></li>
+<li><span><strong>Semi-annual interest:</strong> halve the coupon and the rate, and double the number of periods.</span></li>
+<li><span><strong>Price above par</strong> means the yield is below the coupon rate, and the other way round.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<section class="topic" id="fm13-p8">
+  <div class="topic-head"><span class="tn">P8</span><h2>Asset beta and equity beta – re-gearing</h2></div>
+
+<p><strong>Typical: 6–8 marks = 12–16 minutes.</strong></p>
+<p><strong>When to use:</strong> The project is in a different industry (different business risk) or will be financed with different gearing. The company's own WACC cannot be used.</p>
+<ol class="steps">
+<li><span><strong>Find a proxy</strong> company in the new industry. Take its equity beta.</span></li>
+<li><span><strong>Degear:</strong> βa = βe ÷ [1 + D(1 − T) ÷ E], using the proxy's gearing.</span></li>
+<li><span><strong>Strip out</strong> other activities if the proxy has more than one business (asset beta is a weighted average).</span></li>
+<li><span><strong>Regear:</strong> βe = βa × [1 + D(1 − T) ÷ E], using the project's (or your own) gearing.</span></li>
+<li><span><strong>CAPM</strong> for the cost of equity, then the project WACC.</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> A food company plans an electronics project, financed 40% debt and 60% equity. Proxy company: equity beta 1.5, gearing 20% debt to 80% equity. The proxy is 75% electronics and 25% retail; retail has an asset beta of 0.9. Risk-free rate 6%, market return 11%, tax 25%. Project debt costs 8% before tax.</p></div>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Proxy asset beta (degear)</td>
+<td>1.5 ÷ [1 + 20 × 0.75 ÷ 80]</td>
+<td>1.263</td>
+</tr>
+<tr>
+<td>Electronics asset beta (strip out retail)</td>
+<td>(1.263 − 25% × 0.9) ÷ 75%</td>
+<td>1.384</td>
+</tr>
+<tr>
+<td>Project equity beta (regear)</td>
+<td>1.384 × [1 + 40 × 0.75 ÷ 60]</td>
+<td>2.076</td>
+</tr>
+<tr>
+<td>Cost of equity (CAPM)</td>
+<td>6% + 2.076 × (11% − 6%)</td>
+<td>16.38%</td>
+</tr>
+<tr>
+<td>After-tax cost of debt</td>
+<td>8% × (1 − 0.25)</td>
+<td>6.00%</td>
+</tr>
+<tr>
+<td><strong>Project discount rate (WACC)</strong></td>
+<td><strong>60% × 16.38% + 40% × 6.00%</strong></td>
+<td><strong>12.23%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Degear with the proxy's gearing. Regear with your own.</strong> Mixing them up is the most common error.</span></li>
+<li><span><strong>Market values</strong> of debt and equity, not book values.</span></li>
+<li><span><strong>Debt beta</strong> is taken as zero unless the question gives one.</span></li>
+<li><span><strong>Several proxies:</strong> degear each one, then average the asset betas.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<section class="topic" id="fm13-p9">
+  <div class="topic-head"><span class="tn">P9</span><h2>CAPM, alpha and portfolio beta</h2></div>
+
+<p><strong>Typical: 5–10 marks = 10–20 minutes. 50 marks across the past papers.</strong></p>
+<p><strong>When to use:</strong> "What return is required?", "Is the share over- or under-valued?", or "What is the beta / risk of the portfolio?"</p>
+<ol class="steps">
+<li><span><strong>Required return</strong> = Rf + β(Rm − Rf).</span></li>
+<li><span><strong>Alpha</strong> = expected return − required return. Positive = under-valued (buy). Negative = over-valued (sell).</span></li>
+<li><span><strong>Portfolio beta</strong> = weighted average of the betas, using market values as weights.</span></li>
+<li><span><strong>Beta from data:</strong> β = covariance with the market ÷ market variance = correlation × σ(share) ÷ σ(market).</span></li>
+<li><span><strong>Two-share portfolio risk:</strong> σp = √[w₁²σ₁² + w₂²σ₂² + 2w₁w₂ρσ₁σ₂].</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> Risk-free rate 6%, market return 12%. Portfolio: A 50%, B 30%, C 20% by market value.</p></div>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Share</strong></th>
+<th><strong>Weight</strong></th>
+<th><strong>Beta</strong></th>
+<th><strong>Required return</strong></th>
+<th><strong>Expected return</strong></th>
+<th><strong>Alpha</strong></th>
+<th><strong>View</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>50%</td>
+<td>1.4</td>
+<td>6% + 1.4 × 6% = 14.4%</td>
+<td>16.0%</td>
+<td>+1.6%</td>
+<td>Under-valued: buy</td>
+</tr>
+<tr>
+<td>B</td>
+<td>30%</td>
+<td>0.8</td>
+<td>6% + 0.8 × 6% = 10.8%</td>
+<td>10.0%</td>
+<td>−0.8%</td>
+<td>Over-valued: sell</td>
+</tr>
+<tr>
+<td>C</td>
+<td>20%</td>
+<td>1.1</td>
+<td>6% + 1.1 × 6% = 12.6%</td>
+<td>12.6%</td>
+<td>Nil</td>
+<td>Fairly priced</td>
+</tr>
+<tr>
+<td><strong>Portfolio</strong></td>
+<td><strong>100%</strong></td>
+<td><strong>1.16</strong></td>
+<td><strong>12.96%</strong></td>
+<td><strong>13.52%</strong></td>
+<td><strong>+0.56%</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Portfolio beta = 50% × 1.4 + 30% × 0.8 + 20% × 1.1 = 1.16.</em></p>
+<p><strong>Beta and portfolio risk from data</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Beta of share X</td>
+<td>Correlation 0.7 × σ(X) 30% ÷ σ(market) 20%</td>
+<td>1.05</td>
+</tr>
+<tr>
+<td>Portfolio variance (60% in P, σ 20%; 40% in Q, σ 30%; correlation 0.25)</td>
+<td>0.6² × 20² + 0.4² × 30² + 2 × 0.6 × 0.4 × 0.25 × 20 × 30</td>
+<td>360</td>
+</tr>
+<tr>
+<td><strong>Portfolio standard deviation</strong></td>
+<td><strong>√360</strong></td>
+<td><strong>18.97%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Market premium:</strong> if the question gives "market risk premium 6%", that is already (Rm − Rf). Do not deduct Rf again.</span></li>
+<li><span><strong>Diversification</strong> removes unsystematic risk only. CAPM rewards systematic risk (beta) only.</span></li>
+<li><span><strong>Weighted average works for beta, not for standard deviation</strong>, unless correlation is +1.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<section class="topic" id="fm13-p10">
+  <div class="topic-head"><span class="tn">P10</span><h2>TERP and the value of a right</h2></div>
+
+<p><strong>Typical: 3–9 marks = 6–18 minutes. Tested in 2024 and Nov-Dec 2025.</strong></p>
+<p><strong>When to use:</strong> A rights issue: "calculate the theoretical ex-rights price" and "show the effect on a shareholder's wealth".</p>
+<ol class="steps">
+<li><span><strong>TERP</strong> = (N × cum-rights price + issue price) ÷ (N + 1), for a 1-for-N issue.</span></li>
+<li><span><strong>Value of a right</strong> = TERP − issue price (per new share). Divide by N for the value per existing share.</span></li>
+<li><span><strong>Shareholder wealth:</strong> compare wealth before and after for: take up, sell, part of each, do nothing.</span></li>
+<li><span><strong>If the money earns an NPV:</strong> new price = (old market value + cash raised + NPV) ÷ total shares.</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> 2m shares, price Tk 45. Rights issue of 1 for 5 at Tk 36. A shareholder owns 1,000 shares. Second case: the cash is used for a project with an NPV of Tk 6m.</p></div>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Shares</strong></th>
+<th><strong>Price (Tk)</strong></th>
+<th><strong>Value (Tk)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Existing shares</td>
+<td>5</td>
+<td>45.00</td>
+<td>225.00</td>
+</tr>
+<tr>
+<td>New share</td>
+<td>1</td>
+<td>36.00</td>
+<td>36.00</td>
+</tr>
+<tr>
+<td><strong>TERP</strong></td>
+<td><strong>6</strong></td>
+<td><strong>261 ÷ 6</strong></td>
+<td><strong>43.50</strong></td>
+</tr>
+<tr>
+<td>Value of a right per new share</td>
+<td></td>
+<td>43.50 − 36.00</td>
+<td>7.50</td>
+</tr>
+<tr>
+<td>Value of a right per existing share</td>
+<td></td>
+<td>7.50 ÷ 5</td>
+<td>1.50</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Wealth of a holder of 1,000 shares (wealth before = 1,000 × 45 = Tk 45,000)</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Tk</strong></th>
+<th><strong>Take up all</strong></th>
+<th><strong>Sell all rights</strong></th>
+<th><strong>Half and half</strong></th>
+<th><strong>Do nothing</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shares held after</td>
+<td>1,200</td>
+<td>1,000</td>
+<td>1,100</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td>Value at TERP 43.50</td>
+<td>52,200</td>
+<td>43,500</td>
+<td>47,850</td>
+<td>43,500</td>
+</tr>
+<tr>
+<td>Cash paid for new shares (at 36)</td>
+<td>(7,200)</td>
+<td>–</td>
+<td>(3,600)</td>
+<td>–</td>
+</tr>
+<tr>
+<td>Cash from rights sold (at 7.50)</td>
+<td>–</td>
+<td>1,500</td>
+<td>750</td>
+<td>–</td>
+</tr>
+<tr>
+<td><strong>Wealth after</strong></td>
+<td><strong>45,000</strong></td>
+<td><strong>45,000</strong></td>
+<td><strong>45,000</strong></td>
+<td><strong>43,500</strong></td>
+</tr>
+<tr>
+<td>Gain / (loss)</td>
+<td>Nil</td>
+<td>Nil</td>
+<td>Nil</td>
+<td>(1,500)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>With a project NPV of Tk 6m</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount (Tk)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Market value before</td>
+<td>2m × 45</td>
+<td>90.0m</td>
+</tr>
+<tr>
+<td>Cash raised</td>
+<td>0.4m × 36</td>
+<td>14.4m</td>
+</tr>
+<tr>
+<td>Project NPV</td>
+<td>Given</td>
+<td>6.0m</td>
+</tr>
+<tr>
+<td><strong>Price after the issue</strong></td>
+<td><strong>110.4m ÷ 2.4m shares</strong></td>
+<td><strong>Tk 46.00</strong></td>
+</tr>
+</tbody>
+</table></div>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Value of a right:</strong> say whether it is per new share or per existing share.</span></li>
+<li><span><strong>Issue costs:</strong> deduct them from the cash raised.</span></li>
+<li><span><strong>Wealth does not change</strong> if the holder takes up or sells. Only "do nothing" loses.</span></li>
+<li><span><strong>Rights given as a discount:</strong> "20% discount" means issue price = 80% of the current price.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<section class="topic" id="fm13-p11">
+  <div class="topic-head"><span class="tn">P11</span><h2>EPS and gearing under financing options</h2></div>
+
+<p><strong>Typical: 8 marks + 5 marks advice = 26 minutes. Tested in Nov-Dec 2025 Q1.</strong></p>
+<p><strong>When to use:</strong> "Should the company raise the money by a rights issue or by debt?" with forecast EPS and gearing.</p>
+<ol class="steps">
+<li><span><strong>Columns:</strong> current, option 1 (equity), option 2 (debt).</span></li>
+<li><span><strong>Profit down to EPS:</strong> PBIT, interest, tax, earnings, number of shares.</span></li>
+<li><span><strong>Gearing</strong> = debt ÷ (debt + equity), and interest cover = PBIT ÷ interest.</span></li>
+<li><span><strong>Break-even PBIT:</strong> set the two EPS formulas equal and solve.</span></li>
+<li><span><strong>Advice:</strong> higher EPS v higher financial risk, control, covenants, security, market reaction.</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> PBIT Tk 500m now, Tk 620m after the investment. Existing 10% debt Tk 400m. Tax 25%. 100m shares, book equity Tk 1,200m. Tk 300m is needed: either a 1-for-5 rights issue at Tk 15, or a 12% bond.</p></div>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Tk million</strong></th>
+<th><strong>Current</strong></th>
+<th><strong>Rights issue</strong></th>
+<th><strong>12% bond</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PBIT</td>
+<td>500</td>
+<td>620</td>
+<td>620</td>
+</tr>
+<tr>
+<td>Interest</td>
+<td>(40)</td>
+<td>(40)</td>
+<td>(76)</td>
+</tr>
+<tr>
+<td>Profit before tax</td>
+<td>460</td>
+<td>580</td>
+<td>544</td>
+</tr>
+<tr>
+<td>Tax at 25%</td>
+<td>(115.0)</td>
+<td>(145.0)</td>
+<td>(136.0)</td>
+</tr>
+<tr>
+<td>Earnings</td>
+<td>345.0</td>
+<td>435.0</td>
+<td>408.0</td>
+</tr>
+<tr>
+<td>Shares (million)</td>
+<td>100</td>
+<td>120</td>
+<td>100</td>
+</tr>
+<tr>
+<td><strong>EPS</strong></td>
+<td><strong>Tk 3.45</strong></td>
+<td><strong>Tk 3.63</strong></td>
+<td><strong>Tk 4.08</strong></td>
+</tr>
+<tr>
+<td>Debt</td>
+<td>400</td>
+<td>400</td>
+<td>700</td>
+</tr>
+<tr>
+<td>Equity (book)</td>
+<td>1,200</td>
+<td>1,500</td>
+<td>1,200</td>
+</tr>
+<tr>
+<td><strong>Gearing: debt ÷ (debt + equity)</strong></td>
+<td><strong>25.0%</strong></td>
+<td><strong>21.1%</strong></td>
+<td><strong>36.8%</strong></td>
+</tr>
+<tr>
+<td><strong>Interest cover</strong></td>
+<td><strong>12.5 times</strong></td>
+<td><strong>15.5 times</strong></td>
+<td><strong>8.2 times</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Rights issue: 100m ÷ 5 = 20m new shares × Tk 15 = Tk 300m. Bond interest: 300 × 12% = 36, so total interest 76. Retained profit for the year is ignored in equity.</em></p>
+<p><strong>Break-even PBIT:</strong> (P − 40) × 0.75 ÷ 120 = (P − 76) × 0.75 ÷ 100, so P = <strong>Tk 256m</strong>. Above this, debt gives the higher EPS.</p>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Gearing definition:</strong> use the one in the question (debt ÷ equity or debt ÷ total capital). State it.</span></li>
+<li><span><strong>Rights issue shares:</strong> cash needed ÷ issue price. Do not use the market price.</span></li>
+<li><span><strong>Advice marks:</strong> do not stop at EPS. Mention risk, interest cover, covenants and control.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<section class="topic" id="fm13-p12">
+  <div class="topic-head"><span class="tn">P12</span><h2>Dividend valuation model and residual dividend policy</h2></div>
+
+<p><strong>Typical: 4–10 marks = 8–20 minutes. 53 marks across the past papers.</strong></p>
+<p><strong>When to use:</strong> "Estimate the share price", "what growth rate is implied?", or "what dividend follows from a residual policy?"</p>
+<ol class="steps">
+<li><span><strong>Constant growth:</strong> P0 = D0(1 + g) ÷ (ke − g). P0 is the ex-div price.</span></li>
+<li><span><strong>Growth:</strong> g = retention rate × return on equity, or from past dividends.</span></li>
+<li><span><strong>Two-stage growth:</strong> PV of each dividend in the high-growth years, plus PV of the terminal value.</span></li>
+<li><span><strong>Residual policy:</strong> dividend = earnings − equity share of the capital budget.</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> (a) EPS Tk 10, payout 40%, return on equity 15%, cost of equity 14%. (b) Same dividend, but growth is 15% for 3 years and 5% after that. (c) Earnings Tk 200m, capital budget Tk 150m, target structure 60% equity, 20m shares.</p></div>
+<p><strong>(a) Constant growth</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount (Tk)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dividend now (D0)</td>
+<td>10 × 40%</td>
+<td>4.00</td>
+</tr>
+<tr>
+<td>Growth</td>
+<td>Retention 60% × return 15%</td>
+<td>9%</td>
+</tr>
+<tr>
+<td><strong>Share price</strong></td>
+<td><strong>4.00 × 1.09 ÷ (0.14 − 0.09)</strong></td>
+<td><strong>Tk 87.20</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>(b) Two-stage growth</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Year</strong></th>
+<th><strong>Dividend (Tk)</strong></th>
+<th><strong>DF 14%</strong></th>
+<th><strong>PV (Tk)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>4.00 × 1.15 = 4.600</td>
+<td>0.877</td>
+<td>4.03</td>
+</tr>
+<tr>
+<td>2</td>
+<td>4.00 × 1.15² = 5.290</td>
+<td>0.769</td>
+<td>4.07</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4.00 × 1.15³ = 6.083</td>
+<td>0.675</td>
+<td>4.11</td>
+</tr>
+<tr>
+<td>3 – terminal value</td>
+<td>6.083 × 1.05 ÷ (0.14 − 0.05) = 70.97</td>
+<td>0.675</td>
+<td>47.91</td>
+</tr>
+<tr>
+<td><strong>Share price</strong></td>
+<td></td>
+<td></td>
+<td><strong>Tk 60.12</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>(c) Residual dividend</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount (Tk)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Earnings</td>
+<td>Given</td>
+<td>200m</td>
+</tr>
+<tr>
+<td>Less: equity needed for projects</td>
+<td>150m × 60%</td>
+<td>(90m)</td>
+</tr>
+<tr>
+<td>Dividend</td>
+<td></td>
+<td>110m</td>
+</tr>
+<tr>
+<td><strong>DPS and payout</strong></td>
+<td><strong>110m ÷ 20m shares; 110 ÷ 200</strong></td>
+<td><strong>Tk 5.50; 55%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>D0 or D1:</strong> "just paid" = D0, so multiply by (1 + g). "Expected next year" = D1, use it directly.</span></li>
+<li><span><strong>Terminal value</strong> sits at the end of the high-growth period. Discount it with that year's factor.</span></li>
+<li><span><strong>Retaining at a return below ke destroys value.</strong> Tested in the 2026 mock (Jack Mill).</span></li>
+<li><span><strong>Theory link:</strong> Modigliani and Miller say dividend policy is irrelevant in a perfect market; in practice signalling, clientele and tax matter.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+</template>
+
+<template id="tpl-fm-14">
+<div class="ch-head">
+  <span class="eyebrow">Chapter 14 · Financial Management · Proforma Bank</span>
+  <h1>Proforma Bank, Part C: Working capital and forecasts</h1>
+  <p>Ready working formats for the Financial Management exam: when to use each one, the steps, a worked example with made-up data, and the traps. Copy the layout in the exam. Figures use 3-decimal discount factors, so small rounding differences are normal.</p>
+</div>
+
+<div class="keynums" aria-label="Key numbers in this chapter"><div><b>4</b><span>working formats in this part</span></div><div><b>When · Steps · Example · Traps</b><span>The same four parts in every format</span></div></div>
+
+<section class="topic" id="fm14-p13">
+  <div class="topic-head"><span class="tn">P13</span><h2>Cash conversion cycle (cash operating cycle)</h2></div>
+
+<p><strong>Typical: 5–9 marks = 10–18 minutes. Tested in Mar-Apr 2024.</strong></p>
+<p><strong>When to use:</strong> "Calculate the cash operating cycle" or "comment on working capital management".</p>
+<ol class="steps">
+<li><span><strong>Inventory days:</strong> raw materials ÷ purchases; work in progress and finished goods ÷ cost of sales; all × 365.</span></li>
+<li><span><strong>Receivable days</strong> = receivables ÷ credit sales × 365.</span></li>
+<li><span><strong>Payable days</strong> = payables ÷ credit purchases × 365.</span></li>
+<li><span><strong>Cycle</strong> = inventory days + receivable days − payable days.</span></li>
+<li><span><strong>Comment:</strong> compare with last year or the industry, and put a Taka value on any change.</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> Tk '000: credit sales 36,500; cost of sales 25,550; purchases 21,900. Raw materials 1,800; work in progress 700; finished goods 2,100; receivables 4,500; payables 2,400. Overdraft rate 12%.</p></div>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount (days)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raw material days</td>
+<td>1,800 ÷ 21,900 × 365</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Work in progress days</td>
+<td>700 ÷ 25,550 × 365</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Finished goods days</td>
+<td>2,100 ÷ 25,550 × 365</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Receivable days</td>
+<td>4,500 ÷ 36,500 × 365</td>
+<td>45</td>
+</tr>
+<tr>
+<td>Payable days</td>
+<td>2,400 ÷ 21,900 × 365</td>
+<td>(40)</td>
+</tr>
+<tr>
+<td><strong>Cash conversion cycle</strong></td>
+<td><strong>30 + 10 + 30 + 45 − 40</strong></td>
+<td><strong>75 days</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Value of a change: receivable days cut from 45 to 35</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount (Tk '000)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fall in receivables</td>
+<td>36,500 × 10 ÷ 365</td>
+<td>1,000</td>
+</tr>
+<tr>
+<td><strong>Interest saved each year</strong></td>
+<td><strong>1,000 × 12%</strong></td>
+<td><strong>120</strong></td>
+</tr>
+</tbody>
+</table></div>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Right base:</strong> receivables on sales, payables and raw materials on purchases, the rest on cost of sales. If purchases are not given, use cost of sales and say so.</span></li>
+<li><span><strong>Year-end v average balances:</strong> use the average if both years are given.</span></li>
+<li><span><strong>A shorter cycle is not always better:</strong> stock-outs, lost customers and unhappy suppliers are the costs.</span></li>
+<li><span><strong>Overtrading signs:</strong> fast sales growth, rising payable days, falling liquidity.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<section class="topic" id="fm14-p14">
+  <div class="topic-head"><span class="tn">P14</span><h2>Factoring – cost comparison</h2></div>
+
+<p><strong>Typical: 6–10 marks = 12–20 minutes. Tested in Jul-Aug 2024 and the 2026 mock.</strong></p>
+<p><strong>When to use:</strong> "Should the company use a factor?" or "which factor: with recourse or non-recourse?"</p>
+<ol class="steps">
+<li><span><strong>Columns:</strong> current position and each factor offer.</span></li>
+<li><span><strong>Rows:</strong> bad debts, administration cost, finance cost of receivables, factor fee.</span></li>
+<li><span><strong>Finance cost</strong> = receivables × rate. With a factor: advance % at the factor's rate, the rest at the overdraft rate.</span></li>
+<li><span><strong>Compare</strong> total annual cost. Lowest wins. Then give non-financial points.</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> Credit sales Tk 73,000k a year. Receivable days 60. Bad debts 2% of sales. Credit control costs Tk 400k a year. Overdraft 13%. Factor A (non-recourse): days fall to 40, fee 2.5% of sales, advances 80% at 15%. Factor B (with recourse): days fall to 45, fee 1% of sales, advances 80% at 14%. Both factors take over credit control.</p></div>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Tk '000</strong></th>
+<th><strong>Current</strong></th>
+<th><strong>Factor A (non-recourse)</strong></th>
+<th><strong>Factor B (recourse)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bad debts (2% × 73,000)</td>
+<td>1,460</td>
+<td>–</td>
+<td>1,460</td>
+</tr>
+<tr>
+<td>Credit control cost</td>
+<td>400</td>
+<td>–</td>
+<td>–</td>
+</tr>
+<tr>
+<td>Finance cost of receivables</td>
+<td>1,560</td>
+<td>1,168</td>
+<td>1,242</td>
+</tr>
+<tr>
+<td>Factor fee</td>
+<td>–</td>
+<td>1,825</td>
+<td>730</td>
+</tr>
+<tr>
+<td><strong>Total annual cost</strong></td>
+<td><strong>3,420</strong></td>
+<td><strong>2,993</strong></td>
+<td><strong>3,432</strong></td>
+</tr>
+<tr>
+<td><strong>Saving v current</strong></td>
+<td></td>
+<td><strong>427</strong></td>
+<td><strong>(12)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Receivables: current 73,000 × 60 ÷ 365 = 12,000; A = 8,000; B = 9,000. Finance cost: current 12,000 × 13%. A: 8,000 × (80% × 15% + 20% × 13%). B: 9,000 × (80% × 14% + 20% × 13%).</em></p>
+<p><strong>Decision:</strong> choose <strong>Factor A</strong>, the lowest cost. Also consider: customer relations, loss of control, and how hard it is to stop using a factor.</p>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Non-recourse</strong> means the factor bears the bad debts. With recourse, bad debts stay with the company.</span></li>
+<li><span><strong>Fee base:</strong> the fee is on sales (turnover), not on receivables.</span></li>
+<li><span><strong>Advance interest</strong> applies only for the time the money is outstanding (the new receivable days).</span></li>
+<li><span><strong>If sales change</strong> because of the policy, add the extra contribution as a benefit.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<section class="topic" id="fm14-p15">
+  <div class="topic-head"><span class="tn">P15</span><h2>Early settlement discount</h2></div>
+
+<p><strong>Typical: 4–9 marks = 8–18 minutes. Tested in Jul-Aug 2022.</strong></p>
+<p><strong>When to use:</strong> "Should we offer a cash discount to customers?" or "should we take the supplier's discount?"</p>
+<ol class="steps">
+<li><span><strong>Annual cost of a discount</strong> = [100 ÷ (100 − d)]^(365 ÷ days saved) − 1. Compare with the overdraft rate.</span></li>
+<li><span><strong>Offering to customers:</strong> cost = discount % × sales that take it. Benefit = fall in receivables × finance rate, plus lower bad debts.</span></li>
+<li><span><strong>Decision:</strong> offer only if benefit is above cost. Take a supplier's discount if its annual rate is above your borrowing rate.</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> (a) A supplier offers 2% for payment in 10 days instead of 45. (b) The company sells Tk 36,500k on 45 days' credit. It plans to offer 2% for payment in 10 days. 40% of customers (by value) will take it. Bad debts will fall from 1% to 0.8% of sales. Overdraft rate 12%.</p></div>
+<p><strong>(a) Supplier's discount</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Days saved</td>
+<td>45 − 10</td>
+<td>35</td>
+</tr>
+<tr>
+<td><strong>Annual cost of not taking it</strong></td>
+<td><strong>(100 ÷ 98)^(365 ÷ 35) − 1</strong></td>
+<td><strong>23.5%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Decision:</strong> 23.5% is above the 12% overdraft rate, so <strong>take the discount</strong> and pay on day 10.</p>
+<p><strong>(b) Offering a discount to customers</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount (Tk '000)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Receivables now</td>
+<td>36,500 × 45 ÷ 365</td>
+<td>4,500</td>
+</tr>
+<tr>
+<td>Receivables after: no discount</td>
+<td>60% × 36,500 × 45 ÷ 365</td>
+<td>2,700</td>
+</tr>
+<tr>
+<td>Receivables after: discount takers</td>
+<td>40% × 36,500 × 98% × 10 ÷ 365</td>
+<td>392</td>
+</tr>
+<tr>
+<td>Fall in receivables</td>
+<td>4,500 − 3,092</td>
+<td>1,408</td>
+</tr>
+<tr>
+<td><strong>Finance cost saved</strong></td>
+<td><strong>1,408 × 12%</strong></td>
+<td><strong>169</strong></td>
+</tr>
+<tr>
+<td><strong>Bad debts saved</strong></td>
+<td><strong>36,500 × (1% − 0.8%)</strong></td>
+<td><strong>73</strong></td>
+</tr>
+<tr>
+<td><strong>Cost of discount</strong></td>
+<td><strong>2% × 40% × 36,500</strong></td>
+<td><strong>(292)</strong></td>
+</tr>
+<tr>
+<td><strong>Net benefit / (cost)</strong></td>
+<td></td>
+<td><strong>(50)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Decision:</strong> <strong>do not offer</strong> the discount. It costs more than it saves.</p>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Simple rate version:</strong> d ÷ (100 − d) × 365 ÷ days saved. Fine if the question does not ask for the compound rate.</span></li>
+<li><span><strong>Discount takers pay 98%,</strong> so their receivable is on the net amount.</span></li>
+<li><span><strong>Do not forget</strong> bad debt and administration savings if the question gives them.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<section class="topic" id="fm14-p16">
+  <div class="topic-head"><span class="tn">P16</span><h2>Forecast income statement and balance sheet</h2></div>
+
+<p><strong>Typical: 14 marks + 4 marks comment = 36 minutes. Tested in Nov-Dec 2023 and Nov-Dec 2025.</strong></p>
+<p><strong>When to use:</strong> "Prepare a forecast income statement and statement of financial position" from growth rates and working capital ratios.</p>
+<ol class="steps">
+<li><span><strong>Income statement</strong> down to retained profit. Use the stated growth, margins and rates.</span></li>
+<li><span><strong>Non-current assets</strong> = opening + additions − depreciation.</span></li>
+<li><span><strong>Working capital</strong> from the day ratios: inventory and payables on cost of sales, receivables on revenue.</span></li>
+<li><span><strong>Equity</strong> = opening + retained profit. <strong>Loans</strong> = opening − repayments + new.</span></li>
+<li><span><strong>Cash is the balancing figure.</strong> A negative figure is an overdraft.</span></li>
+<li><span><strong>Comment:</strong> liquidity (current and quick ratio), gearing, and the cash need.</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> Opening balance sheet (Tk m): non-current assets 1,000; inventory 150; receivables 200; cash 80; payables 90; 10% loan 400; equity 940. Revenue was 1,500. Forecast: revenue +20%, gross margin 40%, operating expenses 15% of revenue, depreciation 10% of opening assets plus additions, capital spending 150, interest on the opening loan, loan repayment 50 at year end, tax 25% paid in the year, dividend 40% of profit after tax. Inventory 45 days and payables 30 days of cost of sales; receivables 60 days.</p></div>
+<p><strong>Forecast income statement (Tk m)</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount (Tk m)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>1,500 × 1.20</td>
+<td>1,800.0</td>
+</tr>
+<tr>
+<td>Cost of sales</td>
+<td>60% of revenue</td>
+<td>(1,080.0)</td>
+</tr>
+<tr>
+<td><strong>Gross profit</strong></td>
+<td><strong>40%</strong></td>
+<td><strong>720.0</strong></td>
+</tr>
+<tr>
+<td>Operating expenses</td>
+<td>15% × 1,800</td>
+<td>(270.0)</td>
+</tr>
+<tr>
+<td>Depreciation</td>
+<td>10% × (1,000 + 150)</td>
+<td>(115.0)</td>
+</tr>
+<tr>
+<td><strong>Operating profit</strong></td>
+<td></td>
+<td><strong>335.0</strong></td>
+</tr>
+<tr>
+<td>Interest</td>
+<td>10% × 400</td>
+<td>(40.0)</td>
+</tr>
+<tr>
+<td>Profit before tax</td>
+<td></td>
+<td>295.0</td>
+</tr>
+<tr>
+<td>Tax</td>
+<td>25%</td>
+<td>(73.8)</td>
+</tr>
+<tr>
+<td><strong>Profit after tax</strong></td>
+<td></td>
+<td><strong>221.3</strong></td>
+</tr>
+<tr>
+<td>Dividend</td>
+<td>40%</td>
+<td>(88.5)</td>
+</tr>
+<tr>
+<td><strong>Retained profit</strong></td>
+<td></td>
+<td><strong>132.8</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Forecast balance sheet (Tk m)</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount (Tk m)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Non-current assets</td>
+<td>1,000 + 150 − 115</td>
+<td>1,035.0</td>
+</tr>
+<tr>
+<td>Inventory</td>
+<td>1,080 × 45 ÷ 365</td>
+<td>133.2</td>
+</tr>
+<tr>
+<td>Receivables</td>
+<td>1,800 × 60 ÷ 365</td>
+<td>295.9</td>
+</tr>
+<tr>
+<td>Cash</td>
+<td>Balancing figure</td>
+<td>47.5</td>
+</tr>
+<tr>
+<td><strong>Total assets</strong></td>
+<td></td>
+<td><strong>1,511.5</strong></td>
+</tr>
+<tr>
+<td>Equity</td>
+<td>940 + 132.8</td>
+<td>1,072.8</td>
+</tr>
+<tr>
+<td>Loan</td>
+<td>400 − 50</td>
+<td>350.0</td>
+</tr>
+<tr>
+<td>Payables</td>
+<td>1,080 × 30 ÷ 365</td>
+<td>88.8</td>
+</tr>
+<tr>
+<td><strong>Total equity and liabilities</strong></td>
+<td></td>
+<td><strong>1,511.5</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Cash proof</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount (Tk m)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Operating profit + depreciation</td>
+<td>335.0 + 115</td>
+<td>450.0</td>
+</tr>
+<tr>
+<td>Increase in working capital</td>
+<td>Inventory, receivables, payables</td>
+<td>(80.3)</td>
+</tr>
+<tr>
+<td>Interest, tax and dividend</td>
+<td>40.0 + 73.8 + 88.5</td>
+<td>(202.3)</td>
+</tr>
+<tr>
+<td>Capital spending and loan repayment</td>
+<td>150 + 50</td>
+<td>(200.0)</td>
+</tr>
+<tr>
+<td>Change in cash</td>
+<td></td>
+<td>(32.5)</td>
+</tr>
+<tr>
+<td><strong>Closing cash</strong></td>
+<td><strong>80 + change</strong></td>
+<td><strong>47.5</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Comment:</strong> cash falls from 80 to 47.5 because growth ties up cash in receivables. Current ratio = 5.4. Gearing (loan ÷ equity) falls to 33%.</p>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Cash is last.</strong> Never guess it. If it comes out negative, call it an overdraft and say financing is needed.</span></li>
+<li><span><strong>Interest base:</strong> opening loan unless told otherwise.</span></li>
+<li><span><strong>Tax unpaid at year end</strong> is a current liability, not a cash flow.</span></li>
+<li><span><strong>The cash proof is optional.</strong> Do it only if time allows; it catches errors.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+</template>
+
+<template id="tpl-fm-15">
+<div class="ch-head">
+  <span class="eyebrow">Chapter 15 · Financial Management · Proforma Bank</span>
+  <h1>Proforma Bank, Part D: Business valuation</h1>
+  <p>Ready working formats for the Financial Management exam: when to use each one, the steps, a worked example with made-up data, and the traps. Copy the layout in the exam. Figures use 3-decimal discount factors, so small rounding differences are normal.</p>
+</div>
+
+<div class="keynums" aria-label="Key numbers in this chapter"><div><b>3</b><span>working formats in this part</span></div><div><b>When · Steps · Example · Traps</b><span>The same four parts in every format</span></div></div>
+
+<section class="topic" id="fm15-p17">
+  <div class="topic-head"><span class="tn">P17</span><h2>Business valuation – several methods</h2></div>
+
+<p><strong>Typical: 9–14 marks = 18–28 minutes. Tested in Jul-Aug 2025 Q6 (14 marks).</strong></p>
+<p><strong>When to use:</strong> "Value the company / a share using the net asset, P/E and dividend methods."</p>
+<ol class="steps">
+<li><span><strong>Net assets:</strong> book value, adjusted to realisable (or replacement) values. Gives a floor price.</span></li>
+<li><span><strong>P/E:</strong> maintainable earnings × a suitable P/E. Cut the proxy P/E for an unlisted company.</span></li>
+<li><span><strong>Dividend yield:</strong> dividend ÷ a suitable yield. <strong>Dividend growth:</strong> D0(1 + g) ÷ (ke − g). For minority holdings.</span></li>
+<li><span><strong>Summary table</strong> and a short comment on which value fits the purpose.</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> Unlisted target, 10m shares. Book net assets Tk 800m. Property is worth Tk 300m more than book; inventory of Tk 50m is obsolete; a receivable of Tk 30m is bad. Profit after tax Tk 180m, after a one-off gain of Tk 10m (after tax) and directors' pay that is Tk 20m above market rate. Tax 25%. Listed proxy: P/E 12, dividend yield 4%. Dividend Tk 60m, growth 4%, cost of equity 12%.</p></div>
+<p><strong>(a) Net assets</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount (Tk m)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Book net assets</td>
+<td>Given</td>
+<td>800</td>
+</tr>
+<tr>
+<td>Property revaluation</td>
+<td></td>
+<td>300</td>
+</tr>
+<tr>
+<td>Obsolete inventory</td>
+<td></td>
+<td>(50)</td>
+</tr>
+<tr>
+<td>Bad receivable</td>
+<td></td>
+<td>(30)</td>
+</tr>
+<tr>
+<td><strong>Net asset value</strong></td>
+<td><strong>1,020m ÷ 10m = Tk 102 a share</strong></td>
+<td><strong>1,020</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>(b) P/E</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount (Tk m)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Profit after tax</td>
+<td>Given</td>
+<td>180</td>
+</tr>
+<tr>
+<td>Remove one-off gain</td>
+<td></td>
+<td>(10)</td>
+</tr>
+<tr>
+<td>Add back excess directors' pay after tax</td>
+<td>20 × 75%</td>
+<td>15</td>
+</tr>
+<tr>
+<td><strong>Maintainable earnings</strong></td>
+<td></td>
+<td><strong>185</strong></td>
+</tr>
+<tr>
+<td>P/E</td>
+<td>12 less 25% for an unlisted company</td>
+<td>9</td>
+</tr>
+<tr>
+<td><strong>Value</strong></td>
+<td><strong>185 × 9 = 1,665m ÷ 10m = Tk 166.50 a share</strong></td>
+<td><strong>1,665</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>(c) Dividend methods</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount (Tk m)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dividend yield value</td>
+<td>60 ÷ 5% (proxy 4% raised for an unlisted company)</td>
+<td>1,200</td>
+</tr>
+<tr>
+<td><strong>Dividend growth value</strong></td>
+<td><strong>60 × 1.04 ÷ (0.12 − 0.04) = 780m ÷ 10m = Tk 78 a share</strong></td>
+<td><strong>780</strong></td>
+</tr>
+</tbody>
+</table></div>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Method</strong></th>
+<th><strong>Value (Tk m)</strong></th>
+<th><strong>Per share (Tk)</strong></th>
+<th><strong>Use</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Net assets</td>
+<td>1,020</td>
+<td>102.00</td>
+<td>Floor price; asset-rich or break-up</td>
+</tr>
+<tr>
+<td>P/E</td>
+<td>1,665</td>
+<td>166.50</td>
+<td>Buying control of a going concern</td>
+</tr>
+<tr>
+<td>Dividend yield</td>
+<td>1,200</td>
+<td>120.00</td>
+<td>Minority holding</td>
+</tr>
+<tr>
+<td>Dividend growth</td>
+<td>780</td>
+<td>78.00</td>
+<td>Minority holding</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Comment:</strong> a buyer of control would start near the earnings value, with net assets as the floor. Negotiate between Tk 102 and Tk 166.50.</p>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Unlisted discount:</strong> cut the P/E (or raise the yield) by 25–30% for poor marketability. State your assumption.</span></li>
+<li><span><strong>Net assets ignore</strong> goodwill and future earnings. Say this as the weakness.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<section class="topic" id="fm15-p18">
+  <div class="topic-head"><span class="tn">P18</span><h2>Mergers and acquisitions – gain, deal NPV and maximum price</h2></div>
+
+<p><strong>Typical: 8–12 marks = 16–24 minutes.</strong></p>
+<p><strong>When to use:</strong> "What is the most the buyer should pay?", "who gains?", or "cash offer or share exchange?"</p>
+<ol class="steps">
+<li><span><strong>Synergy</strong> = PV of extra cash flows − integration costs.</span></li>
+<li><span><strong>Maximum price</strong> = target's value alone + synergy.</span></li>
+<li><span><strong>Cash offer:</strong> target gains the premium. Buyer's NPV = synergy − premium.</span></li>
+<li><span><strong>Share offer:</strong> combined value ÷ total shares = new price. Then each side's value after less value before.</span></li>
+<li><span><strong>EPS</strong> after the deal if asked.</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> Buyer: 100m shares at Tk 50, earnings Tk 400m. Target: 40m shares at Tk 30, earnings Tk 120m. Synergy: Tk 60m a year after tax for ever, discounted at 12%; one-off integration cost Tk 80m. Offer 1: cash of Tk 36 a share. Offer 2: 3 buyer shares for every 4 target shares.</p></div>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount (Tk m)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Buyer value</td>
+<td>100m × 50</td>
+<td>5,000</td>
+</tr>
+<tr>
+<td>Target value</td>
+<td>40m × 30</td>
+<td>1,200</td>
+</tr>
+<tr>
+<td>PV of synergy</td>
+<td>60 ÷ 0.12</td>
+<td>500</td>
+</tr>
+<tr>
+<td>Integration cost</td>
+<td></td>
+<td>(80)</td>
+</tr>
+<tr>
+<td><strong>Combined value</strong></td>
+<td></td>
+<td><strong>6,620</strong></td>
+</tr>
+<tr>
+<td><strong>Maximum price for the target</strong></td>
+<td><strong>1,200 + 500 − 80 = 1,620m ÷ 40m = Tk 40.50 a share</strong></td>
+<td><strong>1,620</strong></td>
+</tr>
+</tbody>
+</table></div>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Tk million</strong></th>
+<th><strong>Offer 1: cash Tk 36</strong></th>
+<th><strong>Offer 2: 3-for-4 shares</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price paid</td>
+<td>40m × 36 = 1,440</td>
+<td>30m new shares × 50.92 = 1,527.7</td>
+</tr>
+<tr>
+<td>Target value before</td>
+<td>(1,200)</td>
+<td>(1,200)</td>
+</tr>
+<tr>
+<td><strong>Gain to target shareholders</strong></td>
+<td><strong>240</strong></td>
+<td><strong>327.7</strong></td>
+</tr>
+<tr>
+<td>Net synergy</td>
+<td>420</td>
+<td>420</td>
+</tr>
+<tr>
+<td><strong>Gain to buyer (deal NPV)</strong></td>
+<td><strong>420 − 240 = 180</strong></td>
+<td><strong>100m × (50.92 − 50) = 92.3</strong></td>
+</tr>
+<tr>
+<td>Share price after</td>
+<td>(6,620 − 1,440) ÷ 100m = Tk 51.80</td>
+<td>6,620 ÷ 130m = Tk 50.92</td>
+</tr>
+<tr>
+<td>EPS after (before: Tk 4.00)</td>
+<td>(400 + 120 + 60) ÷ 100m = Tk 5.80</td>
+<td>580 ÷ 130m = Tk 4.46</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Total gain is 420 under both offers. Only the split changes. With cash, EPS ignores the cost of financing the Tk 1,440m.</em></p>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Share offer:</strong> value the new shares at the price after the merger, not the buyer's old price.</span></li>
+<li><span><strong>Target debt:</strong> if you value the target's whole cash flows, deduct its debt to get the price for the shares (Jul-Aug 2024 Q6a).</span></li>
+<li><span><strong>Bootstrapping:</strong> EPS can rise just because the buyer has a higher P/E. It is not real value.</span></li>
+<li><span><strong>Sale of surplus assets</strong> (for example the target's head office) adds to the maximum price.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<section class="topic" id="fm15-p19">
+  <div class="topic-head"><span class="tn">P19</span><h2>Free cash flow (value driver) valuation</h2></div>
+
+<p><strong>Typical: 10–12 marks = 20–24 minutes. Tested in Jul-Aug 2024 and the 2026 mock.</strong></p>
+<p><strong>When to use:</strong> The question gives sales growth, margins and investment rates, and asks for the value of a share.</p>
+<ol class="steps">
+<li><span><strong>Sales</strong> each year from the growth rates. Note the increase in sales.</span></li>
+<li><span><strong>Operating profit</strong> = sales × margin. Deduct tax.</span></li>
+<li><span><strong>Investment:</strong> extra non-current assets and working capital, as % of the sales increase.</span></li>
+<li><span><strong>Free cash flow</strong> = profit after tax − investment. Discount at the given rate.</span></li>
+<li><span><strong>Terminal value</strong> at the end of the forecast: a multiple of the last cash flow, or FCF × (1 + g) ÷ (r − g).</span></li>
+<li><span><strong>Equity</strong> = total PV + short-term investments − debt. Divide by the number of shares.</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> Sales now Tk 400m. Growth 10%, 8%, 6% for 3 years, then 3% for ever. Operating margin 15%. Tax 25%. Extra non-current assets 20% and extra working capital 10% of the sales increase. Depreciation equals replacement spending. Discount rate 10%. Short-term investments Tk 20m. Debt Tk 150m. 20m shares.</p></div>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Tk million</strong></th>
+<th><strong>Year 1</strong></th>
+<th><strong>Year 2</strong></th>
+<th><strong>Year 3</strong></th>
+<th><strong>After year 3</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sales (now 400)</td>
+<td>440.00</td>
+<td>475.20</td>
+<td>503.71</td>
+<td></td>
+</tr>
+<tr>
+<td>Increase in sales</td>
+<td>40.00</td>
+<td>35.20</td>
+<td>28.51</td>
+<td></td>
+</tr>
+<tr>
+<td>Operating profit at 15%</td>
+<td>66.00</td>
+<td>71.28</td>
+<td>75.56</td>
+<td></td>
+</tr>
+<tr>
+<td>Tax at 25%</td>
+<td>(16.50)</td>
+<td>(17.82)</td>
+<td>(18.89)</td>
+<td></td>
+</tr>
+<tr>
+<td>Non-current assets (20% of increase)</td>
+<td>(8.00)</td>
+<td>(7.04)</td>
+<td>(5.70)</td>
+<td></td>
+</tr>
+<tr>
+<td>Working capital (10% of increase)</td>
+<td>(4.00)</td>
+<td>(3.52)</td>
+<td>(2.85)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Free cash flow</strong></td>
+<td><strong>37.50</strong></td>
+<td><strong>42.90</strong></td>
+<td><strong>48.11</strong></td>
+<td><strong>707.96</strong></td>
+</tr>
+<tr>
+<td>Discount factor 10%</td>
+<td>0.909</td>
+<td>0.826</td>
+<td>0.751</td>
+<td>0.751</td>
+</tr>
+<tr>
+<td><strong>Present value</strong></td>
+<td><strong>34.09</strong></td>
+<td><strong>35.44</strong></td>
+<td><strong>36.13</strong></td>
+<td><strong>531.68</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Terminal value = 48.11 × 1.03 ÷ (0.10 − 0.03) = 707.96, discounted with the year 3 factor.</em></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount (Tk m)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total present value</td>
+<td></td>
+<td>637.34</td>
+</tr>
+<tr>
+<td>Add: short-term investments</td>
+<td></td>
+<td>20.00</td>
+</tr>
+<tr>
+<td>Less: debt</td>
+<td></td>
+<td>(150.00)</td>
+</tr>
+<tr>
+<td><strong>Value of equity</strong></td>
+<td></td>
+<td><strong>507.34</strong></td>
+</tr>
+<tr>
+<td><strong>Value per share</strong></td>
+<td><strong>507.34m ÷ 20m shares</strong></td>
+<td><strong>Tk 25.37</strong></td>
+</tr>
+</tbody>
+</table></div>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Investment is on the increase in sales,</strong> not on total sales.</span></li>
+<li><span><strong>Terminal value</strong> uses the last year's discount factor, not the next year's.</span></li>
+<li><span><strong>Asset sale proceeds</strong> reduce the investment in that year (FG Ltd / Farmgate).</span></li>
+<li><span><strong>Discount rate:</strong> WACC values the whole firm (then deduct debt). Cost of equity is for cash flows to shareholders only. Use what the question gives.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+</template>
+
+<template id="tpl-fm-16">
+<div class="ch-head">
+  <span class="eyebrow">Chapter 16 · Financial Management · Proforma Bank</span>
+  <h1>Proforma Bank, Part E: Risk management</h1>
+  <p>Ready working formats for the Financial Management exam: when to use each one, the steps, a worked example with made-up data, and the traps. Copy the layout in the exam. Figures use 3-decimal discount factors, so small rounding differences are normal.</p>
+</div>
+
+<div class="keynums" aria-label="Key numbers in this chapter"><div><b>7</b><span>working formats in this part</span></div><div><b>When · Steps · Example · Traps</b><span>The same four parts in every format</span></div></div>
+
+<section class="topic" id="fm16-p20">
+  <div class="topic-head"><span class="tn">P20</span><h2>Forward contract v money market hedge</h2></div>
+
+<p><strong>Typical: 6–12 marks = 12–24 minutes. Tested in almost every paper.</strong></p>
+<p><strong>When to use:</strong> A foreign currency payment or receipt at a future date, with spot, forward and interest rates given.</p>
+<ol class="steps">
+<li><span><strong>Pick the rate:</strong> the bank always wins. With a quote in Tk per foreign unit, you <strong>pay at the higher</strong> rate and <strong>receive at the lower</strong> rate.</span></li>
+<li><span><strong>Forward:</strong> foreign amount × forward rate. Cash moves on the future date.</span></li>
+<li><span><strong>Money market, payment:</strong> deposit foreign currency now (PV of the payment) → buy it at spot → borrow Tk → add Tk interest.</span></li>
+<li><span><strong>Money market, receipt:</strong> borrow foreign currency now (PV of the receipt) → sell at spot → deposit Tk → add Tk interest.</span></li>
+<li><span><strong>Interest:</strong> annual rate × months ÷ 12.</span></li>
+<li><span><strong>Compare</strong> on the same date. Lowest cost or highest receipt wins.</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> A Bangladeshi company must pay USD 2m in 3 months and will receive EUR 1m in 6 months. Tk per USD: spot 120.00 – 120.50, 3-month forward 121.20 – 121.80. Tk per EUR: spot 130.00 – 130.60, 6-month forward 131.50 – 132.30. Annual interest: USD deposit 4%, EUR borrowing 5%, Tk borrowing 12%, Tk deposit 8%.</p></div>
+<p><strong>(a) Payment of USD 2m in 3 months</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount (Tk)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Forward</strong></td>
+<td><strong>2,000,000 × 121.80 (higher rate)</strong></td>
+<td><strong>243,600,000</strong></td>
+</tr>
+<tr>
+<td><strong>Money market hedge</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1. Deposit USD now</td>
+<td>2,000,000 ÷ (1 + 4% × 3/12)</td>
+<td>USD 1,980,198</td>
+</tr>
+<tr>
+<td>2. Buy USD at spot</td>
+<td>1,980,198 × 120.50</td>
+<td>238,613,861</td>
+</tr>
+<tr>
+<td>3. Borrow Tk for 3 months</td>
+<td>238,613,861 × (1 + 12% × 3/12)</td>
+<td>245,772,277</td>
+</tr>
+<tr>
+<td><strong>Cost in 3 months</strong></td>
+<td></td>
+<td><strong>245,772,277</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Decision:</strong> the forward is cheaper by Tk 2,172,277.</p>
+<p><strong>(b) Receipt of EUR 1m in 6 months</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount (Tk)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Forward</strong></td>
+<td><strong>1,000,000 × 131.50 (lower rate)</strong></td>
+<td><strong>131,500,000</strong></td>
+</tr>
+<tr>
+<td><strong>Money market hedge</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1. Borrow EUR now</td>
+<td>1,000,000 ÷ (1 + 5% × 6/12)</td>
+<td>EUR 975,610</td>
+</tr>
+<tr>
+<td>2. Sell EUR at spot</td>
+<td>975,610 × 130.00</td>
+<td>126,829,268</td>
+</tr>
+<tr>
+<td>3. Deposit Tk for 6 months</td>
+<td>126,829,268 × (1 + 8% × 6/12)</td>
+<td>131,902,439</td>
+</tr>
+<tr>
+<td><strong>Receipt in 6 months</strong></td>
+<td><strong>The EUR 1m receipt repays the EUR loan</strong></td>
+<td><strong>131,902,439</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Decision:</strong> the money market hedge gives Tk 402,439 more.</p>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Quote the other way round</strong> (foreign units per Tk, as in the 2026 mock): divide instead of multiply, and the "bank wins" side flips. Test it: a payment must cost you more.</span></li>
+<li><span><strong>Forward quoted as premium or discount:</strong> adjust the spot rate first.</span></li>
+<li><span><strong>Interest rates are annual.</strong> Always scale for 3 or 6 months.</span></li>
+<li><span><strong>Compare like with like:</strong> both results must be at the future date (or both at today).</span></li>
+<li><span><strong>Leading:</strong> if asked about paying now, compare the spot cost plus Tk interest with the hedges.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<section class="topic" id="fm16-p21">
+  <div class="topic-head"><span class="tn">P21</span><h2>Currency options – exercise or lapse</h2></div>
+
+<p><strong>Typical: 4–10 marks = 8–20 minutes. Tested in 2024, Jul-Aug 2025 and the 2026 mock.</strong></p>
+<p><strong>When to use:</strong> The company wants protection but also wants to gain if the rate moves in its favour.</p>
+<ol class="steps">
+<li><span><strong>Contract size:</strong> amount ÷ contract size = number of contracts (traded options only).</span></li>
+<li><span><strong>Call or put?</strong> Buying the contract currency = call. Selling it = put.</span></li>
+<li><span><strong>Premium:</strong> paid now, whatever happens. Convert at today's spot if it is in foreign currency.</span></li>
+<li><span><strong>Exercise or not?</strong> Compare the strike with the spot rate on the day. Exercise only if the strike is better.</span></li>
+<li><span><strong>Result:</strong> cost or receipt, plus or minus the premium. Also state the worst-case rate.</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> (a) Pay USD 2m in 3 months. Bank (OTC) call option on USD at Tk 121.50, premium Tk 0.80 per USD. Spot in 3 months: Tk 124.00 or Tk 119.50. (b) Receive EUR 1m in 6 months. Traded EUR put options, contract size EUR 125,000, strike Tk 131.00, premium Tk 1.20 per EUR. Spot in 6 months: Tk 128.00 or Tk 134.00.</p></div>
+<p><strong>(a) Payment – call option on USD (Tk)</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th></th>
+<th><strong>Spot Tk 124.00</strong></th>
+<th><strong>Spot Tk 119.50</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strike 121.50 v spot</td>
+<td>Strike is cheaper: exercise</td>
+<td>Spot is cheaper: let it lapse</td>
+</tr>
+<tr>
+<td>Cost of USD 2m</td>
+<td>2m × 121.50 = 243,000,000</td>
+<td>2m × 119.50 = 239,000,000</td>
+</tr>
+<tr>
+<td>Premium (2m × 0.80)</td>
+<td>1,600,000</td>
+<td>1,600,000</td>
+</tr>
+<tr>
+<td><strong>Total cost</strong></td>
+<td><strong>244,600,000</strong></td>
+<td><strong>240,600,000</strong></td>
+</tr>
+<tr>
+<td>Effective rate</td>
+<td>122.30</td>
+<td>120.30</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><span><strong>Worst-case rate</strong> = strike 121.50 + premium 0.80 = <strong>Tk 122.30</strong>. Maximum cost Tk 244.6m.</span></li>
+</ul>
+<p><strong>(b) Receipt – traded put options on EUR (Tk)</strong></p>
+<ul>
+<li><span><strong>Contracts:</strong> 1,000,000 ÷ 125,000 = <strong>8 put contracts</strong>. <strong>Premium:</strong> 8 × 125,000 × 1.20 = Tk 1,200,000.</span></li>
+</ul>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th></th>
+<th><strong>Spot Tk 128.00</strong></th>
+<th><strong>Spot Tk 134.00</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strike 131.00 v spot</td>
+<td>Strike is higher: exercise</td>
+<td>Spot is higher: let it lapse</td>
+</tr>
+<tr>
+<td>Receipt for EUR 1m</td>
+<td>1m × 131.00 = 131,000,000</td>
+<td>1m × 134.00 = 134,000,000</td>
+</tr>
+<tr>
+<td>Premium</td>
+<td>(1,200,000)</td>
+<td>(1,200,000)</td>
+</tr>
+<tr>
+<td><strong>Net receipt</strong></td>
+<td><strong>129,800,000</strong></td>
+<td><strong>132,800,000</strong></td>
+</tr>
+<tr>
+<td>Effective rate</td>
+<td>129.80</td>
+<td>132.80</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><span><strong>Worst-case rate</strong> = strike 131.00 − premium 1.20 = <strong>Tk 129.80</strong>.</span></li>
+</ul>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Contract in the home currency</strong> (BC Ltd: options on Taka, LKR payment): convert the foreign amount at the strike to get the Taka amount, then divide by the contract size. Buying LKR = selling Taka = put.</span></li>
+<li><span><strong>Part contracts:</strong> round to whole contracts. Hedge the small balance on the forward market or leave it at spot.</span></li>
+<li><span><strong>Expiry month:</strong> choose the first expiry after the transaction date.</span></li>
+<li><span><strong>Premium is a sunk cost</strong> on the day. It never affects the exercise decision.</span></li>
+<li><span><strong>Check your subtraction.</strong> ICAB's 2026 mock answer had a slip in the net receipt.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<section class="topic" id="fm16-p22">
+  <div class="topic-head"><span class="tn">P22</span><h2>Currency futures hedge – effective rate and basis</h2></div>
+
+<p><strong>Typical: 11–14 marks = 22–28 minutes. Tested in Nov-Dec 2025 Q4.</strong></p>
+<p><strong>When to use:</strong> The question gives futures prices and a contract size, and asks for the outcome or effectiveness of the hedge.</p>
+<ol class="steps">
+<li><span><strong>Buy or sell?</strong> Buying the contract currency later = buy futures now. Selling it later = sell futures now.</span></li>
+<li><span><strong>Number of contracts</strong> = amount ÷ contract size. Round to whole contracts.</span></li>
+<li><span><strong>Basis</strong> = spot − futures. It falls evenly to zero at expiry. Estimate the closing basis by time.</span></li>
+<li><span><strong>Close out:</strong> gain or loss = movement in futures price × contract size × contracts.</span></li>
+<li><span><strong>Net result</strong> = spot transaction ± futures gain or loss. Effective rate = net result ÷ amount.</span></li>
+<li><span><strong>Hedge efficiency</strong> = futures gain ÷ spot loss (or the other way round).</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> It is 1 September. A US company must pay EUR 2.4m on 30 November. December EUR futures: contract size EUR 125,000, price USD 1.1060 per EUR, expiry end of December. Spot now 1.1000. On 30 November spot is 1.1300 and the futures price is 1.1315.</p></div>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Particulars</strong></th>
+<th><strong>Workings</strong></th>
+<th><strong>Amount (USD)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Action</td>
+<td>Must buy EUR, so buy December futures</td>
+<td>Buy</td>
+</tr>
+<tr>
+<td>Contracts</td>
+<td>2,400,000 ÷ 125,000 = 19.2</td>
+<td>19</td>
+</tr>
+<tr>
+<td>Opening basis</td>
+<td>Spot 1.1000 − futures 1.1060 (4 months to expiry)</td>
+<td>(0.0060)</td>
+</tr>
+<tr>
+<td>Expected closing basis</td>
+<td>(0.0060) × 1 month ÷ 4 months</td>
+<td>(0.0015)</td>
+</tr>
+<tr>
+<td>Expected lock-in rate</td>
+<td>Opening futures 1.1060 + closing basis (0.0015)</td>
+<td>1.1045</td>
+</tr>
+<tr>
+<td><strong>Outcome on 30 November</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Buy EUR 2.4m at spot</td>
+<td>2,400,000 × 1.1300</td>
+<td>(2,712,000)</td>
+</tr>
+<tr>
+<td>Futures gain</td>
+<td>(1.1315 − 1.1060) × 125,000 × 19</td>
+<td>60,562.5</td>
+</tr>
+<tr>
+<td><strong>Net cost (USD)</strong></td>
+<td></td>
+<td><strong>(2,651,437.5)</strong></td>
+</tr>
+<tr>
+<td><strong>Effective rate</strong></td>
+<td><strong>2,651,437.5 ÷ 2,400,000</strong></td>
+<td><strong>1.1048</strong></td>
+</tr>
+<tr>
+<td>Loss on the spot market</td>
+<td>2,400,000 × (1.1300 − 1.1000)</td>
+<td>(72,000)</td>
+</tr>
+<tr>
+<td><strong>Hedge efficiency</strong></td>
+<td><strong>60,562.5 ÷ 72,000</strong></td>
+<td><strong>84.1%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Actual closing basis = 1.1300 − 1.1315 = (0.0015), as expected. The hedge is not 100% efficient because of the basis and because EUR 25,000 (0.2 of a contract) is not hedged.</em></p>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Basis risk:</strong> the basis may not fall evenly, so the final rate is not certain.</span></li>
+<li><span><strong>Rounding contracts</strong> leaves an over-hedge or under-hedge. Say what happens to the difference.</span></li>
+<li><span><strong>Margin:</strong> initial and variation margin tie up cash. Worth a mark in discussion.</span></li>
+<li><span><strong>Futures v forward:</strong> futures are standard, traded and can be closed early. Forwards are tailor-made and binding.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<section class="topic" id="fm16-p23">
+  <div class="topic-head"><span class="tn">P23</span><h2>Transaction exposure – gain or loss</h2></div>
+
+<p><strong>Typical: 6–9 marks = 12–18 minutes. Tested in Jul-Aug 2025 Q4b.</strong></p>
+<p><strong>When to use:</strong> "Calculate the exchange gain or loss" or "should we invoice in Taka instead?"</p>
+<ol class="steps">
+<li><span><strong>Expected Taka amount</strong> at the rate on the transaction date.</span></li>
+<li><span><strong>Actual Taka amount</strong> at the settlement rate.</span></li>
+<li><span><strong>Difference</strong> = exchange gain or loss. Do it for receipts and payments separately, then net.</span></li>
+<li><span><strong>Profit under each scenario</strong> in one table, then recommend.</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> A Bangladeshi exporter sells goods for USD 500,000 and buys parts for USD 200,000, both on 3 months' credit. Local costs are Tk 26m. The rate on the transaction date is Tk 118 per USD. Possible rates at settlement: 115, 118, 121. The customer offers instead a fixed price of Tk 59.6m.</p></div>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Tk '000</strong></th>
+<th><strong>Rate 115</strong></th>
+<th><strong>Rate 118</strong></th>
+<th><strong>Rate 121</strong></th>
+<th><strong>Fixed Tk price</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sales receipt (USD 500,000)</td>
+<td>57,500</td>
+<td>59,000</td>
+<td>60,500</td>
+<td>59,600</td>
+</tr>
+<tr>
+<td>Parts payment (USD 200,000)</td>
+<td>(23,000)</td>
+<td>(23,600)</td>
+<td>(24,200)</td>
+<td>(USD risk stays)</td>
+</tr>
+<tr>
+<td>Local costs</td>
+<td>(26,000)</td>
+<td>(26,000)</td>
+<td>(26,000)</td>
+<td>(26,000)</td>
+</tr>
+<tr>
+<td><strong>Profit</strong></td>
+<td><strong>8,500</strong></td>
+<td><strong>9,400</strong></td>
+<td><strong>10,300</strong></td>
+<td><strong>See note</strong></td>
+</tr>
+<tr>
+<td>Gain / (loss) on receipt v rate 118</td>
+<td>(1,500)</td>
+<td>–</td>
+<td>1,500</td>
+<td></td>
+</tr>
+<tr>
+<td>Gain / (loss) on payment v rate 118</td>
+<td>600</td>
+<td>–</td>
+<td>(600)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Net exchange gain / (loss)</strong></td>
+<td><strong>(900)</strong></td>
+<td><strong>–</strong></td>
+<td><strong>900</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Fixed Tk price: profit = 59,600 − 26,000 − parts at the settlement rate = 10,600 at 115; 10,000 at 118; 9,400 at 121.</em></p>
+<p><strong>Advice:</strong> the company has a net USD receipt of 300,000, so it gains if the Taka weakens. The fixed Taka price removes the risk on sales but leaves the USD 200,000 payment exposed. Better: net the receipt and payment (natural hedge) and hedge only the USD 300,000 balance.</p>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Net first.</strong> Receipts and payments in the same currency and on the same date offset each other.</span></li>
+<li><span><strong>Direction:</strong> a weaker Taka helps an exporter and hurts an importer.</span></li>
+<li><span><strong>Transaction v translation v economic exposure:</strong> know the one-line definitions.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<section class="topic" id="fm16-p24">
+  <div class="topic-head"><span class="tn">P24</span><h2>Forward rate agreement (FRA)</h2></div>
+
+<p><strong>Typical: 5–8 marks = 10–16 minutes. Tested in Nov-Dec 2023 and Nov-Dec 2024.</strong></p>
+<p><strong>When to use:</strong> A company will borrow (or deposit) at a future date and wants to fix the interest rate now.</p>
+<ol class="steps">
+<li><span><strong>Borrower buys the FRA</strong> at the higher quoted rate. A depositor sells at the lower rate.</span></li>
+<li><span><strong>"3–9" FRA:</strong> starts in 3 months, ends in 9 months, so it covers 6 months.</span></li>
+<li><span><strong>On the start date:</strong> FRA payment = (market rate − FRA rate) × principal × months ÷ 12. Receive it if the rate is above the FRA rate; pay it if below.</span></li>
+<li><span><strong>Loan interest</strong> is paid at the actual rate, including the company's own margin.</span></li>
+<li><span><strong>Net cost</strong> = loan interest ± FRA payment. It is the same in every scenario.</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> A company will borrow Tk 50m in 3 months for 6 months. It can borrow at the benchmark rate + 1%. The bank quotes a 3–9 FRA at 9.60 – 9.20. The benchmark rate in 3 months is either 11% or 8%.</p></div>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Tk</strong></th>
+<th><strong>Benchmark 11%</strong></th>
+<th><strong>Benchmark 8%</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loan rate (benchmark + 1%)</td>
+<td>12.0%</td>
+<td>9.0%</td>
+</tr>
+<tr>
+<td>Loan interest for 6 months (50m × rate × 6/12)</td>
+<td>(3,000,000)</td>
+<td>(2,250,000)</td>
+</tr>
+<tr>
+<td>FRA: (benchmark − 9.60%) × 50m × 6/12</td>
+<td>350,000 received</td>
+<td>(400,000) paid</td>
+</tr>
+<tr>
+<td><strong>Net interest cost</strong></td>
+<td><strong>(2,650,000)</strong></td>
+<td><strong>(2,650,000)</strong></td>
+</tr>
+<tr>
+<td><strong>Effective annual rate</strong></td>
+<td><strong>10.6%</strong></td>
+<td><strong>10.6%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>The effective rate is always the FRA rate 9.60% + the company's margin 1% = 10.6%.</em></p>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Compare the FRA rate with the benchmark,</strong> not with the company's own loan rate.</span></li>
+<li><span><strong>Pro-rate for the loan period.</strong> ICAB's Nov-Dec 2024 answer used the wrong interest for one quarter.</span></li>
+<li><span><strong>The FRA is separate from the loan.</strong> It fixes the rate but does not provide the money.</span></li>
+<li><span><strong>No upside:</strong> if rates fall, the company pays the bank. An option (cap) keeps the upside for a premium.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<section class="topic" id="fm16-p25">
+  <div class="topic-head"><span class="tn">P25</span><h2>Interest rate swap – net payment and swap design</h2></div>
+
+<p><strong>Typical: 5–11 marks = 10–22 minutes. Tested in Nov-Dec 2023, Jul-Aug 2025 and the 2026 mock.</strong></p>
+<p><strong>When to use:</strong> (a) "Calculate the net swap payment." (b) "Design a swap that shares the benefit between two companies."</p>
+<ol class="steps">
+<li><span><strong>Net payment:</strong> (floating rate received − fixed rate paid) × notional × months ÷ 12. Positive = receive.</span></li>
+<li><span><strong>Total cost</strong> = loan interest ± swap payment. It should equal the fixed rate plus any margin left on the loan.</span></li>
+<li><span><strong>Swap design, 4 steps:</strong> (1) rate table, (2) total saving = difference of the differences, less the bank fee, (3) target rate for each party, (4) the swap flows that reach the targets.</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> (a) Loan Tk 200m at benchmark + 2%, interest every 6 months. Swap: pay fixed 9%, receive benchmark. Benchmark is 10% in period 1 and 7% in period 2. (b) Company A can borrow at 8% fixed or benchmark + 1%, and wants floating. Company B can borrow at 10.5% fixed or benchmark + 2%, and wants fixed. A bank arranges the swap for 0.3%; the rest of the saving is shared equally.</p></div>
+<p><strong>(a) Net payment (Tk million)</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th></th>
+<th><strong>Period 1 (benchmark 10%)</strong></th>
+<th><strong>Period 2 (benchmark 7%)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loan rate (benchmark + 2%)</td>
+<td>12%</td>
+<td>9%</td>
+</tr>
+<tr>
+<td>Loan interest (200 × rate × 6/12)</td>
+<td>(12.0)</td>
+<td>(9.0)</td>
+</tr>
+<tr>
+<td>Swap: (benchmark − 9%) × 200 × 6/12</td>
+<td>1.0 received</td>
+<td>(2.0) paid</td>
+</tr>
+<tr>
+<td><strong>Net interest cost</strong></td>
+<td><strong>(11.0)</strong></td>
+<td><strong>(11.0)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Fixed cost = (9% + 2%) × 200m × 6/12 = Tk 11m in every period.</em></p>
+<p><strong>(b) Swap design</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Step</strong></th>
+<th><strong>Company A</strong></th>
+<th><strong>Company B</strong></th>
+<th><strong>Difference</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Fixed rate</td>
+<td>8.0%</td>
+<td>10.5%</td>
+<td>2.5%</td>
+</tr>
+<tr>
+<td>Floating rate</td>
+<td>Benchmark + 1%</td>
+<td>Benchmark + 2%</td>
+<td>1.0%</td>
+</tr>
+<tr>
+<td><strong>2. Total saving</strong></td>
+<td></td>
+<td></td>
+<td><strong>2.5% − 1.0% = 1.5%</strong></td>
+</tr>
+<tr>
+<td>After bank fee, each</td>
+<td>0.6%</td>
+<td>0.6%</td>
+<td>1.5% − 0.3% = 1.2%</td>
+</tr>
+<tr>
+<td>3. Without the swap</td>
+<td>Benchmark + 1%</td>
+<td>10.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Target rate</strong></td>
+<td><strong>Benchmark + 0.4%</strong></td>
+<td><strong>9.9%</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>4. Borrows in the market</td>
+<td>Fixed 8.0%</td>
+<td>Benchmark + 2%</td>
+<td></td>
+</tr>
+<tr>
+<td>Pays to the bank</td>
+<td>Benchmark</td>
+<td>Fixed 7.9%</td>
+<td></td>
+</tr>
+<tr>
+<td>Receives from the bank</td>
+<td>Fixed 7.6%</td>
+<td>Benchmark</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Net cost</strong></td>
+<td><strong>8.0 + benchmark − 7.6 = benchmark + 0.4%</strong></td>
+<td><strong>Benchmark + 2 + 7.9 − benchmark = 9.9%</strong></td>
+<td><strong>Bank keeps 7.9 − 7.6 = 0.3%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Annual rates, half-year periods.</strong> ICAB's 2026 mock answer mixed yearly and half-yearly amounts.</span></li>
+<li><span><strong>Each company borrows where it has the comparative advantage</strong> (the type it does not want), then swaps.</span></li>
+<li><span><strong>Risks to mention:</strong> counterparty risk, no benefit if rates fall, hard to exit.</span></li>
+<li><span><strong>Swap v cap v collar:</strong> swap = no premium, no upside. Cap = premium, keeps upside. Collar = low premium, limited upside.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<section class="topic" id="fm16-p26">
+  <div class="topic-head"><span class="tn">P26</span><h2>Interest rate futures, options and collars</h2></div>
+
+<p><strong>Typical: 6–10 marks = 12–20 minutes. Rarely tested as a calculation, but it is in the manual and in your hedging summary.</strong></p>
+<p><strong>When to use:</strong> The question gives futures prices like 91.00 (= 100 − interest rate) or option strikes with premiums.</p>
+<ol class="steps">
+<li><span><strong>Borrower sells futures</strong> (a depositor buys). Contracts = loan ÷ contract size × loan months ÷ 3.</span></li>
+<li><span><strong>Close out:</strong> gain or loss = price movement % × contract size × 3/12 × contracts.</span></li>
+<li><span><strong>Options on futures:</strong> a borrower buys <strong>puts</strong> (a cap). A depositor buys calls (a floor). Exercise only if it gives a gain.</span></li>
+<li><span><strong>Collar for a borrower:</strong> buy a put and sell a call at a higher strike. Lower premium, but the gain from falling rates is limited.</span></li>
+<li><span><strong>Net cost</strong> = loan interest − futures or option gain + premium.</span></li>
+</ol>
+<div class="box remember"><span class="lbl">Example data</span><p> A company will borrow Tk 20m for 6 months, starting in 3 months. Three-month futures: contract size Tk 1m, price now 91.00. Put option at strike 91.00 costs 0.40%. Call option at strike 93.00 earns 0.15%. Outcomes: rates rise (borrowing rate 10.3%, futures 89.50) or fall (borrowing rate 5.9%, futures 94.00).</p></div>
+<ul>
+<li><span><strong>Contracts</strong> = 20m ÷ 1m × 6 ÷ 3 = <strong>40</strong>. Each 1% on 40 contracts = 1% × 1m × 3/12 × 40 = Tk 100,000.</span></li>
+</ul>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Tk</strong></th>
+<th><strong>Rates rise (10.3%, futures 89.50)</strong></th>
+<th><strong>Rates fall (5.9%, futures 94.00)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loan interest (20m × rate × 6/12)</td>
+<td>1,030,000</td>
+<td>590,000</td>
+</tr>
+<tr>
+<td><strong>1. Futures: sell at 91.00</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Futures gain / (loss)</td>
+<td>(91.00 − 89.50) = 1.5%: 150,000</td>
+<td>(91.00 − 94.00) = −3%: (300,000)</td>
+</tr>
+<tr>
+<td><strong>Net cost with futures</strong></td>
+<td><strong>880,000 (8.8%)</strong></td>
+<td><strong>890,000 (8.9%)</strong></td>
+</tr>
+<tr>
+<td><strong>2. Option: buy put at 91.00</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Exercise?</td>
+<td>Yes: gain 1.5% = 150,000</td>
+<td>No: let it lapse</td>
+</tr>
+<tr>
+<td>Premium 0.40%</td>
+<td>40,000</td>
+<td>40,000</td>
+</tr>
+<tr>
+<td><strong>Net cost with option</strong></td>
+<td><strong>920,000 (9.2%)</strong></td>
+<td><strong>630,000 (6.3%)</strong></td>
+</tr>
+<tr>
+<td><strong>3. Collar: buy put 91.00, sell call 93.00</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Put</td>
+<td>Exercise: gain 150,000</td>
+<td>Lapses</td>
+</tr>
+<tr>
+<td>Call (sold)</td>
+<td>Not exercised</td>
+<td>Exercised against us: (94.00 − 93.00) = 1% = (100,000)</td>
+</tr>
+<tr>
+<td>Net premium 0.40% − 0.15%</td>
+<td>25,000</td>
+<td>25,000</td>
+</tr>
+<tr>
+<td><strong>Net cost with collar</strong></td>
+<td><strong>905,000 (9.05%)</strong></td>
+<td><strong>715,000 (7.15%)</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>Futures fix the cost near 9% (100 − 91.00) in both cases, apart from basis. The option caps the cost and keeps the benefit of a fall. The collar is cheaper than the option but gives up part of the benefit.</em></p>
+<div class="box trap"><span class="lbl">Traps</span><ul>
+<li><span><strong>Price = 100 − rate.</strong> When rates rise, the futures price falls. So a borrower sells first and buys back cheaper.</span></li>
+<li><span><strong>Loan longer than 3 months:</strong> scale the number of contracts (6 months = double).</span></li>
+<li><span><strong>Options on FRAs (bank options) are the other way round:</strong> a borrower buys a call (cap) and a depositor buys a put (floor).</span></li>
+<li><span><strong>Collar for a depositor:</strong> buy a call and sell a put.</span></li>
+</ul></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+</template>
+
+<template id="tpl-fm-17">
+<div class="ch-head">
+  <span class="eyebrow">Chapter 17 · Financial Management · Proforma Bank</span>
+  <h1>Proforma Bank, Part F: Formula sheet</h1>
+  <p>Ready working formats for the Financial Management exam: when to use each one, the steps, a worked example with made-up data, and the traps. Copy the layout in the exam. Figures use 3-decimal discount factors, so small rounding differences are normal.</p>
+</div>
+
+<div class="keynums" aria-label="Key numbers in this chapter"><div><b>1</b><span>formula sheet to learn</span></div><div><b>When · Steps · Example · Traps</b><span>The same four parts in every format</span></div></div>
+
+<section class="topic" id="fm17-sheet">
+  <div class="topic-head"><span class="tn">1</span><h2>Formula sheet</h2></div>
+
+<p>Symbols: ke = cost of equity, kd = cost of debt, g = growth, T = tax rate, D and E = market value of debt and equity, Rf = risk-free rate, Rm = market return, DF = discount factor.</p>
+<p><strong>1. Investment appraisal</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Item</strong></th>
+<th><strong>Formula</strong></th>
+<th><strong>Remember</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Discount factor</td>
+<td>1 ÷ (1 + r)ⁿ</td>
+<td>Use 3 decimal places</td>
+</tr>
+<tr>
+<td>Annuity factor</td>
+<td>[1 − (1 + r)⁻ⁿ] ÷ r</td>
+<td>Equal flows from year 1 to n</td>
+</tr>
+<tr>
+<td>Perpetuity</td>
+<td>Cash flow ÷ r</td>
+<td>Growing: next year's flow ÷ (r − g)</td>
+</tr>
+<tr>
+<td>Money and real rates</td>
+<td>(1 + money) = (1 + real) × (1 + inflation)</td>
+<td>Inflated flows need the money rate</td>
+</tr>
+<tr>
+<td>IRR</td>
+<td>L + NPV(L) ÷ [NPV(L) − NPV(H)] × (H − L)</td>
+<td>NPV(H) is usually negative, so the bottom adds</td>
+</tr>
+<tr>
+<td>Sensitivity</td>
+<td>NPV ÷ PV of the flows affected</td>
+<td>After tax. Smallest % = most critical</td>
+</tr>
+<tr>
+<td>Profitability index</td>
+<td>NPV ÷ outlay in the rationed period</td>
+<td>Divisible projects, one period only</td>
+</tr>
+<tr>
+<td>Equivalent annual cost</td>
+<td>PV of costs ÷ annuity factor</td>
+<td>For replacement cycles of different lengths</td>
+</tr>
+<tr>
+<td>Lease v buy rate</td>
+<td>Borrowing rate × (1 − T)</td>
+<td>Net advantage = PV buy − PV lease</td>
+</tr>
+<tr>
+<td>Capital allowance tax saving</td>
+<td>Allowance × T</td>
+<td>Balancing allowance = written down value − scrap</td>
+</tr>
+<tr>
+<td>Purchasing power parity</td>
+<td>Future rate = spot × (1 + inflation A) ÷ (1 + inflation B)</td>
+<td>Rate quoted as currency A per unit of B</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>2. Cost of capital</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Item</strong></th>
+<th><strong>Formula</strong></th>
+<th><strong>Remember</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cost of equity (dividends)</td>
+<td>ke = D0(1 + g) ÷ P0 + g</td>
+<td>P0 is ex-div</td>
+</tr>
+<tr>
+<td>Growth</td>
+<td>g = retention rate × return on equity; or (latest ÷ earliest dividend)^(1/n) − 1</td>
+<td>n = number of years of growth</td>
+</tr>
+<tr>
+<td>CAPM</td>
+<td>ke = Rf + β(Rm − Rf)</td>
+<td>(Rm − Rf) = market risk premium</td>
+</tr>
+<tr>
+<td>Preference shares</td>
+<td>Dividend ÷ ex-div price</td>
+<td>No tax relief</td>
+</tr>
+<tr>
+<td>Irredeemable debt</td>
+<td>Interest × (1 − T) ÷ ex-interest price</td>
+<td></td>
+</tr>
+<tr>
+<td>Redeemable debt</td>
+<td>IRR of: price now, interest × (1 − T), redemption</td>
+<td>Convertible: higher of redemption and conversion value</td>
+</tr>
+<tr>
+<td>Bank loan</td>
+<td>Interest rate × (1 − T)</td>
+<td>Use book value as the weight</td>
+</tr>
+<tr>
+<td>WACC</td>
+<td>Σ (market value × cost) ÷ Σ market value</td>
+<td>Market values, not book values</td>
+</tr>
+<tr>
+<td>Asset beta (degear)</td>
+<td>βa = βe ÷ [1 + D(1 − T) ÷ E]</td>
+<td>Proxy's gearing</td>
+</tr>
+<tr>
+<td>Equity beta (regear)</td>
+<td>βe = βa × [1 + D(1 − T) ÷ E]</td>
+<td>Your own gearing</td>
+</tr>
+<tr>
+<td>Portfolio beta</td>
+<td>Σ (weight × beta)</td>
+<td>Weights by market value</td>
+</tr>
+<tr>
+<td>Beta from data</td>
+<td>Covariance ÷ market variance = ρ × σ(share) ÷ σ(market)</td>
+<td></td>
+</tr>
+<tr>
+<td>Alpha</td>
+<td>Expected return − required return</td>
+<td>Positive = under-valued</td>
+</tr>
+<tr>
+<td>Two-share portfolio risk</td>
+<td>σp = √[w₁²σ₁² + w₂²σ₂² + 2w₁w₂ρσ₁σ₂]</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>3. Financing and dividends</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Item</strong></th>
+<th><strong>Formula</strong></th>
+<th><strong>Remember</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TERP</td>
+<td>(N × cum-rights price + issue price) ÷ (N + 1)</td>
+<td>1-for-N issue</td>
+</tr>
+<tr>
+<td>Value of a right</td>
+<td>TERP − issue price</td>
+<td>Per new share. ÷ N for per existing share</td>
+</tr>
+<tr>
+<td>EPS</td>
+<td>(PBIT − interest) × (1 − T) ÷ shares</td>
+<td>Less preference dividend if any</td>
+</tr>
+<tr>
+<td>Gearing</td>
+<td>Debt ÷ (debt + equity), or debt ÷ equity</td>
+<td>State which one you use</td>
+</tr>
+<tr>
+<td>Interest cover</td>
+<td>PBIT ÷ interest</td>
+<td></td>
+</tr>
+<tr>
+<td>Share price (dividend growth)</td>
+<td>P0 = D0(1 + g) ÷ (ke − g)</td>
+<td>Gordon: g = retention × return</td>
+</tr>
+<tr>
+<td>Residual dividend</td>
+<td>Earnings − equity share of the capital budget</td>
+<td></td>
+</tr>
+<tr>
+<td>Bond value</td>
+<td>Interest × annuity factor + redemption × DF</td>
+<td>At the investor's required return</td>
+</tr>
+<tr>
+<td>Dividend cover and payout</td>
+<td>EPS ÷ DPS; DPS ÷ EPS</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>4. Working capital</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Item</strong></th>
+<th><strong>Formula</strong></th>
+<th><strong>Remember</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inventory days</td>
+<td>Inventory ÷ cost of sales × 365</td>
+<td>Raw materials ÷ purchases</td>
+</tr>
+<tr>
+<td>Receivable days</td>
+<td>Receivables ÷ credit sales × 365</td>
+<td></td>
+</tr>
+<tr>
+<td>Payable days</td>
+<td>Payables ÷ credit purchases × 365</td>
+<td></td>
+</tr>
+<tr>
+<td>Cash conversion cycle</td>
+<td>Inventory days + receivable days − payable days</td>
+<td></td>
+</tr>
+<tr>
+<td>Cost of a cash discount</td>
+<td>[100 ÷ (100 − d)]^(365 ÷ days saved) − 1</td>
+<td>Simple: d ÷ (100 − d) × 365 ÷ days</td>
+</tr>
+<tr>
+<td>Finance cost of receivables</td>
+<td>Sales × days ÷ 365 × interest rate</td>
+<td>Factor: advance % at factor rate, rest at overdraft</td>
+</tr>
+<tr>
+<td>Economic order quantity</td>
+<td>√(2 × order cost × annual demand ÷ holding cost per unit)</td>
+<td></td>
+</tr>
+<tr>
+<td>Current and quick ratio</td>
+<td>Current assets ÷ current liabilities; (current assets − inventory) ÷ current liabilities</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>5. Business valuation</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Item</strong></th>
+<th><strong>Formula</strong></th>
+<th><strong>Remember</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Net asset value</td>
+<td>Adjusted assets − liabilities</td>
+<td>Floor value</td>
+</tr>
+<tr>
+<td>P/E value</td>
+<td>Maintainable earnings × P/E</td>
+<td>Cut the P/E 25–30% if unlisted</td>
+</tr>
+<tr>
+<td>Earnings yield value</td>
+<td>Earnings ÷ earnings yield</td>
+<td>Earnings yield = 1 ÷ P/E</td>
+</tr>
+<tr>
+<td>Dividend yield value</td>
+<td>Dividend ÷ dividend yield</td>
+<td>Minority holding</td>
+</tr>
+<tr>
+<td>Free cash flow</td>
+<td>Operating profit × (1 − T) − extra non-current assets − extra working capital</td>
+<td>Add depreciation back only if it was deducted and not reinvested</td>
+</tr>
+<tr>
+<td>Terminal value</td>
+<td>FCF × (1 + g) ÷ (r − g), or a multiple of the last FCF</td>
+<td>Discount with the last year's factor</td>
+</tr>
+<tr>
+<td>Equity value</td>
+<td>PV of free cash flows + investments − debt</td>
+<td></td>
+</tr>
+<tr>
+<td>Maximum price for a target</td>
+<td>Target value alone + PV of synergy − integration cost</td>
+<td></td>
+</tr>
+<tr>
+<td>Buyer's gain</td>
+<td>Synergy − premium paid</td>
+<td>Premium = price − target value alone</td>
+</tr>
+<tr>
+<td>Price after a share-for-share deal</td>
+<td>Combined value ÷ total shares after</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>6. Foreign exchange risk</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Item</strong></th>
+<th><strong>Formula</strong></th>
+<th><strong>Remember</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bank quote rule</td>
+<td>The bank always wins</td>
+<td>Tk per foreign unit: pay at the higher rate, receive at the lower</td>
+</tr>
+<tr>
+<td>Forward</td>
+<td>Foreign amount × forward rate</td>
+<td>Divide if the quote is foreign per Tk</td>
+</tr>
+<tr>
+<td>Money market, payment</td>
+<td>Deposit foreign now → buy at spot → borrow Tk</td>
+<td>Deposit = amount ÷ (1 + foreign deposit rate × months/12)</td>
+</tr>
+<tr>
+<td>Money market, receipt</td>
+<td>Borrow foreign now → sell at spot → deposit Tk</td>
+<td>Borrow = amount ÷ (1 + foreign borrowing rate × months/12)</td>
+</tr>
+<tr>
+<td>Interest rate parity</td>
+<td>Forward = spot × (1 + rate A) ÷ (1 + rate B)</td>
+<td>Rate quoted as currency A per unit of B</td>
+</tr>
+<tr>
+<td>Option: call or put</td>
+<td>Buy the contract currency = call. Sell it = put</td>
+<td>Exercise only if the strike beats spot</td>
+</tr>
+<tr>
+<td>Option worst case</td>
+<td>Payment: strike + premium. Receipt: strike − premium</td>
+<td></td>
+</tr>
+<tr>
+<td>Futures contracts</td>
+<td>Amount ÷ contract size</td>
+<td>Buy the contract currency later = buy futures</td>
+</tr>
+<tr>
+<td>Basis</td>
+<td>Spot − futures</td>
+<td>Falls evenly to zero at expiry</td>
+</tr>
+<tr>
+<td>Futures gain or loss</td>
+<td>Price movement × contract size × contracts</td>
+<td></td>
+</tr>
+<tr>
+<td>Hedge efficiency</td>
+<td>Gain on futures ÷ loss on spot</td>
+<td></td>
+</tr>
+<tr>
+<td>Netting</td>
+<td>Convert all balances to the home currency and net off</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>7. Interest rate risk</strong></p>
+<div class="tbl"><table>
+
+<thead>
+<tr>
+<th><strong>Item</strong></th>
+<th><strong>Formula</strong></th>
+<th><strong>Remember</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FRA</td>
+<td>Borrower buys (higher rate). Depositor sells (lower rate)</td>
+<td>"3–9" = starts month 3, ends month 9</td>
+</tr>
+<tr>
+<td>FRA payment</td>
+<td>(Market rate − FRA rate) × principal × months ÷ 12</td>
+<td>Receive if the market rate is higher</td>
+</tr>
+<tr>
+<td>Interest rate futures</td>
+<td>Price = 100 − rate. Borrower sells. Depositor buys</td>
+<td>Contracts = loan ÷ size × months ÷ 3</td>
+</tr>
+<tr>
+<td>Futures gain or loss</td>
+<td>Price movement % × contract size × 3/12 × contracts</td>
+<td></td>
+</tr>
+<tr>
+<td>Options on futures</td>
+<td>Borrower buys a put (cap). Depositor buys a call (floor)</td>
+<td>Options on FRAs: borrower = call, depositor = put</td>
+</tr>
+<tr>
+<td>Collar</td>
+<td>Borrower: buy put, sell call. Depositor: buy call, sell put</td>
+<td>Cheaper, but limits the upside</td>
+</tr>
+<tr>
+<td>Swap net payment</td>
+<td>(Floating received − fixed paid) × notional × months ÷ 12</td>
+<td>Final cost = fixed rate + loan margin</td>
+</tr>
+<tr>
+<td>Swap saving</td>
+<td>Difference in fixed rates − difference in floating rates − bank fee</td>
+<td>Split as the question says</td>
+</tr>
+</tbody>
+</table></div>
+
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+</template>
+
 <template id="tpl-cr-1">
 <div class="ch-head">
   <span class="eyebrow">Chapter 1 · Corporate Reporting</span>
@@ -36992,10 +40905,13 @@ Terminal value (growth g after the last year) = last-year cash flow × (1 + g) �
   function go() { var s = document.createElement("script"); s.src = "app.js"; document.body.appendChild(s); }
   if (c.SUPABASE_URL && c.SUPABASE_ANON_KEY) {
     var s = document.createElement("script");
-    s.src = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js";
+    s.src = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.58.0/dist/umd/supabase.js";
     s.onload = go; s.onerror = go;
     document.head.appendChild(s);
   } else go();
+  if ("serviceWorker" in navigator && /^https?:/.test(location.protocol)) {
+    window.addEventListener("load", function () { navigator.serviceWorker.register("sw.js").catch(function () {}); });
+  }
 })();
 </script>
 </body>

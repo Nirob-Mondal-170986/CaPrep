@@ -248,6 +248,36 @@ window.PAPERS = {
    {
     "n": 11,
     "title": "Spreadsheet Formulae for Financial Management"
+   },
+   {
+    "n": 12,
+    "title": "Proforma Bank, Part A: Investment Appraisal",
+    "note": "Proforma Bank"
+   },
+   {
+    "n": 13,
+    "title": "Proforma Bank, Part B: Cost of Capital and Financing",
+    "note": "Proforma Bank"
+   },
+   {
+    "n": 14,
+    "title": "Proforma Bank, Part C: Working Capital and Forecasts",
+    "note": "Proforma Bank"
+   },
+   {
+    "n": 15,
+    "title": "Proforma Bank, Part D: Business Valuation",
+    "note": "Proforma Bank"
+   },
+   {
+    "n": 16,
+    "title": "Proforma Bank, Part E: Risk Management",
+    "note": "Proforma Bank"
+   },
+   {
+    "n": 17,
+    "title": "Proforma Bank, Part F: Formula Sheet",
+    "note": "Proforma Bank"
    }
   ],
   "blurb": "Cost of capital, investment appraisal, valuation, treasury, interest rate and currency risk, Islamic finance and ethics.",

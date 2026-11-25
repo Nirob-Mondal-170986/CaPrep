@@ -149,3 +149,21 @@ If a deploy fails, open the failed run in the **Actions** tab to see the error.
 2. On vercel.com choose **Add New → Project**, import the repository and press **Deploy**. `vercel.json` already tells Vercel to run `python3 build.py` and publish the `dist` folder.
 3. After that, every push to the `main` branch updates the live site by itself. Other branches get a private preview link.
 4. `dist/config.js` must stay in the repository (it is empty by default, which is fine for the open, no-login version).
+
+
+## Login, admin and sync across devices (Supabase)
+
+`dist/config.js` has `LOGIN: true`, so students create an account (username and password) and their progress and chosen subjects follow them to every device.
+
+1. Create a free project at supabase.com. In **SQL Editor**, paste all of `supabase/schema.sql` and press **Run**. (If you ran an older version, run it again: it is safe and adds the new `subjects` column.)
+2. In Supabase: **Authentication → Sign In / Providers → Email**: switch **Confirm email** OFF (students sign up with a username only).
+3. In Supabase: **Project Settings → API**. Copy the **Project URL** and the **anon public** key into `dist/config.js` (`SUPABASE_URL`, `SUPABASE_ANON_KEY`) and commit. Vercel redeploys by itself.
+4. Open the live site, press **Create account**, and register the username you want for the admin (for example `admin`).
+5. Back in Supabase **SQL Editor** run: `update public.profiles set is_admin = true where username = 'admin';`
+6. Sign out and in again. The **Admin panel** appears in the side menu and shows every student's progress and activity.
+
+Until Supabase is connected the site still works, but accounts exist only in that one browser ("demo mode"). Never put the `service_role` key anywhere in this project.
+
+## Installing as an app
+
+The site is a Progressive Web App. In Chrome (computer or Android) open the live link and use the install icon in the address bar (or menu → **Install H&A CA Prep**). On iPhone use Safari → Share → **Add to Home Screen**. The installed app opens in its own window and the notes open even without internet; progress syncs when the connection returns.

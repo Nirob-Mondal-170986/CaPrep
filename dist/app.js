@@ -43,8 +43,18 @@
   /* ---------- My subjects (the dashboard shows only these) ---------- */
   const SUBJ_KEY = "haprep-subjects-v1";
   let MY = [];
-  try { MY = JSON.parse(localStorage.getItem(SUBJ_KEY) || "[]"); if (!Array.isArray(MY)) MY = []; } catch (e) { MY = []; }
-  const saveMy = () => { try { localStorage.setItem(SUBJ_KEY, JSON.stringify(MY)); } catch (e) {} };
+  const subjKey = () => SUBJ_KEY + (!OPEN && me ? ":" + me.id : "");
+  /* Subjects come from the account (so they follow the student to every device), with this browser as a backup. */
+  function loadMy() {
+    if (me && Array.isArray(me.subjects) && me.subjects.length) { MY = me.subjects.slice(); return; }
+    try { MY = JSON.parse(localStorage.getItem(subjKey()) || "[]"); if (!Array.isArray(MY)) MY = []; } catch (e) { MY = []; }
+    if (MY.length && store && store.saveSubjects && me) store.saveSubjects(me.id, MY).catch(() => {});
+  }
+  const saveMy = () => {
+    try { localStorage.setItem(subjKey(), JSON.stringify(MY)); } catch (e) {}
+    if (me) me.subjects = MY.slice();
+    if (store && store.saveSubjects && me) store.saveSubjects(me.id, MY).catch(() => toast("Subjects saved on this device only. Update the database (see the setup guide) to sync them."));
+  };
   const myPapers = () => MY.filter(p => PAPERS[p] && live(p));
   const myIds = () => myPapers().flatMap(paperIds);
 
@@ -225,7 +235,7 @@
   /* ---------- App shell ---------- */
   async function enterApp(evt) {
     $("#root").innerHTML = `<div class="loading">Loading your progress…</div>`;
-    prog = {};
+    prog = {}; loadMy();
     try {
       const rows = await store.myProgress(me.id);
       rows.forEach(r => { prog[r.topic_id] = { r: !!r.is_read, c: r.confidence || null, at: r.updated_at }; });

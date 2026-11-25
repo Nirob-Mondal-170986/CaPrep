@@ -53,6 +53,10 @@
       return this.profile(data.user.id);
     }
     async signOut() { await this.sb.auth.signOut(); }
+    async saveSubjects(uid, list) {
+      const { error } = await this.sb.from("profiles").update({ subjects: list }).eq("id", uid);
+      if (error) throw friendly(error);
+    }
     async pageAll(build) {
       const out = [], size = 1000;
       for (let from = 0; ; from += size) {
@@ -108,7 +112,7 @@
       }
       let h = 0; for (const ch of txt) h = (h * 31 + ch.charCodeAt(0)) | 0; return "x" + h;
     }
-    pub(u) { return u && { id: u.id, username: u.username, is_admin: u.is_admin, created_at: u.created_at, last_seen: u.last_seen }; }
+    pub(u) { return u && { id: u.id, username: u.username, is_admin: u.is_admin, created_at: u.created_at, last_seen: u.last_seen, subjects: u.subjects || [] }; }
     async current() {
       const d = this.db();
       return d.session && d.users[d.session] ? this.pub(d.users[d.session]) : null;
@@ -117,7 +121,7 @@
       const d = this.db();
       if (d.users[u]) throw new Error("That username is already taken. Try another.");
       const salt = Math.random().toString(36).slice(2);
-      const first = !Object.keys(d.users).length;
+      const first = !Object.values(d.users).some(x => x.id !== "local-guest");
       const id = "local-" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
       d.users[u] = { id, username: u, salt, hash: await this.hash(p, salt), is_admin: first, created_at: new Date().toISOString(), last_seen: null };
       d.progress[id] = {};
@@ -145,6 +149,7 @@
       d.session = name; this.put(d);
       return this.pub(d.users[name]);
     }
+    async saveSubjects(uid, list) { const d = this.db(); const u = Object.values(d.users).find(x => x.id === uid); if (u) { u.subjects = list; this.put(d); } }
     async resetMine(uid) { const d = this.db(); d.progress[uid] = {}; d.activity[uid] = []; this.put(d); }
     async signIn(u, p) {
       const d = this.db(), rec = d.users[u];

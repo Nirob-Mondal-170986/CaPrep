@@ -1,0 +1,8 @@
+# Build output is created by Vercel (python3 build.py). Only config.js is kept in Git.
+dist/*
+!dist/config.js
+# Local files
+ca-prep-site.zip
+preview-demo.html
+__pycache__/
+.DS_Store

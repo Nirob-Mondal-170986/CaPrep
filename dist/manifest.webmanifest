@@ -1,0 +1,23 @@
+{
+  "name": "H&A CA Prep",
+  "short_name": "CA Prep",
+  "description": "Plain-English ICAB exam notes with progress tracking, confidence marks and revision lists.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#121A23",
+  "theme_color": "#F37021",
+  "categories": ["education"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Dashboard", "url": "./#/", "icons": [{ "src": "icon-192.png", "sizes": "192x192" }] },
+    { "name": "Revise weak topics", "url": "./#/revise?c=low", "icons": [{ "src": "icon-192.png", "sizes": "192x192" }] },
+    { "name": "Search notes", "url": "./#/search", "icons": [{ "src": "icon-192.png", "sizes": "192x192" }] }
+  ]
+}
