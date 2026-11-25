@@ -1,0 +1,185 @@
+<div class="ch-head">
+  <span class="eyebrow">Chapter 33 · Corporate Reporting · Exam toolkit</span>
+  <h1>Answer Proformas II: Financial Instruments, Assets, EPS and Other Standards</h1>
+  <p>Templates for IFRS 9 and IAS 32, below-market loans and grants, impairment, intangibles, borrowing costs, inventory, biological assets, fair value, foreign currency, EPS, errors and events after the reporting period, related parties and assets held for sale. Same five-step answer layout as Chapter 32.</p>
+</div>
+
+<div class="keynums" aria-label="Key numbers in this chapter">
+  <div><b>7 / 13</b><span>IFRS 9 and IAS 32 in some form</span></div>
+  <div><b>5–6 / 13</b><span>IAS 38 intangibles and IAS 16 / 36 assets (5 each)</span></div>
+  <div><b>3 / 13</b><span>EPS (Nov 23, Mar 23, Nov 24)</span></div>
+  <div><b>0</b><span>Stand-alone IFRS 5, IAS 7, IAS 8 questions so far</span></div>
+</div>
+
+<!-- 1 -->
+<section class="topic" id="cr33-fi">
+  <div class="topic-head"><span class="tn">1</span><h2>IFRS 9 and IAS 32: classification and measurement</h2></div>
+  <div class="flow" aria-label="IFRS 9 classification">
+    <span><b>Equity or debt?</b><br>Shares: FVTPL, or FVOCI by irrevocable election (no recycling). Debt: next steps</span>
+    <span><b>SPPI test</b><br>Do cash flows pay only principal and interest on principal?</span>
+    <span><b>Business model</b><br>Hold to collect → amortised cost. Collect and sell → FVOCI. Other → FVTPL</span>
+    <span><b>Measure</b><br>Initially at fair value (plus transaction costs unless FVTPL)</span>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>Instrument</th><th>SPPI?</th><th>Classification</th></tr></thead>
+    <tbody>
+      <tr><td>Plain loan, fixed or floating interest</td><td>Yes</td><td>Amortised cost (hold to collect)</td></tr>
+      <tr><td>Convertible bond held as an <b>investment</b></td><td>No (conversion option)</td><td><b>FVTPL</b></td></tr>
+      <tr><td>Interest linked to a commodity price or equity index</td><td>No</td><td>FVTPL</td></tr>
+      <tr><td>Non-recourse loan where the return depends on the asset's performance</td><td>Look through to the asset; usually No</td><td>FVTPL</td></tr>
+      <tr><td>Loan with a small <b>prepayment</b> penalty reflecting the interest</td><td>Yes</td><td>Amortised cost</td></tr>
+      <tr><td>Government bond in a hold-and-sell portfolio</td><td>Yes</td><td>FVOCI (with expected credit loss in profit or loss)</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">Jul 2025 gave 15 marks to classifying a list of instruments with the SPPI test; the answer states the test, the classification and the initial and subsequent measurement for each.</p>
+  <div class="two">
+    <div class="ex">
+      <div class="ex-q"><span class="lbl">A. Amortised cost (Mar 2025 treasury-bond pattern)</span><p>Bond face 1,000, coupon 5% paid yearly, bought at a discount for 920 plus 10 costs. Effective interest rate 6.8%.</p></div>
+      <div class="ex-a">
+        <table class="calc">
+          <tr><td>Initial carrying amount 920 + 10</td><td>930.00</td></tr>
+          <tr><td>Year 1 interest income 6.8% × 930</td><td>63.24</td></tr>
+          <tr class="less"><td>Coupon received 5% × 1,000</td><td>(50.00)</td></tr>
+          <tr class="tot"><td>Carrying amount end of year 1</td><td>943.24</td></tr>
+        </table>
+        <p>Dr Investment 930, Cr Cash 930 at purchase. Income is the <b>effective rate times the opening amount</b>, not the coupon. Add the expected credit loss allowance (12-month at first, lifetime if credit risk has risen).</p>
+      </div>
+    </div>
+    <div class="ex">
+      <div class="ex-q"><span class="lbl">B. Convertible bond issued (Jul 2025, New Vision)</span><p>Issue 1,000, 3 years, coupon 4%, repayable at par or convertible. Market rate for similar non-convertible debt: 8%.</p></div>
+      <div class="ex-a">
+        <table class="calc">
+          <tr><td>Liability = 40/1.08 + 40/1.08² + 1,040/1.08³</td><td>896.92</td></tr>
+          <tr><td>Equity component = 1,000 − 896.92</td><td>103.08</td></tr>
+          <tr><td>Year 1 finance cost 8% × 896.92</td><td>71.75</td></tr>
+          <tr class="tot"><td>Liability end of year 1: 896.92 + 71.75 − 40</td><td>928.67</td></tr>
+        </table>
+        <p>Dr Cash 1,000; Cr Liability 896.92; Cr Equity 103.08. The finance cost uses the <b>market rate</b>, not 4%. Redeemable preference shares (Jul 2024) are <b>liabilities</b> under IAS 32 when redemption is not at the issuer's discretion; their dividends are interest.</p>
+      </div>
+    </div>
+  </div>
+  <div class="two">
+    <div class="ex">
+      <div class="ex-q"><span class="lbl">C. Below-market government loan (May 2026, KCP)</span><p>Loan 500 million for 3 years, 2% interest (10 million a year), market rate 10%. Discount factors 0.909, 0.826, 0.751.</p></div>
+      <div class="ex-a">
+        <table class="calc">
+          <tr><td>Fair value = 10 × (0.909 + 0.826 + 0.751) + 500 × 0.751</td><td>400.36</td></tr>
+          <tr><td>Grant (IAS 20) = 500 − 400.36</td><td>99.64</td></tr>
+          <tr><td>Year 1 interest expense 10% × 400.36</td><td>40.04</td></tr>
+          <tr class="less"><td>Cash interest paid</td><td>(10.00)</td></tr>
+          <tr class="tot"><td>Loan carrying amount end of year 1</td><td>430.40</td></tr>
+        </table>
+        <p>Dr Cash 500; Cr Loan 400.36; Cr Deferred income (grant) 99.64. Recognise the grant in profit or loss over the period the related costs are expensed. The CFO's error: liability at 500 and interest at only 10.</p>
+      </div>
+    </div>
+    <div class="panel-soft"><b>More IFRS 9 templates</b><span><b>Expected credit loss on receivables (simplified):</b> provision matrix: balance in each age band × loss rate; Dr Impairment loss, Cr Allowance. <b>Foreign-currency shares at FVOCI</b> (Mar 2024, 500,000 shares at JPY 125): fair value in yen × closing rate; the whole change (price and exchange) goes to OCI. <b>Foreign-currency loan or payable:</b> monetary item at the closing rate; exchange difference to profit or loss. <b>Derecognition:</b> when contractual rights expire or substantially all risks and rewards are transferred. <b>Hedge accounting:</b> not yet tested; know fair value, cash flow and net investment hedges at definition level.</span></div>
+  </div>
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<!-- 2 -->
+<section class="topic" id="cr33-assets">
+  <div class="topic-head"><span class="tn">2</span><h2>Non-current assets: IAS 16, 36, 38, 23, 20, 40, 2</h2></div>
+  <div class="tbl"><table>
+    <thead><tr><th>Issue</th><th>Template</th><th>Seen</th></tr></thead>
+    <tbody>
+      <tr><td>Cost of PPE</td><td>Price + import duty + directly attributable cost + <b>PV of decommissioning</b> − trade discounts. Not: training, general overheads, abnormal waste</td><td>Nov 25, Mar 22</td></tr>
+      <tr><td>Exchange of assets</td><td>Fair value of the asset given (or received, if clearer) if the exchange has <b>commercial substance</b>; otherwise carrying amount, no gain. Add or deduct cash paid or received</td><td>Nov 25</td></tr>
+      <tr><td>Revaluation</td><td>Increase: OCI (revaluation surplus) unless it reverses an earlier loss in profit or loss; decrease: first against the surplus of the same asset, then profit or loss. Transfer to retained earnings by use or on disposal</td><td>May 26, Nov 22, Jul 24</td></tr>
+      <tr><td>Component depreciation</td><td>Depreciate significant parts over their own lives; replacement part capitalised and old part derecognised</td><td>–</td></tr>
+      <tr><td>Stolen or destroyed asset</td><td>Derecognise at carrying amount; loss in profit or loss; insurance claim only when virtually certain</td><td>Mar 22</td></tr>
+      <tr><td>Investment property</td><td>Cost or fair value model; if fair value, changes in <b>profit or loss</b> (not OCI); transfers between PPE and investment property at change of use</td><td>Jul 24</td></tr>
+    </tbody>
+  </table></div>
+  <div class="two">
+    <div class="ex">
+      <div class="ex-q"><span class="lbl">A. Impairment of a revalued asset (May 2026)</span><p>Revalued asset carrying amount 20.0; recoverable amount 15.0; revaluation surplus on this asset 3.5.</p></div>
+      <div class="ex-a">
+        <table class="calc">
+          <tr><td>Impairment loss 20.0 − 15.0</td><td>5.0</td></tr>
+          <tr><td>First against revaluation surplus (OCI)</td><td>3.5</td></tr>
+          <tr class="tot"><td>Balance to profit or loss</td><td>1.5</td></tr>
+        </table>
+        <p>Journal: Dr Revaluation surplus 3.5; Dr Impairment loss 1.5; Cr Asset 5.0. <b>Recoverable amount</b> = the higher of fair value less costs of disposal and value in use. For a cash-generating unit: write down goodwill first, then other assets pro rata, but not below the asset's own recoverable amount.</p>
+      </div>
+    </div>
+    <div class="ex">
+      <div class="ex-q"><span class="lbl">B. Borrowing costs (May 2026, KCP)</span><p>Specific loan 200 million at 12%; 24 million interest a year; construction suspended for 4 months.</p></div>
+      <div class="ex-a">
+        <table class="calc">
+          <tr><td>Capitalise only active period: 24 × 8/12</td><td>16.0</td></tr>
+          <tr class="tot"><td>Expense for the 4 months suspended</td><td>8.0</td></tr>
+        </table>
+        <p>Capitalisation <b>stops</b> during an extended suspension of active development. Specific borrowing: actual interest less investment income on temporary surplus. General borrowing: <b>weighted average rate × average qualifying expenditure</b>, capped at actual interest.</p>
+      </div>
+    </div>
+  </div>
+  <div class="two">
+    <div class="panel-soft"><b>Intangible assets (IAS 38)</b><span><b>Research</b>: expense. <b>Development</b>: capitalise only when all six are shown: <b>technical feasibility, intention to complete, ability to use or sell, probable future benefits (a market), adequate resources, reliable measurement</b>. Never capitalise internally generated brands, training or marketing (Mar 2022, Nov 2025). <b>Website and software</b> (Nov 2023): planning stage expense; application and infrastructure development capitalise; operating costs expense. Amortise from when available for use; test indefinite-life items yearly for impairment. <b>Acquired customer contract</b>: recognise at the PV of expected profit (King, Mar 2022: 763,636 over 2 years).</span></div>
+    <div class="panel-soft"><b>Inventory (IAS 2) and grants (IAS 20)</b><span><b>Lower of cost and NRV.</b> NRV = expected selling price − further costs to complete and sell. Machine cost 2.0 billion, sale 1.9 billion, modification 0.3 billion: NRV 1.6, write-down <b>0.4 billion</b> (Nov 2024); a sale after year end confirming the price is an <b>adjusting</b> event. Slow-moving stock: allowance (Mar 2025: 750,000 × 85% = 637,500). <b>Grant for an asset:</b> deferred income or deduct from the asset, released over the life. <b>Grant at nominal value</b> (May 2026): fair value of the asset and grant both recognised (Option A) or both at the nominal amount (Option B).</span></div>
+  </div>
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<!-- 3 -->
+<section class="topic" id="cr33-eps">
+  <div class="topic-head"><span class="tn">3</span><h2>IAS 33 Earnings per share</h2></div>
+  <div class="formula">Basic EPS = (profit attributable to ordinary shareholders − preference dividends) ÷ weighted average ordinary shares
+Diluted EPS = (profit + after-tax interest saved on convertibles) ÷ (weighted average shares + potential ordinary shares)</div>
+  <div class="ex">
+    <div class="ex-q"><span class="lbl">Weighted average with a bonus issue (Nov 2024 GSC pattern)</span><p>20,000,000 shares at 1 January. On 1 July 4,000,000 new shares were issued at full market price. On 1 October a bonus issue of 1 share for every 8 held. Profit attributable 49,500,000.</p></div>
+    <div class="ex-a">
+      <table class="calc">
+        <tr><td>1 Jan – 30 Jun: 20,000,000 × 6/12</td><td>10,000,000</td></tr>
+        <tr><td>1 Jul – 31 Dec: 24,000,000 × 6/12</td><td>12,000,000</td></tr>
+        <tr><td>Weighted average before bonus</td><td>22,000,000</td></tr>
+        <tr class="tot"><td>Bonus factor 9/8 applied to the <b>whole year</b></td><td>24,750,000</td></tr>
+        <tr class="tot"><td>Basic EPS 49,500,000 ÷ 24,750,000</td><td>2.00</td></tr>
+      </table>
+      <p>A bonus issue brings no cash, so it is treated as if it had always been in issue and the <b>prior-year EPS is restated</b>. A <b>rights issue</b> has a bonus element: factor = fair value before the rights ÷ theoretical ex-rights price.</p>
+      <p><b>Diluted:</b> 1,000,000 options at exercise price 30, average market price 40: free shares = 1,000,000 × (1 − 30/40) = 250,000. Diluted EPS = 49,500,000 ÷ 25,000,000 = <b>1.98</b>. Convertible bond: add back interest × (1 − tax) and add the shares on conversion.</p>
+    </div>
+  </div>
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<!-- 4 -->
+<section class="topic" id="cr33-fx">
+  <div class="topic-head"><span class="tn">4</span><h2>IAS 21 and IAS 29: functional currency and hyperinflation</h2></div>
+  <div class="two">
+    <div class="panel-soft"><b>Choosing and changing the functional currency</b><span>Look at the <b>primary economic environment</b>: currency of selling prices, of costs, and of financing; currency that mainly influences sales. Dynamic Apparels (Jul 2024) sold in several currencies: the tests decide. A change is applied <b>prospectively</b> from the date of change by translating all items at the spot rate on that date; no restatement of comparatives. Presentation currency may differ from functional currency.</span></div>
+    <div class="panel-soft"><b>Foreign-currency transactions</b><span>Initial recognition at the spot rate (or average). At the year end: <b>monetary</b> items at closing rate, difference in profit or loss; <b>non-monetary at cost</b> at historical rate; <b>non-monetary at fair value</b> at the rate on the fair value date. Contract value fixed in a foreign currency: translate at the date the contract was signed or delivered (Jul 2023 SBCL), and recognise exchange differences separately.</span></div>
+  </div>
+  <div class="ex">
+    <div class="ex-q"><span class="lbl">Hyperinflation (Jul 2022, Rose Trading)</span><p>Restate non-monetary items by the general price index; keep monetary items as they are.</p></div>
+    <div class="ex-a">
+      <table class="calc">
+        <tr><td>Restated amount = historical amount × (index at end ÷ index at acquisition)</td><td></td></tr>
+        <tr><td>PPE: 55,200 × 1,800/1,200</td><td>82,800</td></tr>
+        <tr class="tot"><td>Difference 82,800 − 55,200 to the restated equity or profit or loss</td><td>27,600</td></tr>
+      </table>
+      <p>Show a <b>gain or loss on net monetary position</b> in profit or loss. Equity is restated by the index too. Then translate everything at the closing rate.</p>
+    </div>
+  </div>
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<!-- 5 -->
+<section class="topic" id="cr33-other">
+  <div class="topic-head"><span class="tn">5</span><h2>IAS 8, IAS 10, IAS 24, IFRS 5, IFRS 13, IAS 41</h2></div>
+  <div class="tbl"><table>
+    <thead><tr><th>Standard</th><th>Template</th><th>Seen</th></tr></thead>
+    <tbody>
+      <tr><td>IAS 8 Errors and policy changes</td><td><b>Error:</b> correct retrospectively; restate comparatives (or opening balances if earlier); disclose. <b>Change in policy:</b> retrospective. <b>Change in estimate:</b> prospective (depreciation life, provision)</td><td>Not tested as a main issue yet</td></tr>
+      <tr><td>IAS 10 Events after the reporting period</td><td><b>Adjusting:</b> gives evidence of conditions at year end (customer insolvency, legal outcome, inventory sold below cost). <b>Non-adjusting:</b> new conditions (fire, share issue, dividend declared): disclose only. Dividends declared after year end are <b>not</b> a liability</td><td>Nov 24</td></tr>
+      <tr><td>IAS 24 Related parties</td><td>Identify (key management, close family, entities controlled by them); disclose relationship, transactions, balances, terms, any provisions. Example: a receivable from a company owned by the CFO's son (Nov 2024) must be disclosed and tested for recovery</td><td>Jul 25, Nov 24</td></tr>
+      <tr><td>IFRS 5 Held for sale</td><td>Classify if available for immediate sale in its present condition and the sale is highly probable within 12 months. Measure at the <b>lower of carrying amount and fair value less costs to sell</b>; stop depreciation; present separately. A disposal group held for distribution to owners (Lily) follows IFRIC 17</td><td>May 26 (inside Q1)</td></tr>
+      <tr><td>IFRS 13 Fair value</td><td>Exit price in the <b>principal market</b> (the one with the highest volume) or, if none, the most advantageous. Transport costs reduce the price; transaction costs do not. Use observable (Level 1) inputs first. Include non-performance risk for liabilities</td><td>Jul 23</td></tr>
+      <tr><td>IAS 41 Biological assets</td><td>Fair value less costs to sell at each date; change in profit or loss. With no active market, use DCF (PV of expected net cash flows at a current market rate). Produce at harvest at fair value less costs to sell then follow IAS 2</td><td>May 26, Jul 23</td></tr>
+      <tr><td>IFRS 3 in the acquirer's books</td><td>Investment at cost; acquisition costs expensed; contingent consideration at fair value; goodwill = consideration + NCI − fair value of net assets; pushdown accounting is a policy choice for the acquiree's own books</td><td>Mar 25, Jul 25, Mar 22</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box flag"><span class="lbl">Update</span><p>IFRS 18 Presentation and Disclosure in Financial Statements (issued April 2024) replaces IAS 1 for years starting on or after 1 January 2027. It introduces new profit or loss categories (operating, investing, financing) and management-defined performance measures. Check the effective date and whether ICAB and the FRC have adopted it before using it in an answer.</p></div>
+  <div class="box remember"><span class="lbl">Not yet tested: be ready for these templates</span><p><b>IAS 7 cash flow statement</b> (indirect method: profit before tax + depreciation ± working capital − tax paid; then investing and financing sections), <b>IAS 8</b> restatement table (heading: as previously reported | adjustment | restated), <b>IAS 36</b> cash-generating unit table, <b>hedge accounting</b> journals, <b>IAS 40</b> fair value model, and <b>IFRS 7/8</b> disclosure lists. A short proforma for each is enough to score well.</p></div>
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
