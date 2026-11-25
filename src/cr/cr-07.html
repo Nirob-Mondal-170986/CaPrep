@@ -1,0 +1,162 @@
+<div class="ch-head">
+  <span class="eyebrow">Chapter 7 · Corporate Reporting</span>
+  <h1>The Statutory Audit: Evaluating and Testing Internal Controls</h1>
+  <p>Who is responsible for internal control; how the auditor evaluates and tests controls; service organisations (ISA 402) and Type 1/Type 2 reports; general and application IT controls and audit tools; cloud computing; cyber security, data protection and governance; and reporting control deficiencies (ISA 265).</p>
+</div>
+
+<div class="keynums" aria-label="Key numbers in this chapter">
+  <div><b>5</b><span>Components of internal control (ISA 315)</span></div>
+  <div><b>ISA 330</b><span>Test controls if relying on them, or if substantive work alone is not enough</span></div>
+  <div><b>Type 2</b><span>Service auditor report with tests of controls: can reduce control risk</span></div>
+  <div><b>ISA 402</b><span>Audit of an entity using a service organisation</span></div>
+  <div><b>3 lines</b><span>Lines of defence: operations, specialists, internal audit</span></div>
+  <div><b>€20m / 4%</b><span>Maximum GDPR fine (of global turnover)</span></div>
+  <div><b>ISA 265</b><span>Significant deficiencies reported to TCWG in writing</span></div>
+</div>
+
+<!-- 1 -->
+<section class="topic" id="cr7-resp">
+  <div class="topic-head"><span class="tn">1</span><h2>Responsibilities for internal control</h2></div>
+  <div class="formula">Internal control: a process designed, implemented and maintained by TCWG, management and staff to give reasonable assurance on reliable financial reporting, effective and efficient operations, and compliance with laws and regulations.</div>
+  <div class="two">
+    <div class="panel-soft"><b>Those charged with governance</b><span>Responsible for designing, implementing and maintaining internal control that can prevent, or detect and correct, errors. Errors are unintentional misstatements, including omissions.</span></div>
+    <div class="panel-soft"><b>The auditor</b><span>Understand the controls relevant to the audit; evaluate their <b>design</b>; check they are <b>implemented</b> (ISA 315). <b>Test</b> them when planning to rely on them or when substantive procedures alone are not enough (ISA 330). <b>Report</b> significant deficiencies to TCWG in writing (ISA 265).</span></div>
+  </div>
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<!-- 2 -->
+<section class="topic" id="cr7-testing">
+  <div class="topic-head"><span class="tn">2</span><h2>Evaluating and testing controls</h2></div>
+  <div class="flow" aria-label="Steps to evaluate controls">
+    <span><b>1</b> Identify controls relevant to the audit</span>
+    <span><b>2</b> Evaluate design and check implementation</span>
+    <span><b>3</b> Well designed: rely and test, or go substantive (whichever is more efficient)</span>
+    <span><b>4</b> Poorly designed: more substantive work; record the deficiency</span>
+  </div>
+  <p><b>Five components</b> (ISA 315 Appendix 3): control environment; risk assessment process; process to monitor internal control; information system and communication; control activities.</p>
+  <div class="two">
+    <div class="panel-soft"><b>Tests of controls</b><span>Inspect evidence of the control (authorisation signatures) · ask who actually does each job · reperform (bank reconciliation) · read management minutes · test IT controls (access) · observe. Show the control worked <b>throughout the period</b> and <b>consistently</b> (different staff, locations, and before and after changes).</span></div>
+    <div class="panel-soft"><b>After testing</b><span>The <b>achieved</b> control risk plus assessed inherent risk gives the detection risk left, which sets the nature, timing and extent of substantive work. Risk assessment procedures (e.g. management's monthly variance review) can sometimes give evidence that controls operate. Automated controls need less testing once general IT controls are sound.</span></div>
+  </div>
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<!-- 3 -->
+<section class="topic" id="cr7-service">
+  <div class="topic-head"><span class="tn">3</span><h2>Service organisations (ISA 402)</h2></div>
+  <div class="formula">Service organisation: a third party providing services to user entities that form part of their information systems relevant to financial reporting (e.g. payroll bureau, outsourced bookkeeping, asset management, agents).</div>
+  <p><b>The user auditor must understand:</b> the nature of the services; the nature and materiality of the transactions affected; how the two organisations' activities interact; the contract terms; and whether accounting records kept outside affect legal reporting duties. Evaluate the user entity's own controls over the service first. If that is not enough: get a service auditor's report, contact the service organisation (through the client), visit it, or use another auditor.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Report</th><th>Covers</th><th>Use to the user auditor</th></tr></thead>
+    <tbody>
+      <tr><td>Type 1</td><td>Description of the system and controls, and suitability of their <b>design</b>, <b>at a date</b></td><td>Helps <b>understanding</b> only; cannot reduce control risk</td></tr>
+      <tr><td>Type 2</td><td>As Type 1, plus <b>operating effectiveness</b> over a period, with the tests performed and their results</td><td>Can support a <b>lower control risk</b> if the controls tested are relevant and the tests adequate</td></tr>
+    </tbody>
+  </table></div>
+  <p><b>Before relying on a report:</b> the service auditor's competence and independence; the standards used; whether the period fits; whether the report is sufficient; and whether the client has the <b>complementary user controls</b> that the service assumes.</p>
+  <p><b>Substantive options:</b> inspect records at the client or at the service organisation (contract access rights); confirm balances with the service organisation; analytical procedures on its reports. <b>Opinion:</b> modify if the auditor cannot understand the service, cannot get evidence on controls it planned to rely on, or cannot access records. Never refer to the service auditor in an unmodified report unless the law requires it.</p>
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<!-- 4 -->
+<section class="topic" id="cr7-itcontrols">
+  <div class="topic-head"><span class="tn">4</span><h2>General and application IT controls</h2></div>
+  <div class="tbl"><table>
+    <thead><tr><th>General controls (framework over all systems)</th><th>Examples</th></tr></thead>
+    <tbody>
+      <tr><td>Developing applications</td><td>Design and documentation standards; testing with test data; user and management approval; designers do not test; controlled installation; training</td></tr>
+      <tr><td>Preventing unauthorised program changes</td><td>Segregation; change records; program passwords; locked computer rooms; logs; anti-virus; offsite backups; comparing control copies of programs</td></tr>
+      <tr><td>Testing program changes</td><td>Full testing; documentation; user approval; training</td></tr>
+      <tr><td>Using the right programs and files</td><td>Operation controls; program libraries; job scheduling</td></tr>
+      <tr><td>Protecting data files</td><td>Terminal security; firewalls; passwords and user IDs; encryption</td></tr>
+      <tr><td>Continuity</td><td>Offsite copies; fire protection; backup power; disaster recovery; maintenance agreements; insurance</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tbl"><table>
+    <thead><tr><th>Application controls (specific systems)</th><th>Examples</th></tr></thead>
+    <tbody>
+      <tr><td>Input: completeness</td><td>Control totals; document counts; one-for-one checks; matching to expected input; re-submitting rejected items</td></tr>
+      <tr><td>Input: accuracy</td><td>Field checks: check digits, reasonableness, existence, character, required fields, permitted range; scrutiny of output</td></tr>
+      <tr><td>Input: authorisation</td><td>Inputs authorised and entered only by authorised staff</td></tr>
+      <tr><td>Processing</td><td>Batch reconciliations; screen warnings before log-off</td></tr>
+      <tr><td>Master files and standing data</td><td>One-for-one checks; cyclical reviews; record counts and hash totals; controls over deleting accounts</td></tr>
+    </tbody>
+  </table></div>
+  <p><b>Review general controls first:</b> they are pervasive, and application controls are useless if general controls fail (manual user controls may still work).</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Automated tools (ATTs)</th><th>Pros</th><th>Cons</th></tr></thead>
+    <tbody>
+      <tr><td>Generalised audit software (e.g. ACL)</td><td>Easy, little programming, quick, tests whole populations</td><td>After processing; electronic data only</td></tr>
+      <tr><td>Custom audit software</td><td>Fits unusual systems or tests</td><td>Costly; needs changes when client systems change</td></tr>
+      <tr><td>Test data (valid and invalid)</td><td>Direct evidence that programmed controls work</td><td>Slow to build; may miss controls; must remove test items</td></tr>
+      <tr><td>AI tools (e.g. DataSnipper, MindBridge)</td><td>Faster testing of large populations with better quality</td><td>Need skills; risk of over-reliance</td></tr>
+    </tbody>
+  </table></div>
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<!-- 5 -->
+<section class="topic" id="cr7-cloud">
+  <div class="topic-head"><span class="tn">5</span><h2>Cloud computing and virtual arrangements</h2></div>
+  <div class="cards">
+    <div class="card"><h4>Backups</h4><p>Regular provider backups? Client's own backups? Restores tested? Service level agreement on data?</p></div>
+    <div class="card"><h4>Security</h4><p>Third-party penetration testing? Breach process? Encrypted data? PCI-DSS for card data? ISO accreditation? Protection from denial-of-service attacks?</p></div>
+    <div class="card"><h4>Loss</h4><p>Compensation for data loss written into the contract?</p></div>
+    <div class="card"><h4>Service</h4><p>Availability and performance commitments; realistic development plan; integration; who provides support.</p></div>
+  </div>
+  <p>A cloud provider holding accounting data is a <b>service organisation</b>, so ISA 402 applies. Technology has made audit tools cheaper for smaller firms, and AI moves auditors from routine testing (journals) towards judgement, but blockchain code and AI outputs still need skilled review.</p>
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<!-- 6 -->
+<section class="topic" id="cr7-cyber">
+  <div class="topic-head"><span class="tn">6</span><h2>Cyber security and data protection</h2></div>
+  <div class="two">
+    <div class="panel-soft"><b>Threat sources</b><span>Cyber criminals · hacktivists · nation states · insiders and partners · competitors · skilled lone hackers. AI now powers both attacks (convincing phishing, scanning for weak points) and defences.</span></div>
+    <div class="panel-soft"><b>Consequences</b><span>Theft of IP and plans · financial fraud · reputational damage · business disruption · damage to critical infrastructure · health and safety threats · fines and claims (provisions, going concern).</span></div>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>Data protection</th><th>Key points</th></tr></thead>
+    <tbody>
+      <tr><td>GDPR / UK GDPR (2018)</td><td>Collect only data with a valid business need; store securely and delete when no longer needed; controllers and processors both liable; Data Protection Impact Assessment for high-risk processing; report breaches; fines up to <b>€20m or 4%</b> of global turnover. Rights: be informed, access, rectification, erasure, restrict processing, portability, object, and rights over automated decisions</td></tr>
+      <tr><td>Examples</td><td>TikTok fined £12.7m (2023) for under-13 users without parental consent; Ministry of Defence £350k for using "To" not "BCC"; PSNI £750k for publishing staff data</td></tr>
+      <tr><td>Bangladesh</td><td>Constitution protects privacy of home and correspondence, but there is no full GDPR-style law yet. Cyber Security Act 2023 targets cybercrime and critical infrastructure. A Personal Data Protection law (lawful processing, consent, individual rights, controller and processor duties, cross-border rules) is being introduced</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box flag"><span class="lbl">Check current law</span><p>Bangladesh's cyber and data laws changed quickly in 2024–25: the Cyber Security Act 2023 was replaced by an ordinance, and a Personal Data Protection Ordinance was being finalised. Check which law is in force before naming it in an answer. The principles above do not change.</p></div>
+  <p><b>Governance:</b> the board is ultimately responsible (often through a chief information security officer); the audit committee oversees, sets expectations and checks resources; internal audit evaluates cyber risk management and controls. <b>Three lines of defence:</b> (1) operational controls by local management; (2) specialist oversight (security team, CIO); (3) internal audit or independent assurance. <b>Supply chain risk:</b> many breaches come through suppliers, so assess by risk, not just by spend, and across the whole relationship. <b>Benefits beyond fewer losses:</b> stronger brand, access to supply-chain contracts, lower insurance premiums.</p>
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<!-- 7 -->
+<section class="topic" id="cr7-cyberaudit">
+  <div class="topic-head"><span class="tn">7</span><h2>Audit implications of cyber risk</h2></div>
+  <div class="two">
+    <div class="panel-soft"><b>Strong control environment</b><span>Board-level responsibility with a named person · active board oversight, key data and risks identified · policies embedded and monitored · defined risk appetite · NEDs and audit committee with the right skills · competent in-house staff or consultants · IT talks to the board, internal audit and audit committee · staff can report breaches without fear.</span></div>
+    <div class="panel-soft"><b>Control procedures: secure, vigilant, resilient</b><span>Perimeter defences · vulnerability, asset and identity management · data protection · threat intelligence sharing · security monitoring and behaviour analysis · risk analytics · incident response and forensics · business continuity, disaster recovery and crisis management. IT audit specialists usually needed.</span></div>
+  </div>
+  <p><b>Board checklist questions the auditor can borrow:</b> Are we ready for the worst breach? What do we know about the threats? How can critical data actually be reached and by whom? How do strategic changes and acquisitions change the risk? What happens to staff who break the rules? Does the board follow the same rules? How do we spot insider risk? Is security designed in from the start?</p>
+  <div class="ex">
+    <div class="ex-q"><span class="lbl">Interactive question: NewForm Ltd (paperless e-commerce)</span><p>Online orders and card payments are run centrally. Inventory is held and despatched by Key Distributors (KD), an unrelated third party, on electronic instructions. Purchases are delivered straight to KD.</p></div>
+    <div class="ex-a"><table class="calc">
+      <tr class="hd"><td>Audit risks</td><td>Application controls needed</td></tr>
+      <tr><td>Cyber attacks on payments and customer data; fines and claims needing provisions</td><td>Customer passwords; card authorisation before acceptance; account limits</td></tr>
+      <tr><td>Site outage: lost sales, continuity</td><td>Validation: order value consistent with history; required fields; range checks</td></tr>
+      <tr><td>Inventory held by a third party: existence, returns and refunds</td><td>Matching orders to payments to despatch confirmations from KD; sequence checks</td></tr>
+      <tr><td>No paper audit trail; reliance on one distributor; enough in-house skills?</td><td>Exception reports for rejected or unmatched items, followed up</td></tr>
+    </table></div>
+  </div>
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
+
+<!-- 8 -->
+<section class="topic" id="cr7-report">
+  <div class="topic-head"><span class="tn">8</span><h2>Reporting control deficiencies (ISA 265)</h2></div>
+  <div class="two">
+    <div class="panel-soft"><b>Deficiency</b><span>A control is designed, implemented or operated so that it cannot prevent, or detect and correct, misstatements on time, <b>or</b> a necessary control is missing.</span></div>
+    <div class="panel-soft"><b>Significant deficiency</b><span>One that, in the auditor's judgement, is important enough to merit TCWG's attention. Report <b>in writing</b>, on time, to TCWG; other deficiencies go to management. See Chapter 4, topic 7 for the factors and the content of the letter.</span></div>
+  </div>
+  <div class="box remember"><span class="lbl">Exam focus</span><p>Typical requirements: "evaluate the controls and recommend improvements" or "explain whether the auditor can rely on the directors' control review" (Dodgy Burgers: controls brought in part-way through the year, or not yet fully rolled out, cannot be relied on for the whole period). Use a three-column answer: <b>deficiency → consequence → recommendation</b>. For outsourcing, always ask whether a <b>Type 2</b> report covers the right period and controls. For IT and cyber, separate <b>general</b> from <b>application</b> controls.</p></div>
+  <button class="btn ghost to-top" data-top>Back to top ↑</button>
+</section>
