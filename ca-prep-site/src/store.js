@@ -130,6 +130,22 @@
       d.session = u; this.put(d);
       return this.pub(d.users[u]);
     }
+    /* Open mode: one anonymous local profile, no password. */
+    async guest() {
+      const d = this.db(), name = "student";
+      if (!d.users[name]) {
+        const id = "local-guest";
+        d.users[name] = { id, username: name, salt: "", hash: "", is_admin: false, created_at: new Date().toISOString(), last_seen: null };
+        d.progress[id] = d.progress[id] || {};
+        try { // bring over ticks from the old single-page site, if any
+          const old = JSON.parse(localStorage.getItem("ha-ca-prep-read-v2") || "{}");
+          Object.keys(old).forEach(t => { if (!d.progress[id][t]) d.progress[id][t] = { r: true, c: null, at: new Date().toISOString() }; });
+        } catch (e) {}
+      }
+      d.session = name; this.put(d);
+      return this.pub(d.users[name]);
+    }
+    async resetMine(uid) { const d = this.db(); d.progress[uid] = {}; d.activity[uid] = []; this.put(d); }
     async signIn(u, p) {
       const d = this.db(), rec = d.users[u];
       if (!rec || rec.hash !== (await this.hash(p, rec.salt))) throw new Error("Wrong username or password.");

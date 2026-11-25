@@ -27,7 +27,7 @@
   const tplOf = (p, n) => document.getElementById("tpl-" + p + "-" + n);
 
   /* ---------- State ---------- */
-  let store = null, me = null, prog = {};
+  let store = null, me = null, prog = {}, OPEN = true;
   const pending = new Map();
   let flushTimer = null, saving = false;
 
@@ -39,6 +39,14 @@
   }
   const paperIds = p => TOPICS.filter(t => t.p === p).map(t => t.id);
   const allIds = () => TOPICS.map(t => t.id);
+
+  /* ---------- My subjects (the dashboard shows only these) ---------- */
+  const SUBJ_KEY = "haprep-subjects-v1";
+  let MY = [];
+  try { MY = JSON.parse(localStorage.getItem(SUBJ_KEY) || "[]"); if (!Array.isArray(MY)) MY = []; } catch (e) { MY = []; }
+  const saveMy = () => { try { localStorage.setItem(SUBJ_KEY, JSON.stringify(MY)); } catch (e) {} };
+  const myPapers = () => MY.filter(p => PAPERS[p] && live(p));
+  const myIds = () => myPapers().flatMap(paperIds);
 
   /* ---------- Saving ---------- */
   function setTopic(id, patch) {
@@ -79,10 +87,10 @@
   const HIGH_STEPS = [10, 50, 100, 250, 500];
   function snapshotCounts(id) {
     const t = BY_ID[id];
-    return { all: stats(allIds()), paper: stats(paperIds(t.p)), ch: stats(CH[t.p][t.n].ids) };
+    return { all: stats(myIds()), paper: stats(paperIds(t.p)), ch: stats(CH[t.p][t.n].ids) };
   }
   function afterChange(id, before) {
-    const t = BY_ID[id], all = stats(allIds()), paper = stats(paperIds(t.p)), ch = stats(CH[t.p][t.n].ids);
+    const t = BY_ID[id], all = stats(myIds()), paper = stats(paperIds(t.p)), ch = stats(CH[t.p][t.n].ids);
     let ms = null;
     const crossed = (steps, a, b) => steps.filter(s => a < s && b >= s).pop();
     const tot = crossed(TOTAL_STEPS.concat([all.total]), before.all.read, all.read);
@@ -245,29 +253,33 @@
   }
   function renderSide(cur) {
     const a = (href, key, ico, label, meta) => `<a href="${href}" ${cur === key ? 'aria-current="page"' : ""}><span class="ico">${ico}</span><span>${label}</span>${meta || ""}</a>`;
-    const low = stats(allIds()).low;
+    const low = stats(myIds()).low, mine = myPapers();
     $("#side").innerHTML = `
       <a class="brand" href="#/"><span class="mark">H&amp;A</span><span><b>H&amp;A CA Prep</b><small>ICAB exam notes</small></span></a>
       <nav class="nav">
         ${a("#/", "home", ICON.home, "Dashboard")}
         ${a("#/revise", "revise", ICON.rev, "Revise", low ? `<span class="meta" title="Low-confidence topics">${low} low</span>` : "")}
         ${a("#/search", "search", ICON.search, "Search notes")}
-        ${me.is_admin ? a("#/admin", "admin", ICON.admin, "Admin panel") : ""}
+        ${!OPEN && me.is_admin ? a("#/admin", "admin", ICON.admin, "Admin panel") : ""}
       </nav>
-      ${LEVELS.map(L => `<nav class="nav" aria-label="${esc(L.name)}"><div class="nav-h">${esc(L.name)}</div>
-        ${L.papers.map(p => {
-          const P = PAPERS[p];
-          if (!live(p)) return `<a href="#/paper/${p}" ${cur === "p-" + p ? 'aria-current="page"' : ""}><span class="ico">${ICON.book}</span><span>${esc(P.short)}</span><span class="soon">Soon</span></a>`;
-          const s = stats(paperIds(p));
-          return `<a href="#/paper/${p}" ${cur === "p-" + p ? 'aria-current="page"' : ""}><span class="ico">${ICON.book}</span><span>${esc(P.short)}</span><span class="meta">${s.pct}%</span><span class="mini"><i style="width:${s.pct}%"></i></span></a>`;
-        }).join("")}</nav>`).join("")}
+      ${mine.length ? `<nav class="nav" aria-label="My subjects"><div class="nav-h">My subjects</div>
+        ${mine.map(p => { const P = PAPERS[p], st = stats(paperIds(p)); return `<a href="#/paper/${p}" ${cur === "p-" + p ? 'aria-current="page"' : ""}><span class="ico">${ICON.book}</span><span>${esc(P.short)}</span><span class="meta">${st.pct}%</span><span class="mini"><i style="width:${st.pct}%"></i></span></a>`; }).join("")}
+        <a href="#/subjects" ${cur === "subjects" ? 'aria-current="page"' : ""}><span class="ico">${ICON.rev}</span><span>Change my subjects</span></a></nav>` : ""}
+      ${LEVELS.map(L => { const rest = L.papers.filter(p => !mine.includes(p)); if (!rest.length) return ""; return `<nav class="nav" aria-label="${esc(L.name)}"><div class="nav-h">${esc(mine.length ? "Other " : "")}${esc(L.name)}</div>
+        ${rest.map(p => { const P = PAPERS[p]; return `<a href="#/paper/${p}" ${cur === "p-" + p ? 'aria-current="page"' : ""}><span class="ico">${ICON.book}</span><span>${esc(P.short)}</span>${live(p) ? "" : '<span class="soon">Soon</span>'}</a>`; }).join("")}</nav>`; }).join("")}
       <div class="side-foot">
-        <div class="me"><span class="avatar">${esc(me.username.slice(0, 2))}</span><span><b>${esc(me.username)}</b><small>${me.is_admin ? "Admin" : "Student"}${store.mode === "demo" ? " · demo" : ""}</small></span></div>
-        <div class="sync" id="sync">${store.mode === "demo" ? "Saved on this device" : "All changes saved"}</div>
-        <div class="side-actions"><button id="theme">${document.documentElement.dataset.theme === "dark" ? "Light mode" : "Dark mode"}</button><button id="out">Sign out</button></div>
+        ${OPEN ? "" : `<div class="me"><span class="avatar">${esc(me.username.slice(0, 2))}</span><span><b>${esc(me.username)}</b><small>${me.is_admin ? "Admin" : "Student"}${store.mode === "demo" ? " · demo" : ""}</small></span></div>`}
+        <div class="sync" id="sync">${OPEN ? "Progress is saved in this browser" : store.mode === "demo" ? "Saved on this device" : "All changes saved"}</div>
+        <div class="side-actions"><button id="theme">${document.documentElement.dataset.theme === "dark" ? "Light mode" : "Dark mode"}</button><button id="out">${OPEN ? "Reset progress" : "Sign out"}</button></div>
       </div>`;
     $("#theme").onclick = () => { applyTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark"); renderSide(cur); };
-    $("#out").onclick = async () => { await flush(); await store.signOut(); me = null; location.hash = "#/"; renderAuth("in"); };
+    $("#out").onclick = async () => {
+      if (OPEN) {
+        if (!confirm("Erase all your read ticks and confidence marks in this browser? This cannot be undone.")) return;
+        await flush(); await store.resetMine(me.id); prog = {}; location.hash = "#/"; renderSide("home"); route(); return;
+      }
+      await flush(); await store.signOut(); me = null; location.hash = "#/"; renderAuth("in");
+    };
   }
 
   /* ---------- Router ---------- */
@@ -285,9 +297,10 @@
     if (!parts.length) { current = "home"; renderSide("home"); return viewHome(); }
     if (parts[0] === "paper" && PAPERS[parts[1]]) { current = "p-" + parts[1]; renderSide(current); return viewPaper(parts[1]); }
     if (parts[0] === "ch" && PAPERS[parts[1]] && CH[parts[1]][+parts[2]]) { current = "p-" + parts[1]; renderSide(current); return viewChapter(parts[1], +parts[2], parts[3]); }
+    if (parts[0] === "subjects") { current = "subjects"; renderSide("subjects"); return viewSubjects(); }
     if (parts[0] === "revise") { current = "revise"; renderSide("revise"); return viewRevise(params); }
     if (parts[0] === "search") { current = "search"; renderSide("search"); return viewSearch(params.get("q") || ""); }
-    if (parts[0] === "admin" && me.is_admin) { current = "admin"; renderSide("admin"); return parts[1] === "user" ? viewAdminUser(parts[2]) : viewAdmin(); }
+    if (parts[0] === "admin" && !OPEN && me.is_admin) { current = "admin"; renderSide("admin"); return parts[1] === "user" ? viewAdminUser(parts[2]) : viewAdmin(); }
     location.replace("#/");
   }
   window.addEventListener("hashchange", route);
@@ -306,7 +319,8 @@
   /* ---------- Dashboard ---------- */
   function viewHome() {
     document.title = "Dashboard · H&A CA Prep";
-    const s = stats(allIds()), hr = new Date().getHours();
+    if (!myPapers().length) return viewSubjects(true);
+    const s = stats(myIds()), hr = new Date().getHours();
     const greet = hr < 12 ? "Good morning" : hr < 17 ? "Good afternoon" : "Good evening";
     const last = getLast(); const lastOk = last && CH[last.p] && CH[last.p][last.n];
     const stepIdx = TOTAL_STEPS.filter(x => s.read >= x).length;
@@ -315,7 +329,7 @@
     const next = TOTAL_STEPS.find(x => x > s.read);
     $("#view").innerHTML = `
       <div class="hello"><div class="page-head"><span class="eyebrow">${new Date().toLocaleDateString([], { weekday: "long", day: "numeric", month: "long" })}</span>
-        <h1>${greet}, ${esc(me.username)}</h1><p>${s.read ? `You have read ${s.read} of ${s.total} topics. ${next ? `${next - s.read} more to your next milestone.` : ""}` : "Pick a paper below and read your first topic to get started."}</p></div>
+        <h1>${OPEN ? greet : `${greet}, ${esc(me.username)}`}</h1><p>${s.read ? `You have read ${s.read} of ${s.total} topics in your ${myPapers().length === 1 ? "subject" : myPapers().length + " subjects"}. ${next ? `${next - s.read} more to your next milestone.` : ""}` : "Open one of your subjects below and read your first topic to get started."}</p></div>
         <a class="btn" href="#/revise?c=low">Revise weak topics</a></div>
       <div class="stats">
         <a class="stat" href="#/revise?c=all"><span class="v">${s.read}<span class="muted" style="font-size:1rem"> / ${s.total}</span></span><span class="k">Topics read</span></a>
@@ -324,18 +338,36 @@
         <a class="stat lo" href="#/revise?c=low"><span class="v">${s.low}</span><span class="k">Low confidence</span></a>
       </div>
       <div class="panel overview">
-        <div class="ring" aria-label="${s.pct}% of all topics read"><svg viewBox="0 0 180 180"><circle cx="90" cy="90" r="${R}" fill="none" stroke="var(--slate-soft)" stroke-width="16"/><circle cx="90" cy="90" r="${R}" fill="none" stroke="var(--brand)" stroke-width="16" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C * (1 - s.pct / 100)}"/></svg><div class="c"><div><b>${s.pct}%</b><span>of all notes</span></div></div></div>
+        <div class="ring" aria-label="${s.pct}% of your topics read"><svg viewBox="0 0 180 180"><circle cx="90" cy="90" r="${R}" fill="none" stroke="var(--slate-soft)" stroke-width="16"/><circle cx="90" cy="90" r="${R}" fill="none" stroke="var(--brand)" stroke-width="16" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C * (1 - s.pct / 100)}"/></svg><div class="c"><div><b>${s.pct}%</b><span>of your notes</span></div></div></div>
         <div style="display:grid;gap:14px;min-width:0">
-          <h3>Your confidence across all topics</h3>${confbar(s)}${legend(s)}
+          <h3>Your confidence in your subjects</h3>${confbar(s)}${legend(s)}
           ${lastOk ? `<div class="resume" style="border-top:1px solid var(--line);padding-top:14px"><div><b>Continue reading</b><br><span>${esc(PAPERS[last.p].short)} · Chapter ${last.n}: ${esc(CH[last.p][last.n].title)}</span></div><a class="btn ghost" href="#/ch/${last.p}/${last.n}">Open chapter →</a></div>` : ""}
         </div>
       </div>
       <div class="quote"><span class="eyebrow">${stepIdx ? "Milestone " + stepIdx + " reached" : "Today's thought"}</span><q>${esc(q.q)}</q><cite>— ${esc(q.a)}</cite></div>
-      <form class="search" id="qs" role="search"><label for="q" class="muted" style="font-weight:700;display:block;margin-bottom:6px">Search all notes</label><input id="q" type="search" placeholder="Try: deferred tax, IFRS 16, ISA 570, VAT rebate, s.85" autocomplete="off"></form>
-      <div class="levels">${LEVELS.map(L => `
-        <div class="level-h"><h2>${esc(L.name)}</h2><span class="muted">${esc(L.blurb)}</span></div>
-        <div class="papers">${L.papers.map(paperCard).join("")}</div>`).join("")}</div>`;
+      <form class="search" id="qs" role="search"><label for="q" class="muted" style="font-weight:700;display:block;margin-bottom:6px">Search notes</label><input id="q" type="search" placeholder="Try: deferred tax, IFRS 16, ISA 570, VAT rebate, s.85" autocomplete="off"></form>
+      <div class="levels"><div class="level-h"><h2>My subjects</h2><a class="btn ghost sm" href="#/subjects">Change my subjects</a></div>
+        <div class="papers">${myPapers().map(paperCard).join("")}</div></div>`;
     $("#qs").onsubmit = e => { e.preventDefault(); location.hash = "#/search?q=" + encodeURIComponent($("#q").value); };
+  }
+  function viewSubjects(first) {
+    document.title = "My subjects · H&A CA Prep";
+    const chosen = new Set(myPapers());
+    $("#view").innerHTML = `
+      <div class="page-head"><span class="eyebrow">${first ? "Welcome" : "Settings"}</span><h1>${first ? "Choose your subjects" : "My subjects"}</h1>
+        <p>Tick the subjects you are studying. Your dashboard will show progress for these subjects only. You can change this at any time.</p></div>
+      ${LEVELS.map(L => `<div class="panel" style="display:grid;gap:10px"><div class="level-h"><h2>${esc(L.name)}</h2></div>
+        ${L.papers.map(p => { const P = PAPERS[p], ok = live(p);
+          return `<label class="subj" style="display:flex;gap:12px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:10px;${ok ? "cursor:pointer" : "opacity:.55"}">
+            <input type="checkbox" value="${p}" ${chosen.has(p) ? "checked" : ""} ${ok ? "" : "disabled"} style="width:20px;height:20px;accent-color:var(--brand)">
+            <span style="flex:1;min-width:0"><b>${esc(P.name)}</b><br><span class="muted" style="font-size:.88rem">${ok ? P.chapters.length + " chapters" : "Coming soon"}</span></span></label>`; }).join("")}</div>`).join("")}
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" id="savesub">Save and open dashboard</button>${first ? "" : '<a class="btn ghost" href="#/">Cancel</a>'}</div>
+      <p class="muted" id="subnote"></p>`;
+    $("#savesub").onclick = () => {
+      const pick = Array.from(document.querySelectorAll("#view input[type=checkbox]:checked")).map(i => i.value);
+      if (!pick.length) { $("#subnote").textContent = "Please tick at least one subject."; return; }
+      MY = pick; saveMy(); location.hash = "#/"; renderSide("home"); route();
+    };
   }
   function paperCard(p) {
     const P = PAPERS[p];
@@ -671,7 +703,14 @@
 
   /* ---------- Start ---------- */
   async function start() {
-    const S = window.Stores;
+    const S = window.Stores, cfg = window.APP_CONFIG || {};
+    OPEN = cfg.LOGIN !== true;           // default: open site, no login, progress kept in this browser
+    if (OPEN) {
+      store = new S.LocalStore();
+      try { me = await store.guest(); } catch (e) { me = { id: "local-guest", username: "student", is_admin: false }; }
+      enterApp(null);
+      return;
+    }
     if (S.online && !window.supabase) {
       $("#root").innerHTML = `<div class="loading"><div class="panel" style="max-width:420px;text-align:center;display:grid;gap:10px"><h2>Cannot reach the login service</h2><p class="muted">Check your internet connection and reload the page.</p><button class="btn" onclick="location.reload()">Reload</button></div></div>`;
       return;

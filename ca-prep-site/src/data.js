@@ -421,7 +421,7 @@ window.PAPERS = {
   "short": "Corporate Reporting",
   "level": "Advance Level",
   "blurb": "Complex IFRS reporting, group accounts, audit and assurance issues and ethics in integrated case questions.",
-  "source": "ICAB study manual (Volumes I–III) and analysis of 12 past papers",
+  "source": "ICAB study manual (Volumes I–III) and analysis of 13 past papers (Mar 2022 to May 2026)",
   "chapters": [
    {
     "n": 1,
@@ -551,16 +551,173 @@ window.PAPERS = {
    {
     "n": 28,
     "title": "Audit Standards and Practices in the Public Sector"
+   },
+   {
+    "n": 29,
+    "title": "Past Paper Map: What Was Tested and What Comes Next",
+    "note": "Exam toolkit · 13 sessions"
+   },
+   {
+    "n": 30,
+    "title": "Consolidation Proforma: Workings 1 to 7",
+    "note": "Exam toolkit · Q1 every session"
+   },
+   {
+    "n": 31,
+    "title": "Consolidation Layouts: Statements, Associates and Foreign Subsidiaries",
+    "note": "Exam toolkit"
+   },
+   {
+    "n": 32,
+    "title": "Answer Proformas I: Revenue, Leases, Provisions, Tax, Benefits and Share-based Pay",
+    "note": "Exam toolkit"
+   },
+   {
+    "n": 33,
+    "title": "Answer Proformas II: Financial Instruments, Assets, EPS and Other Standards",
+    "note": "Exam toolkit"
+   },
+   {
+    "n": 34,
+    "title": "Answer Proformas III: Financial Analysis, Adjusted Statements and Reports",
+    "note": "Exam toolkit"
+   },
+   {
+    "n": 35,
+    "title": "Theory Answer Bank: Audit, Ethics, Risk and Governance",
+    "note": "Exam toolkit"
    }
   ]
  },
  "sbm": {
   "code": "AL",
-  "name": "Strategic Business Management",
+  "name": "Strategic Business Management and Leadership",
   "short": "Strategic Business Mgmt",
   "level": "Advance Level",
-  "blurb": "Strategy, performance, risk, finance and governance in real business scenarios.",
-  "chapters": []
+  "blurb": "Strategy, performance, risk, finance, ethics and leadership in real business scenarios.",
+  "source": "ICAB SBM&L Workbook 2026 (Volumes I–III) and analysis of 13 past papers",
+  "chapters": [
+     {
+        "n": 1,
+        "title": "Strategic Analysis",
+        "note": "Volume I"
+     },
+     {
+        "n": 2,
+        "title": "Strategic Choice",
+        "note": "Volume I"
+     },
+     {
+        "n": 3,
+        "title": "Strategic Implementation",
+        "note": "Volume I"
+     },
+     {
+        "n": 4,
+        "title": "Strategic Performance Management",
+        "note": "Volume I"
+     },
+     {
+        "n": 5,
+        "title": "Strategic Marketing and Brand Management",
+        "note": "Volume I"
+     },
+     {
+        "n": 6,
+        "title": "Corporate Governance",
+        "note": "Volume I"
+     },
+     {
+        "n": 7,
+        "title": "Business Risk Management",
+        "note": "Volume II"
+     },
+     {
+        "n": 8,
+        "title": "Data Analysis",
+        "note": "Volume II"
+     },
+     {
+        "n": 9,
+        "title": "Information Strategy",
+        "note": "Volume II"
+     },
+     {
+        "n": 10,
+        "title": "Human Resource Management",
+        "note": "Volume II"
+     },
+     {
+        "n": 11,
+        "title": "Finance Awareness",
+        "note": "Volume II"
+     },
+     {
+        "n": 12,
+        "title": "Business and Securities Valuation",
+        "note": "Volume II"
+     },
+     {
+        "n": 13,
+        "title": "Financial Instruments and Financial Markets",
+        "note": "Volume II"
+     },
+     {
+        "n": 14,
+        "title": "Financial Structure and Financial Reconstruction",
+        "note": "Volume III"
+     },
+     {
+        "n": 15,
+        "title": "Financial Risk Management",
+        "note": "Volume III"
+     },
+     {
+        "n": 16,
+        "title": "International Financial Management",
+        "note": "Volume III"
+     },
+     {
+        "n": 17,
+        "title": "Investment Appraisal",
+        "note": "Volume III"
+     },
+     {
+        "n": 18,
+        "title": "Treasury and Working Capital Management",
+        "note": "Volume III"
+     },
+     {
+        "n": 19,
+        "title": "Ethics",
+        "note": "Volume III"
+     },
+     {
+        "n": 20,
+        "title": "Leadership",
+        "note": "Volume III"
+     },
+     {
+        "n": 21,
+        "title": "Spreadsheet Formulae",
+        "note": "Volume III"
+     },
+     {
+        "n": 22,
+        "title": "Past Paper Map: What Was Tested and What Comes Next",
+        "note": "Exam toolkit \u00b7 13 papers"
+     },
+     {
+        "n": 23,
+        "title": "Answer Proformas: Models and Calculations",
+        "note": "Exam toolkit"
+     },
+     {
+        "n": 24,
+        "title": "Theory Answer Bank and Case Writing",
+        "note": "Exam toolkit"
+     }
+  ]
  },
  "cs": {
   "code": "AL",
@@ -568,8 +725,55 @@ window.PAPERS = {
   "short": "Case Study",
   "level": "Advance Level",
   "blurb": "The integrated case: advance information, analysis, judgement and professional report writing.",
-  "chapters": []
+  "source": "ICAB Case Study Workbook (2026) and analysis of 13 past cases with suggested answers",
+  "chapters": [
+     {
+        "n": 1,
+        "title": "Introduction to the Case Study",
+        "note": "Workbook"
+     },
+     {
+        "n": 2,
+        "title": "Financial Statement Analysis",
+        "note": "Workbook"
+     },
+     {
+        "n": 3,
+        "title": "Financial Data Analysis",
+        "note": "Workbook"
+     },
+     {
+        "n": 4,
+        "title": "Commercial Analysis, Business Trust and Ethical Awareness",
+        "note": "Workbook"
+     },
+     {
+        "n": 5,
+        "title": "The Executive Summary",
+        "note": "Workbook"
+     },
+     {
+        "n": 6,
+        "title": "Past Case Map: What Was Tested and What Comes Next",
+        "note": "Exam toolkit \u00b7 13 cases"
+     },
+     {
+        "n": 7,
+        "title": "Report Proformas: How to Answer Each Requirement",
+        "note": "Exam toolkit"
+     },
+     {
+        "n": 8,
+        "title": "Accounting and Compliance Adjustment Bank",
+        "note": "Exam toolkit"
+     },
+     {
+        "n": 9,
+        "title": "Ethics and Sustainability Answer Bank",
+        "note": "Exam toolkit"
+     }
+  ]
  }
 };
-window.LEVELS = [{"id": "pl", "name": "Professional Level", "blurb": "Five papers with full notes, examples and past-paper focus.", "papers": ["law", "tax", "fm", "far", "aa"]}, {"id": "al", "name": "Advance Level", "blurb": "Corporate Reporting notes are complete (28 chapters). Strategic Business Management and Case Study will follow.", "papers": ["cr", "sbm", "cs"]}];
+window.LEVELS = [{"id": "pl", "name": "Professional Level", "blurb": "Five papers with full notes, examples and past-paper focus.", "papers": ["law", "tax", "fm", "far", "aa"]}, {"id": "al", "name": "Advance Level", "blurb": "Corporate Reporting has 28 note chapters plus an exam toolkit (Chapters 29 to 35: past-paper map, proformas and theory bank). Strategic Business Management and Leadership is complete (21 chapters plus an exam toolkit). Case Study is complete (5 workbook chapters plus an exam toolkit from 13 past cases).", "papers": ["cr", "sbm", "cs"]}];
 window.QUOTES = [{"q": "An investment in knowledge pays the best interest.", "a": "Benjamin Franklin"}, {"q": "It always seems impossible until it's done.", "a": "Nelson Mandela"}, {"q": "Success is the sum of small efforts, repeated day in and day out.", "a": "Robert Collier"}, {"q": "Don't watch the clock; do what it does. Keep going.", "a": "Sam Levenson"}, {"q": "The expert in anything was once a beginner.", "a": "Helen Hayes"}, {"q": "Discipline is the bridge between goals and accomplishment.", "a": "Jim Rohn"}, {"q": "You don't have to be great to start, but you have to start to be great.", "a": "Zig Ziglar"}, {"q": "Learning never exhausts the mind.", "a": "Leonardo da Vinci"}, {"q": "Believe you can and you're halfway there.", "a": "Theodore Roosevelt"}, {"q": "Hard work beats talent when talent doesn't work hard.", "a": "Tim Notke"}, {"q": "The beautiful thing about learning is that nobody can take it away from you.", "a": "B. B. King"}, {"q": "Education is the most powerful weapon which you can use to change the world.", "a": "Nelson Mandela"}, {"q": "Perseverance is not a long race; it is many short races one after the other.", "a": "Walter Elliot"}, {"q": "It does not matter how slowly you go as long as you do not stop.", "a": "Confucius"}, {"q": "Start where you are. Use what you have. Do what you can.", "a": "Arthur Ashe"}, {"q": "Well done is better than well said.", "a": "Benjamin Franklin"}, {"q": "The secret of getting ahead is getting started.", "a": "Mark Twain"}, {"q": "Quality is not an act, it is a habit.", "a": "Will Durant, on Aristotle"}, {"q": "Strive for progress, not perfection.", "a": "Anonymous"}, {"q": "Little by little, one travels far.", "a": "J. R. R. Tolkien"}, {"q": "The harder the conflict, the more glorious the triumph.", "a": "Thomas Paine"}, {"q": "Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time.", "a": "Thomas Edison"}];

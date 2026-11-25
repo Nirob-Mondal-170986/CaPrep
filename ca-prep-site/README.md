@@ -141,3 +141,11 @@ that is kept in git; the rest is rebuilt by GitHub. The anon key is meant to be 
    Students may need to refresh the page to see changes.
 
 If a deploy fails, open the failed run in the **Actions** tab to see the error.
+
+
+## Publishing with GitHub and Vercel (automatic updates)
+
+1. Put this folder in a GitHub repository (see the guide given with the project).
+2. On vercel.com choose **Add New → Project**, import the repository and press **Deploy**. `vercel.json` already tells Vercel to run `python3 build.py` and publish the `dist` folder.
+3. After that, every push to the `main` branch updates the live site by itself. Other branches get a private preview link.
+4. `dist/config.js` must stay in the repository (it is empty by default, which is fine for the open, no-login version).
