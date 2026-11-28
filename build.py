@@ -25,12 +25,40 @@ if not cfg.exists():
         "  USERNAME_DOMAIN: \"users.ha-ca-prep.app\" // do not change after students register\n"
         "};\n")
 
-content = (src / "content.html").read_text()
+# ---- Chapters: one small file each, loaded only when a student opens it ----
+import json, re, sys
+sys.path.insert(0, str(root))
+import notes
+
+chapters = {}   # (paper, number) -> html
+for m in re.finditer(r'<template id="tpl-([a-z]+)-(\d+)">(.*?)</template>', (src / "content.html").read_text(), re.S):
+    chapters[(m.group(1), int(m.group(2)))] = m.group(3).strip()
 # Extra papers kept as one file per chapter: src/<paper>/<paper>-NN.html
 for d in ("fm", "cr", "sbm", "cs"):
     for f in sorted((src / d).glob(d + "-*.html")):
-        n = int(f.stem.split("-")[1])
-        content += f'\n<template id="tpl-{d}-{n}">\n' + f.read_text() + "\n</template>\n"
+        chapters[(d, int(f.stem.split("-")[1]))] = f.read_text().strip()
+
+def fresh(folder):
+    folder.mkdir(exist_ok=True)
+    for old in folder.glob("*"):
+        old.unlink()
+    return folder
+ch_dir, cards_dir = fresh(dist / "ch"), fresh(dist / "cards")
+
+index, search, cards = {}, {}, {}
+for (p, n), html_ in sorted(chapters.items()):
+    (ch_dir / f"{p}-{n}.html").write_text(html_)
+    topics = notes.read_chapter(html_)
+    index.setdefault(p, {})[n] = [[t["id"], t["title"]] for t in topics]
+    for t in topics:
+        search[t["id"]] = t["text"]
+        for i, (kind, front, back) in enumerate(t["cards"]):
+            cards.setdefault(p, []).append({"i": f'{t["id"]}:{kind[0]}{i}', "t": t["id"], "k": kind[0], "f": front, "b": back})
+(dist / "topics.js").write_text("window.TOPIC_INDEX=" + json.dumps(index, separators=(",", ":")) + ";\n")
+(dist / "search.json").write_text(json.dumps(search, separators=(",", ":")))
+for p, lst in cards.items():
+    (cards_dir / f"{p}.json").write_text(json.dumps(lst, separators=(",", ":")))
+content = ""
 html = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -56,6 +84,7 @@ html = f"""<!doctype html>
 {content}
 <script src="config.js"></script>
 <script src="data.js"></script>
+<script src="topics.js"></script>
 <script src="store.js"></script>
 <script>
 (function () {{
@@ -76,6 +105,9 @@ html = f"""<!doctype html>
 </html>
 """
 (dist / "index.html").write_text(html)
-version = hashlib.sha1(html.encode()).hexdigest()[:10]
+h = hashlib.sha1(html.encode())
+for name in ("app.js", "app.css", "store.js", "data.js", "topics.js"):
+    h.update((dist / name).read_bytes())
+version = h.hexdigest()[:10]
 (dist / "sw.js").write_text((src / "pwa" / "sw.js").read_text().replace("__VERSION__", version))
-print("built", round(len(html) / 1e6, 2), "MB")
+print("built: index.html", round(len(html) / 1e3), "KB,", len(chapters), "chapters,", sum(len(v) for v in cards.values()), "flashcards")

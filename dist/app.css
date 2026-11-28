@@ -460,3 +460,38 @@ a.ch-row:hover { transform: translateX(3px); box-shadow: var(--shadow); }
 .topbar .word b { font-size: 1.15rem; }
 :root[data-theme="dark"] .hello, :root[data-theme="dark"] .quote { background: linear-gradient(135deg, #1E2630, #151A21); }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* ---------- Exam countdown, smart revision, flashcards ---------- */
+.hello-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.hello .btn.ghost { background: rgba(255,255,255,.08); color: #fff; border-color: rgba(255,255,255,.25); }
+.hello .btn.ghost:hover { background: rgba(255,255,255,.16); border-color: #FF9A4D; }
+.chip.next-exam { justify-self: start; background: rgba(243,112,33,.18); color: #FFD2B3; border-color: rgba(243,112,33,.5); }
+.exam-row { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 12px 0; border-top: 1px solid var(--line); flex-wrap: wrap; }
+.exam-row:first-child { border-top: 0; padding-top: 0; }
+.exam-name { display: grid; gap: 2px; min-width: 0; flex: 1 1 260px; }
+.exam-name span { color: var(--muted); font-size: .9rem; }
+.exam-ctl { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.exam-ctl .input { width: auto; padding: 8px 10px; }
+.days { display: inline-flex; align-items: baseline; gap: 5px; padding: 5px 12px; border-radius: 999px; background: var(--brand-soft); color: var(--brand-ink); border: 1px solid var(--brand-line); font-weight: 700; font-size: .85rem; white-space: nowrap; }
+.days b { font-size: 1.1rem; }
+.days.hot { background: var(--lo-soft); color: var(--lo); border-color: var(--lo-line); }
+.days.past { background: var(--slate-soft); color: var(--muted); border-color: var(--slate-line); }
+
+.rev-item .why { display: block; font-size: .84rem; color: var(--brand-ink); font-weight: 700; margin-top: 2px; }
+.rev-item.done { opacity: .6; }
+.rev-item.done .why::after { content: " ✔ Reviewed"; color: var(--hi); }
+.rev-done { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
+
+.deck-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--muted); font-size: .92rem; margin-bottom: 10px; }
+.fcard { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px clamp(16px, 3vw, 28px); box-shadow: var(--shadow-lg); display: grid; gap: 16px; min-height: 260px; align-content: start; }
+.fc-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: .86rem; }
+.fc-body { display: grid; gap: 14px; min-width: 0; overflow-x: auto; font-size: 1.05rem; }
+.fc-ask { font-size: 1.2rem; color: var(--ink); }
+.fc-actions { display: flex; gap: 12px; justify-content: center; margin-top: 16px; flex-wrap: wrap; }
+.fc-actions .btn { min-width: 160px; padding: 13px 22px; font-size: 1.02rem; }
+.fc-actions small { opacity: .75; font-weight: 400; }
+.fc-actions .miss:hover { border-color: var(--lo); background: var(--lo-soft); color: var(--lo); }
+.fc-links { text-align: center; margin-top: 12px; font-size: .9rem; }
+.done-card { text-align: center; justify-items: center; }
+.done-card .medal { font-size: 3rem; }
+@media (max-width: 560px) { .fc-actions .btn { flex: 1 1 100%; } }

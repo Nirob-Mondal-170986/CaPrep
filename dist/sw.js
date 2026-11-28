@@ -1,8 +1,8 @@
 /* Service worker: lets the site open without internet and be installed as an app.
-   The build step replaces 7b39abfe09 so every new deploy refreshes the cache. */
-const VERSION = "7b39abfe09";
+   The build step replaces d6caf57cc3 so every new deploy refreshes the cache. */
+const VERSION = "d6caf57cc3";
 const CACHE = "haprep-" + VERSION;
-const SHELL = ["./", "app.css", "app.js", "data.js", "store.js", "config.js", "manifest.webmanifest", "icon-192.png", "icon-512.png", "logo.svg"];
+const SHELL = ["./", "app.css", "app.js", "data.js", "topics.js", "store.js", "config.js", "manifest.webmanifest", "icon-192.png", "icon-512.png", "logo.svg"];
 
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));

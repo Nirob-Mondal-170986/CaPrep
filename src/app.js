@@ -8,23 +8,44 @@
   const CONF = ["low", "medium", "high"];
   const CONF_LABEL = { low: "Low", medium: "Medium", high: "High" };
 
-  /* ---------- Topic index built from the chapter templates ---------- */
+  /* ---------- Topic index (from topics.js). Chapter text loads only when opened. ---------- */
   const TOPICS = [], BY_ID = {}, CH = {};
   Object.keys(PAPERS).forEach(p => {
     CH[p] = {};
+    const tp = (window.TOPIC_INDEX || {})[p] || {};
     PAPERS[p].chapters.forEach(c => {
-      const tpl = document.getElementById("tpl-" + p + "-" + c.n);
-      if (!tpl) return;
+      const list = tp[c.n];
+      if (!list) return;
       const ids = [];
-      $$("section.topic", tpl.content).forEach((s, i) => {
-        const t = { id: s.id, p, n: c.n, i: i + 1, title: s.querySelector("h2").textContent.trim() };
+      list.forEach((x, i) => {
+        const t = { id: x[0], p, n: c.n, i: i + 1, title: x[1] };
         TOPICS.push(t); BY_ID[t.id] = t; ids.push(t.id);
       });
       CH[p][c.n] = { title: c.title, note: c.note, ids };
     });
   });
   const live = p => PAPERS[p].chapters.some(c => CH[p][c.n]);
-  const tplOf = (p, n) => document.getElementById("tpl-" + p + "-" + n);
+
+  /* ---------- Loading files on demand ---------- */
+  const fileCache = new Map(), fragCache = new Map();
+  let viewTok = 0;   // changes on every page change, so a slow download never paints over a newer page
+  function getFile(path, json) {
+    if (!fileCache.has(path)) {
+      const inline = window.INLINE && window.INLINE[path];
+      const job = inline != null ? Promise.resolve(inline)
+        : fetch(path).then(r => { if (!r.ok) throw new Error("Could not load " + path); return r.text(); });
+      fileCache.set(path, job.then(t => json ? JSON.parse(t) : t).catch(e => { fileCache.delete(path); throw e; }));
+    }
+    return fileCache.get(path);
+  }
+  function chapterFrag(p, n) {
+    const k = p + "-" + n;
+    if (!fragCache.has(k)) {
+      fragCache.set(k, getFile("ch/" + k + ".html").then(html => { const t = document.createElement("template"); t.innerHTML = html; return t.content; }).catch(e => { fragCache.delete(k); throw e; }));
+    }
+    return fragCache.get(k);
+  }
+  const loadErr = (what, retry) => `<div class="panel empty"><b>Could not load ${what}</b><span>Check your internet connection and try again.</span><button class="btn ghost sm" id="${retry}">Try again</button></div>`;
 
   /* ---------- State ---------- */
   let store = null, me = null, prog = {}, OPEN = true;
@@ -58,18 +79,69 @@
   const myPapers = () => MY.filter(p => PAPERS[p] && live(p));
   const myIds = () => myPapers().flatMap(paperIds);
 
+  /* ---------- Exam dates (one per subject) ---------- */
+  const DAY = 864e5, EXAM_KEY = "haprep-exams-v1";
+  let EXAMS = {};
+  const examKey = () => EXAM_KEY + (!OPEN && me ? ":" + me.id : "");
+  function loadExams() {
+    if (me && me.exam_dates && Object.keys(me.exam_dates).length) { EXAMS = Object.assign({}, me.exam_dates); return; }
+    try { EXAMS = JSON.parse(localStorage.getItem(examKey()) || "{}") || {}; } catch (e) { EXAMS = {}; }
+    if (Object.keys(EXAMS).length && store && store.saveExamDates && me) store.saveExamDates(me.id, EXAMS).catch(() => {});
+  }
+  function saveExams() {
+    try { localStorage.setItem(examKey(), JSON.stringify(EXAMS)); } catch (e) {}
+    if (me) me.exam_dates = Object.assign({}, EXAMS);
+    if (store && store.saveExamDates && me) store.saveExamDates(me.id, EXAMS).catch(() => toast("Exam dates saved on this device only. Update the database (see the setup guide) to sync them."));
+  }
+  const daysTo = str => { const [y, m, d] = str.split("-").map(Number), t = new Date(); return Math.round((new Date(y, m - 1, d) - new Date(t.getFullYear(), t.getMonth(), t.getDate())) / DAY); };
+  function nextExam() {
+    let best = null;
+    myPapers().forEach(p => { if (!EXAMS[p]) return; const d = daysTo(EXAMS[p]); if (d >= 0 && (!best || d < best.d)) best = { p, d }; });
+    return best;
+  }
+  function nextExamChip() {
+    const ne = nextExam();
+    return ne ? `<span class="chip next-exam">⏳ ${esc(PAPERS[ne.p].short)} exam ${ne.d === 0 ? "is today" : "in " + plural(ne.d, "day")}</span>` : "";
+  }
+  const plural = (n, w) => n + " " + w + (n === 1 ? "" : "s");
+  function examRowsHTML() {
+    return myPapers().map(p => {
+      const v = EXAMS[p] || "", dl = v ? daysTo(v) : null, s = stats(paperIds(p)), left = s.total - s.read;
+      let info = "Pick your exam date to get a daily reading target.", badge = "";
+      if (dl !== null) {
+        if (dl < 0) { badge = `<span class="days past">Passed</span>`; info = "This exam date has passed. Pick a new date or clear it."; }
+        else if (dl === 0) { badge = `<span class="days hot"><b>Today</b></span>`; info = "Exam day. You have prepared well. Good luck!"; }
+        else {
+          const study = Math.max(1, Math.floor(dl * 0.8)), per = Math.ceil(left / study), rev = dl - study;
+          badge = `<span class="days ${dl <= 14 ? "hot" : ""}"><b>${dl}</b> day${dl === 1 ? "" : "s"} left</span>`;
+          info = left ? `Read about <b>${plural(per, "topic")}</b> a day (${left} left to read)${rev > 0 ? " and keep the last " + plural(rev, "day") + " for revision" : ""}.` : "Every topic is read. Spend your time on the Low and Medium ones.";
+        }
+      }
+      return `<div class="exam-row"><div class="exam-name"><b>${esc(PAPERS[p].short)}</b><span>${info}</span></div>
+        <div class="exam-ctl">${badge}<input type="date" class="input" data-exam="${p}" value="${esc(v)}" aria-label="Exam date for ${esc(PAPERS[p].short)}">${v ? `<button class="btn ghost sm" data-clear="${p}">Clear</button>` : ""}</div></div>`;
+    }).join("");
+  }
+
   /* ---------- Saving ---------- */
   function setTopic(id, patch) {
     const t = BY_ID[id]; if (!t) return;
     const before = snapshotCounts(id);
     const cur = prog[id] || { r: false, c: null };
-    const next = Object.assign({}, cur, patch);
+    const next = Object.assign({}, cur, patch, { at: new Date().toISOString() });
     prog[id] = next;
     pending.set(id, { t: id, p: t.p, n: t.n, r: !!next.r, c: next.c || null });
     scheduleFlush();
     if (patch.c !== undefined && patch.c !== cur.c && patch.c) log("confidence", { t: id, c: patch.c });
     else if (patch.r !== undefined && patch.r !== cur.r) log(patch.r ? "read" : "unread", { t: id });
     afterChange(id, before);
+  }
+  /* Student looked at a topic again: remember when, so the smart plan knows when it is due next. */
+  function touchTopic(id) {
+    const t = BY_ID[id]; if (!t) return;
+    const cur = prog[id] || { r: false, c: null };
+    prog[id] = Object.assign({}, cur, { r: true, at: new Date().toISOString() });
+    pending.set(id, { t: id, p: t.p, n: t.n, r: true, c: prog[id].c || null });
+    scheduleFlush(); log("reviewed", { t: id }); refreshProgressUI(id);
   }
   function scheduleFlush() { clearTimeout(flushTimer); flushTimer = setTimeout(flush, 700); syncState("saving"); }
   async function flush() {
@@ -141,6 +213,7 @@
     rev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v6h6"/><path d="M20 20v-6h-6"/><path d="M5 15a8 8 0 0 0 14 2M19 9A8 8 0 0 0 5 7"/></svg>',
     search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>',
     admin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>',
+    cards: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="14" height="12" rx="2"/><path d="M7 7V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg>',
     book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/></svg>'
   };
   function confbar(s) {
@@ -238,7 +311,7 @@
   /* ---------- App shell ---------- */
   async function enterApp(evt) {
     $("#root").innerHTML = `<div class="loading">Loading your progress…</div>`;
-    prog = {}; loadMy();
+    prog = {}; cardState = null; loadMy(); loadExams();
     try {
       const rows = await store.myProgress(me.id);
       rows.forEach(r => { prog[r.topic_id] = { r: !!r.is_read, c: r.confidence || null, at: r.updated_at }; });
@@ -247,8 +320,17 @@
     store.touch(me.id).catch(() => {});
     setInterval(() => store.touch(me.id).catch(() => {}), 5 * 60 * 1000);
     renderShell();
+    setTimeout(prefetchNotes, 5000);
     if (!location.hash || location.hash === "#") location.hash = "#/";
     route();
+  }
+  /* Quietly saves the chapters of the student's subjects, so they open without internet. */
+  function prefetchNotes() {
+    if (window.INLINE || !navigator.onLine || (navigator.connection && navigator.connection.saveData)) return;
+    const jobs = []; myPapers().forEach(p => Object.keys(CH[p]).forEach(n => jobs.push("ch/" + p + "-" + n + ".html")));
+    let i = 0;
+    const next = () => { if (i >= jobs.length) return; fetch(jobs[i++]).catch(() => {}).then(() => setTimeout(next, 200)); };
+    next(); next();
   }
   function renderShell() {
     $("#root").innerHTML = `
@@ -272,6 +354,7 @@
       <nav class="nav">
         ${a("#/", "home", ICON.home, "Dashboard")}
         ${a("#/revise", "revise", ICON.rev, "Revise", low ? `<span class="meta" title="Low-confidence topics">${low} low</span>` : "")}
+        ${a("#/cards", "cards", ICON.cards, "Flashcards")}
         ${a("#/search", "search", ICON.search, "Search notes")}
         ${!OPEN && me.is_admin ? a("#/admin", "admin", ICON.admin, "Admin panel") : ""}
       </nav>
@@ -307,11 +390,14 @@
     const params = new URLSearchParams(qs || "");
     window.scrollTo(0, 0);
     if (spy) { spy.disconnect(); spy = null; }
+    viewTok++;
+    if (cardKeys) { document.removeEventListener("keydown", cardKeys); cardKeys = null; }
     if (!parts.length) { current = "home"; renderSide("home"); return viewHome(); }
     if (parts[0] === "paper" && PAPERS[parts[1]]) { current = "p-" + parts[1]; renderSide(current); return viewPaper(parts[1]); }
     if (parts[0] === "ch" && PAPERS[parts[1]] && CH[parts[1]][+parts[2]]) { current = "p-" + parts[1]; renderSide(current); return viewChapter(parts[1], +parts[2], parts[3]); }
     if (parts[0] === "subjects") { current = "subjects"; renderSide("subjects"); return viewSubjects(); }
     if (parts[0] === "revise") { current = "revise"; renderSide("revise"); return viewRevise(params); }
+    if (parts[0] === "cards") { current = "cards"; renderSide("cards"); return viewCards(params); }
     if (parts[0] === "search") { current = "search"; renderSide("search"); return viewSearch(params.get("q") || ""); }
     if (parts[0] === "admin" && !OPEN && me.is_admin) { current = "admin"; renderSide("admin"); return parts[1] === "user" ? viewAdminUser(parts[2]) : viewAdmin(); }
     location.replace("#/");
@@ -340,16 +426,18 @@
     const q = quoteFor(stepIdx * 7 + new Date().getDate());
     const R = 78, C = 2 * Math.PI * R;
     const next = TOTAL_STEPS.find(x => x > s.read);
+    const dueNow = smartList(smartPool("all")).length;
     $("#view").innerHTML = `
       <div class="hello"><div class="page-head"><span class="eyebrow">${new Date().toLocaleDateString([], { weekday: "long", day: "numeric", month: "long" })}</span>
-        <h1>${OPEN ? greet : `${greet}, ${esc(me.username)}`}</h1><p>${s.read ? `You have read ${s.read} of ${s.total} topics in your ${myPapers().length === 1 ? "subject" : myPapers().length + " subjects"}. ${next ? `${next - s.read} more to your next milestone.` : ""}` : "Open one of your subjects below and read your first topic to get started."}</p></div>
-        <a class="btn" href="#/revise?c=low">Revise weak topics</a></div>
+        <h1>${OPEN ? greet : `${greet}, ${esc(me.username)}`}</h1><p>${s.read ? `You have read ${s.read} of ${s.total} topics in your ${myPapers().length === 1 ? "subject" : myPapers().length + " subjects"}. ${next ? `${next - s.read} more to your next milestone.` : ""}` : "Open one of your subjects below and read your first topic to get started."}</p><span id="ne-slot" style="justify-self:start">${nextExamChip()}</span></div>
+        <div class="hello-btns"><a class="btn" href="#/revise">Today's revision${dueNow ? " (" + dueNow + ")" : ""}</a><a class="btn ghost" href="#/cards">Flashcards</a></div></div>
       <div class="stats">
         <a class="stat" href="#/revise?c=all"><span class="v">${s.read}<span class="muted" style="font-size:1rem"> / ${s.total}</span></span><span class="k">Topics read</span></a>
         <a class="stat hi" href="#/revise?c=high"><span class="v">${s.high}</span><span class="k">High confidence</span></a>
         <a class="stat md" href="#/revise?c=medium"><span class="v">${s.medium}</span><span class="k">Medium confidence</span></a>
         <a class="stat lo" href="#/revise?c=low"><span class="v">${s.low}</span><span class="k">Low confidence</span></a>
       </div>
+      <div class="panel" id="exam-panel"><div class="panel-h"><h3>Exam countdown</h3><span class="muted">Set a date for each subject</span></div><div id="exam-rows">${examRowsHTML()}</div></div>
       <div class="panel overview">
         <div class="ring" aria-label="${s.pct}% of your topics read"><svg viewBox="0 0 180 180"><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFA35E"/><stop offset="1" stop-color="#E4570C"/></linearGradient></defs><circle cx="90" cy="90" r="${R}" fill="none" stroke="var(--slate-soft)" stroke-width="16"/><circle cx="90" cy="90" r="${R}" fill="none" stroke="url(#rg)" stroke-width="16" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C * (1 - s.pct / 100)}"/></svg><div class="c"><div><b>${s.pct}%</b><span>of your notes</span></div></div></div>
         <div style="display:grid;gap:14px;min-width:0">
@@ -361,6 +449,10 @@
       <form class="search" id="qs" role="search"><label for="q" class="muted" style="font-weight:700;display:block;margin-bottom:6px">Search notes</label><input id="q" type="search" placeholder="Try: deferred tax, IFRS 16, ISA 570, VAT rebate, s.85" autocomplete="off"></form>
       <div class="levels"><div class="level-h"><h2>My subjects</h2><a class="btn ghost sm" href="#/subjects">Change my subjects</a></div>
         <div class="papers">${myPapers().map(paperCard).join("")}</div></div>`;
+    const ep = $("#exam-panel");
+    const redo = () => { $("#exam-rows").innerHTML = examRowsHTML(); $("#ne-slot").innerHTML = nextExamChip(); };
+    ep.onchange = e => { const i = e.target.closest("[data-exam]"); if (!i) return; if (i.value) EXAMS[i.dataset.exam] = i.value; else delete EXAMS[i.dataset.exam]; saveExams(); redo(); };
+    ep.onclick = e => { const b = e.target.closest("[data-clear]"); if (!b) return; delete EXAMS[b.dataset.clear]; saveExams(); redo(); };
     $("#qs").onsubmit = e => { e.preventDefault(); location.hash = "#/search?q=" + encodeURIComponent($("#q").value); };
   }
   function viewSubjects(first) {
@@ -449,8 +541,8 @@
     const s = stats(CH[p][n].ids);
     return `<div style="display:grid;gap:10px"><b>${s.read} of ${s.total} topics read in this chapter</b>${confbar(s)}${legend(s)}</div>`;
   }
-  function viewChapter(p, n, topicId) {
-    const P = PAPERS[p], c = CH[p][n];
+  async function viewChapter(p, n, topicId) {
+    const tok = viewTok, P = PAPERS[p], c = CH[p][n];
     document.title = "Ch " + n + ": " + c.title + " · CAPrep";
     setLast({ p, n });
     log("open_chapter", { p, n }, "oc-" + p + n);
@@ -465,7 +557,13 @@
         <article class="chapter" id="chapter"></article>
       </div>`;
     const art = $("#chapter");
-    art.appendChild(tplOf(p, n).content.cloneNode(true));
+    art.innerHTML = `<div class="panel empty"><span>Loading chapter…</span></div>`;
+    let frag;
+    try { frag = await chapterFrag(p, n); }
+    catch (e) { if (tok !== viewTok) return; art.innerHTML = loadErr("this chapter", "retry"); $("#retry").onclick = () => viewChapter(p, n, topicId); return; }
+    if (tok !== viewTok) return;
+    art.innerHTML = "";
+    art.appendChild(frag.cloneNode(true));
     const secs = $$("section.topic", art);
     secs.forEach(decorateTopic);
     const list = $("#toc-list");
@@ -497,22 +595,40 @@
 
   /* ---------- Revise ---------- */
   let shuffleSeed = 1;
+  /* Smart plan: a topic comes back when it is due. Low after 2 days, Medium after a week, High after 3 weeks.
+     Topics that are read but not rated come back after a day, so the student rates them. */
+  const DUE_DAYS = { low: 2, medium: 7, high: 21 };
+  const daysSince = iso => iso ? Math.max(0, (Date.now() - new Date(iso).getTime()) / DAY) : 30;
+  function smartList(pool) {
+    const out = [];
+    pool.forEach(t => {
+      const r = prog[t.id]; if (!r || !r.r) return;
+      const d = daysSince(r.at), c = r.c, ago = d >= 1 ? plural(Math.floor(d), "day") + " ago" : "today";
+      if (!c) { if (d < 1) return; out.push({ t, score: 80 + d, why: "Read but not rated yet. Rate your confidence." }); return; }
+      if (d < DUE_DAYS[c]) return;
+      out.push({ t, score: { low: 100, medium: 60, high: 20 }[c] + d, why: CONF_LABEL[c] + " confidence. Last looked at " + ago + "." });
+    });
+    return out.sort((a, b) => b.score - a.score);
+  }
+  const smartPool = p => TOPICS.filter(t => p === "all" ? (myPapers().length ? myPapers().includes(t.p) : true) : t.p === p);
   function viewRevise(params) {
     document.title = "Revise · CAPrep";
-    const c = params.get("c") || "low", p = params.get("p") || "all", order = params.get("o") || "paper";
+    const c = params.get("c") || "smart", p = params.get("p") || "all", order = params.get("o") || "paper";
     const pool = TOPICS.filter(t => p === "all" || t.p === p);
-    const count = k => pool.filter(t => match(t.id, k)).length;
+    const count = k => k === "smart" ? smartList(smartPool(p)).length : pool.filter(t => match(t.id, k)).length;
     function match(id, k) { const r = prog[id] || {}; return k === "all" ? !!r.r : k === "none" ? !r.c : r.c === k; }
-    let items = pool.filter(t => match(t.id, c));
+    const smart = c === "smart" ? smartList(smartPool(p)) : [], why = {};
+    smart.forEach(x => { why[x.t.id] = x.why; });
+    let items = c === "smart" ? smart.slice(0, 30).map(x => x.t) : pool.filter(t => match(t.id, c));
     if (order === "shuffle") { let s = shuffleSeed; items = items.map(t => ({ t, k: (s = (s * 9301 + 49297) % 233280) })).sort((a, b) => a.k - b.k).map(x => x.t); }
     log("revise", { c, p }, "rv-" + c + p);
     const chipBtn = (k, label, color) => `<button class="fchip" data-c="${k}" aria-pressed="${c === k}">${color ? `<i style="background:${color}"></i>` : ""}${label}<span class="n">${count(k)}</span></button>`;
     const livePapers = Object.keys(PAPERS).filter(live);
     const qs = o => "#/revise?" + new URLSearchParams(Object.assign({ c, p, o: order }, o)).toString();
     $("#view").innerHTML = `
-      <div class="page-head"><span class="eyebrow">Revision</span><h1>Revise by confidence</h1><p>Pick a confidence level to see only those topics. Open a topic here, read it again, and update your confidence as you go.</p></div>
+      <div class="page-head"><span class="eyebrow">Revision</span><h1>${c === "smart" ? "Today's smart revision" : "Revise by confidence"}</h1><p>${c === "smart" ? "Topics that are due for another look, the weakest first. Low topics come back after 2 days, Medium after a week and High after 3 weeks, so nothing fades away. Press <b>I have reviewed this topic</b> when you finish one." : "Pick a confidence level to see only those topics. Open a topic here, read it again, and update your confidence as you go."}</p></div>
       <div class="panel" style="display:grid;gap:14px">
-        <div class="filters" role="group" aria-label="Confidence filter">${chipBtn("low", "Low", "var(--lo)")}${chipBtn("medium", "Medium", "var(--md)")}${chipBtn("high", "High", "var(--hi)")}${chipBtn("none", "Not rated", "var(--line-strong)")}${chipBtn("all", "All read")}</div>
+        <div class="filters" role="group" aria-label="Confidence filter">${chipBtn("smart", "Smart plan", "var(--brand)")}${chipBtn("low", "Low", "var(--lo)")}${chipBtn("medium", "Medium", "var(--md)")}${chipBtn("high", "High", "var(--hi)")}${chipBtn("none", "Not rated", "var(--line-strong)")}${chipBtn("all", "All read")}</div>
         <div class="filters"><label class="muted" for="fp" style="font-weight:700">Paper</label><select id="fp"><option value="all">All papers</option>${livePapers.map(k => `<option value="${k}" ${p === k ? "selected" : ""}>${esc(PAPERS[k].short)}</option>`).join("")}</select>
           <label class="muted" for="fo" style="font-weight:700">Order</label><select id="fo"><option value="paper" ${order === "paper" ? "selected" : ""}>Paper and chapter</option><option value="shuffle" ${order === "shuffle" ? "selected" : ""}>Shuffle</option></select></div>
       </div>
@@ -523,7 +639,7 @@
     $("#fo").onchange = e => { shuffleSeed = Date.now() % 233280; location.hash = qs({ o: e.target.value }); };
     const listEl = $("#rev-list");
     if (!items.length) {
-      const msg = { low: "No Low-confidence topics here. Great work, or start rating topics as you read.", medium: "No Medium-confidence topics here yet.", high: "No High-confidence topics here yet. Rate topics in each chapter as you finish them.", none: "Every topic here has a confidence rating.", all: "You have not marked any topics as read here yet." }[c];
+      const msg = { smart: "You are all caught up. Nothing is due for revision right now. Read more topics, or come back tomorrow.", low: "No Low-confidence topics here. Great work, or start rating topics as you read.", medium: "No Medium-confidence topics here yet.", high: "No High-confidence topics here yet. Rate topics in each chapter as you finish them.", none: "Every topic here has a confidence rating.", all: "You have not marked any topics as read here yet." }[c];
       listEl.innerHTML = `<div class="panel empty"><b>Nothing to show</b><span>${msg}</span><a class="btn ghost sm" href="#/">Go to dashboard</a></div>`;
       return;
     }
@@ -531,39 +647,148 @@
     const more = () => {
       const chunk = items.slice(shown, shown + 30); shown += chunk.length;
       listEl.insertAdjacentHTML("beforeend", chunk.map(t => `
-        <div class="rev-item" data-id="${t.id}"><div class="rev-row"><div class="t"><small><span class="code" style="font-size:.7rem">${esc(PAPERS[t.p].code)}</span> ${esc(PAPERS[t.p].short)} · Ch ${t.n}: ${esc(CH[t.p][t.n].title)}</small><b>${t.i}. ${esc(t.title)}</b></div>
+        <div class="rev-item" data-id="${t.id}"><div class="rev-row"><div class="t"><small><span class="code" style="font-size:.7rem">${esc(PAPERS[t.p].code)}</span> ${esc(PAPERS[t.p].short)} · Ch ${t.n}: ${esc(CH[t.p][t.n].title)}</small><b>${t.i}. ${esc(t.title)}</b>${why[t.id] ? `<span class="why">${esc(why[t.id])}</span>` : ""}</div>
           <div class="a">${pill(t.id, true)}<button class="btn sm" data-open>Review here</button><a class="btn ghost sm" href="#/ch/${t.p}/${t.n}/${t.id}">Open in chapter</a></div></div>
           <div class="rev-body" hidden></div></div>`).join(""));
       $("#rev-more").innerHTML = shown < items.length ? `<button class="btn ghost block" id="more">Show more (${items.length - shown} left)</button>` : `<p class="muted" style="text-align:center">${items.length} topic${items.length > 1 ? "s" : ""}</p>`;
       const m = $("#more"); if (m) m.onclick = more;
     };
     more();
-    listEl.onclick = e => {
+    listEl.onclick = async e => {
+      const done = e.target.closest("[data-reviewed]");
+      if (done) {
+        const item = done.closest(".rev-item"), id = item.dataset.id;
+        touchTopic(id);
+        item.classList.add("done"); $(".rev-body", item).hidden = true; $(".rev-body", item).innerHTML = ""; $("[data-open]", item).textContent = "Review again";
+        const c = prog[id] && prog[id].c;
+        toast("Reviewed. " + (c ? "It will come back in " + plural(DUE_DAYS[c], "day") + "." : "Rate your confidence so it comes back at the right time."));
+        return;
+      }
       const b = e.target.closest("[data-open]"); if (!b) return;
-      const item = b.closest(".rev-item"), body = $(".rev-body", item), id = item.dataset.id, t = BY_ID[id];
+      const item = b.closest(".rev-item"), body = $(".rev-body", item), id = item.dataset.id, t = BY_ID[id], tok = viewTok;
       if (!body.hidden) { body.hidden = true; body.innerHTML = ""; b.textContent = "Review here"; return; }
-      const src = tplOf(t.p, t.n).content.getElementById(id);
-      body.appendChild(src.cloneNode(true)); decorateTopic($("section.topic", body));
+      b.disabled = true; b.textContent = "Loading…";
+      let frag;
+      try { frag = await chapterFrag(t.p, t.n); } catch (err) { b.disabled = false; b.textContent = "Review here"; toast("Could not load this topic. Check your internet connection."); return; }
+      b.disabled = false;
+      if (tok !== viewTok) return;
+      body.appendChild(frag.getElementById(id).cloneNode(true)); decorateTopic($("section.topic", body));
+      body.insertAdjacentHTML("beforeend", `<div class="rev-done"><button class="btn sm" data-reviewed>I have reviewed this topic</button><span class="muted">This tells the smart plan when to bring it back.</span></div>`);
       body.hidden = false; b.textContent = "Close";
       log("review", { t: id });
     };
   }
 
+  /* ---------- Flashcards ---------- */
+  /* Cards are made from the notes: practice questions with their answers, "Remember" boxes (key points)
+     and exam traps. A card the student gets right comes back later (1, 3, 7, 14, then 30 days). A missed card comes back in the same session. */
+  const BOX_DAYS = [0, 1, 3, 7, 14, 30], SESSION = 20;
+  const KIND = { q: "Practice question", r: "Key point", t: "Exam trap" };
+  let cardState = null, cardKeys = null;
+  const cardStore = () => {
+    if (!cardState) { try { cardState = JSON.parse(localStorage.getItem("haprep-cards-v1:" + me.id) || "{}") || {}; } catch (e) { cardState = {}; } }
+    return cardState;
+  };
+  const saveCards = () => { try { localStorage.setItem("haprep-cards-v1:" + me.id, JSON.stringify(cardState)); } catch (e) {} };
+  const shuffled = a => { const r = a.slice(); for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; };
+
+  async function viewCards(params) {
+    document.title = "Flashcards · CAPrep";
+    const tok = viewTok, mine = myPapers(), livePapers = Object.keys(PAPERS).filter(live);
+    const p = params.get("p") || (mine.length ? "mine" : "all"), k = params.get("k") || "all", f = params.get("f") || "due";
+    const papers = p === "mine" ? mine : p === "all" ? livePapers : [p];
+    const qs = o => "#/cards?" + new URLSearchParams(Object.assign({ p, k, f }, o)).toString();
+    $("#view").innerHTML = `
+      <div class="page-head"><span class="eyebrow">Practice</span><h1>Flashcards</h1><p>Practice questions, key points and exam traps taken from your notes. Cards you know come back later. Cards you miss come back today.</p></div>
+      <div class="panel" style="display:grid;gap:12px"><div class="filters">
+        <label class="muted" for="cp" style="font-weight:700">Subjects</label><select id="cp">${mine.length ? `<option value="mine" ${p === "mine" ? "selected" : ""}>My subjects</option>` : ""}<option value="all" ${p === "all" ? "selected" : ""}>All papers</option>${livePapers.map(x => `<option value="${x}" ${p === x ? "selected" : ""}>${esc(PAPERS[x].short)}</option>`).join("")}</select>
+        <label class="muted" for="ck" style="font-weight:700">Type</label><select id="ck"><option value="all">All types</option>${Object.keys(KIND).map(x => `<option value="${x}" ${k === x ? "selected" : ""}>${KIND[x]}s</option>`).join("")}</select>
+        <label class="muted" for="cf" style="font-weight:700">Show</label><select id="cf"><option value="due" ${f === "due" ? "selected" : ""}>Cards due today</option><option value="weak" ${f === "weak" ? "selected" : ""}>My Low and Medium topics</option><option value="all" ${f === "all" ? "selected" : ""}>Every card</option></select></div>
+        <div class="muted" id="deck-info">Loading cards…</div></div>
+      <div id="deck"></div>`;
+    $("#cp").onchange = e => { location.hash = qs({ p: e.target.value }); };
+    $("#ck").onchange = e => { location.hash = qs({ k: e.target.value }); };
+    $("#cf").onchange = e => { location.hash = qs({ f: e.target.value }); };
+    let all;
+    try { all = (await Promise.all(papers.map(x => getFile("cards/" + x + ".json", true).catch(() => []))))
+      .flat().filter(c => BY_ID[c.t] && (k === "all" || c.k === k)); }
+    catch (e) { all = []; }
+    if (tok !== viewTok) return;
+    const st = cardStore(), now = Date.now();
+    const isDue = c => !st[c.i] || st[c.i].d <= now;
+    const conf = c => (prog[c.t] && prog[c.t].c) || null;
+    const due = all.filter(isDue).length, known = all.filter(c => st[c.i] && st[c.i].b >= 4).length;
+    $("#deck-info").innerHTML = all.length ? `<b>${all.length}</b> cards · <b>${due}</b> due today · <b>${known}</b> well known` : "";
+    let pool = f === "due" ? all.filter(isDue) : f === "weak" ? all.filter(c => conf(c) === "low" || conf(c) === "medium") : all;
+    const rank = { low: 0, medium: 1, null: 2, high: 3 };
+    pool = shuffled(pool).sort((a, b) => rank[conf(a)] - rank[conf(b)]).slice(0, SESSION);
+    const deck = $("#deck");
+    if (!all.length) { deck.innerHTML = `<div class="panel empty"><b>No cards here</b><span>There are no flashcards for this choice yet. Try another subject or type.</span></div>`; return; }
+    if (!pool.length) {
+      deck.innerHTML = `<div class="panel empty"><b>${f === "weak" ? "No cards from Low or Medium topics" : "All caught up"}</b><span>${f === "weak" ? "Rate topics as you read and their cards will show up here." : "No cards are due right now. Come back tomorrow, or study every card."}</span><a class="btn ghost sm" href="${qs({ f: "all" })}">Study every card</a></div>`;
+      return;
+    }
+    const queue = pool.slice(); let idx = 0, got = 0, missed = 0, shown = false;
+    const total = () => queue.length;
+    function front(c) {
+      const t = BY_ID[c.t];
+      if (c.k === "q") return `<div class="ex"><div class="ex-q">${c.f}</div><div class="ex-a" id="fc-ans" hidden>${c.b}</div></div>`;
+      const ask = c.k === "r" ? "What is the key point to remember about" : "What is the common exam trap in";
+      return `<p class="fc-ask">${ask} <b>${esc(t.title)}</b>?</p><div class="box ${c.k === "r" ? "remember" : "trap"}" id="fc-ans" hidden><span class="lbl">${KIND[c.k]}</span>${c.b}</div>`;
+    }
+    function draw() {
+      if (idx >= queue.length) return finish();
+      const c = queue[idx], t = BY_ID[c.t]; shown = false;
+      deck.innerHTML = `
+        <div class="deck-top"><span><b>Card ${idx + 1}</b> of ${total()}</span><span class="bar-prog" style="width:160px"><i style="width:${Math.round(idx / total() * 100)}%"></i></span></div>
+        <div class="fcard"><div class="fc-meta"><span class="chip">${KIND[c.k]}</span><span class="muted">${esc(PAPERS[t.p].short)} · Ch ${t.n} · ${esc(t.title)}</span></div>
+          <div class="fc-body">${front(c)}</div></div>
+        <div class="fc-actions" id="fc-actions"><button class="btn" id="fc-show">Show answer <small>(Space)</small></button></div>
+        <div class="fc-links"><a href="#/ch/${t.p}/${t.n}/${t.id}">Open this topic in the notes</a></div>`;
+      $("#fc-show").onclick = reveal; $("#fc-show").focus();
+    }
+    function reveal() {
+      if (shown) return; shown = true;
+      $("#fc-ans").hidden = false;
+      $("#fc-actions").innerHTML = `<button class="btn ghost miss" id="fc-miss">Missed it <small>(1)</small></button><button class="btn" id="fc-got">Got it <small>(2)</small></button>`;
+      $("#fc-miss").onclick = () => answer(false); $("#fc-got").onclick = () => answer(true);
+      $("#fc-got").focus();
+    }
+    function answer(ok) {
+      if (!shown) return;
+      const c = queue[idx], cur = st[c.i] || { b: 0 };
+      if (ok) { const b = Math.min(5, cur.b + 1); st[c.i] = { b, d: Date.now() + BOX_DAYS[b] * DAY }; got++; }
+      else { st[c.i] = { b: 0, d: Date.now() }; missed++; if (queue.filter(x => x.i === c.i).length < 2) queue.push(c); }
+      saveCards(); idx++; draw();
+    }
+    function finish() {
+      if (cardKeys) { document.removeEventListener("keydown", cardKeys); cardKeys = null; }
+      log("cards", { n: got + missed });
+      deck.innerHTML = `<div class="panel empty done-card"><div class="medal" aria-hidden="true">🎯</div><b>Session finished</b><span>You got <b>${got}</b> right and missed <b>${missed}</b>. ${missed ? "Missed cards come back today." : "Well done!"}</span>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><a class="btn" href="${qs({})}" id="again">Study more</a><a class="btn ghost" href="#/">Back to dashboard</a></div></div>`;
+      $("#again").onclick = e => { e.preventDefault(); viewTok++; viewCards(params); };
+    }
+    cardKeys = e => {
+      if (e.target.closest && e.target.closest("input,select,textarea")) return;
+      if (e.key === " " || e.key === "Enter") { if (!shown) { e.preventDefault(); reveal(); } }
+      else if (shown && (e.key === "1" || e.key === "ArrowLeft")) answer(false);
+      else if (shown && (e.key === "2" || e.key === "ArrowRight")) answer(true);
+    };
+    document.addEventListener("keydown", cardKeys);
+    draw();
+  }
+
   /* ---------- Search ---------- */
   let INDEX = null;
-  function buildIndex() {
-    INDEX = TOPICS.map(t => {
-      const s = tplOf(t.p, t.n).content.getElementById(t.id);
-      const parts = [], w = document.createTreeWalker(s, NodeFilter.SHOW_TEXT);
-      while (w.nextNode()) if (!w.currentNode.parentElement.closest("[data-top]")) parts.push(w.currentNode.nodeValue);
-      const text = parts.join(" ").replace(/\s+/g, " ").replace(/ ([,.;:)])/g, "$1").trim();
-      return Object.assign({ text, low: text.toLowerCase(), tlow: t.title.toLowerCase() }, t);
-    });
+  async function ensureIndex() {
+    if (INDEX) return;
+    const text = await getFile("search.json", true);
+    INDEX = TOPICS.map(t => { const x = text[t.id] || ""; return Object.assign({ text: x, low: x.toLowerCase(), tlow: t.title.toLowerCase() }, t); });
   }
   function searchHTML(raw) {
     const words = raw.toLowerCase().trim().split(/\s+/).filter(w => w.length > 1);
     if (!words.length) return "";
-    if (!INDEX) buildIndex();
+    if (!INDEX) return "";
     const phrase = words.join(" ");
     const hits = INDEX.filter(t => words.every(w => t.low.includes(w)))
       .map(t => ({ t, score: (t.tlow.includes(phrase) ? 40 : 0) + (t.low.split(phrase).length - 1) * 5 + words.reduce((a, w) => a + (t.tlow.includes(w) ? 3 : 0) + t.low.split(w).length - 1, 0) }))
@@ -577,14 +802,21 @@
       return `<a href="#/ch/${t.p}/${t.n}/${t.id}"><b>${esc(t.title).replace(re, "<mark>$1</mark>")}</b><small>${esc(PAPERS[t.p].short)} · Ch ${t.n}: ${esc(CH[t.p][t.n].title)} · ${pill(t.id)}</small><small>${esc(snip).replace(re, "<mark>$1</mark>")}</small></a>`;
     }).join("");
   }
-  function viewSearch(q) {
+  async function viewSearch(q) {
+    const tok = viewTok;
     document.title = "Search · CAPrep";
     $("#view").innerHTML = `<div class="page-head"><span class="eyebrow">Search</span><h1>Search all notes</h1><p>Search every topic in every paper. Results show your confidence for each topic.</p></div>
       <div class="search"><input id="q" type="search" placeholder="Try: deferred tax, IFRS 16, ISA 570, VAT rebate, s.85" autocomplete="off" aria-label="Search notes" value="${esc(q)}"><div class="results" id="results" aria-live="polite"></div></div>`;
     const inp = $("#q"), res = $("#results");
     let t = null;
     inp.oninput = () => { clearTimeout(t); t = setTimeout(() => { res.innerHTML = searchHTML(inp.value); history.replaceState(null, "", "#/search?q=" + encodeURIComponent(inp.value)); }, 160); };
-    res.innerHTML = searchHTML(q); inp.focus();
+    inp.focus();
+    if (!INDEX) {
+      res.innerHTML = `<p class="muted">Loading search…</p>`;
+      try { await ensureIndex(); } catch (e) { if (tok === viewTok) res.innerHTML = loadErr("search", "retry"); if ($("#retry")) $("#retry").onclick = () => viewSearch(inp.value); return; }
+      if (tok !== viewTok) return;
+    }
+    res.innerHTML = searchHTML(inp.value);
   }
 
   /* ---------- Admin ---------- */
@@ -616,6 +848,8 @@
       case "unread": return ["↺", "Marked as unread " + tl];
       case "confidence": return ["◆", `Rated <b>${esc(CONF_LABEL[d.c] || d.c)}</b> confidence on ` + tl];
       case "revise": return ["⟳", `Revision list: ${esc({ low: "Low", medium: "Medium", high: "High", none: "Not rated", all: "All read" }[d.c] || d.c)} · ${d.p && PAPERS[d.p] ? esc(PAPERS[d.p].short) : "All papers"}`];
+      case "reviewed": return ["✔", "Finished reviewing " + tl];
+      case "cards": return ["🃏", `Studied ${plural(d.n || 0, "flashcard")}`];
       case "review": return ["🔁", "Reviewed " + tl];
       case "milestone": return ["★", "Milestone: " + esc(d.text || "")];
       default: return ["•", esc(ev.kind)];
